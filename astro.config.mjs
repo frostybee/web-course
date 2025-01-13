@@ -19,11 +19,13 @@ import starlightLinksValidator from 'starlight-links-validator'
 const site = 'https://frostybee.github.io/cool-starlight';
 //@see: https://astro.build/config
 export default defineConfig({
+  site: "https://frostybee.github.io",
+  base: "/web-course",
   integrations: [
     starlight({
-      title: 'Cool Starlight',
+      title: 'Internet Programming',
       social: {
-        github: 'https://github.com/withastro/starlight',
+        github: 'https://github.com/frostybee/web-course',
       },
       //TODO: add the head property.
       defaultLocale: "en",
