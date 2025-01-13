@@ -9,17 +9,17 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from 'rehype-slug';
 import starlightSidebarTopics from "starlight-sidebar-topics";
 
-import guidesSidebar from './src/config/sidebars/guides.ts'
-import componentsSidebar from './src/config/sidebars/components.ts'
+import guidesSidebar from './src/config/sidebars/html-sidebar.ts'
+import componentsSidebar from './src/config/sidebars/css-sidebar.ts'
 // TODO: clean the following imports
 import mdx from "@astrojs/mdx";
 import starlightLinksValidator from 'starlight-links-validator'
 
 
-const site = 'https://frostybee.github.io/cool-starlight';
+const siteURI = 'https://frostybee.github.io';
 //@see: https://astro.build/config
 export default defineConfig({
-  site: "https://frostybee.github.io",
+  site: siteURI,
   base: "/web-course",
   integrations: [
     starlight({
@@ -45,23 +45,36 @@ export default defineConfig({
         starlightSidebarTopics(
           [
             {
-              label: "Guides",
-              link: "/guides/example",
+              label: "HTML",
+              link: "/html",
               icon: "open-book",
               items: [
                 ...guidesSidebar
                 ],
             },
             {
-              label: "Components",
-              link: "components/",
+              label: "CSS",
+              link: "/css",
               icon: "puzzle",
               items: [
                 ...componentsSidebar
               ],
             },
             {
-              label: "Reference",
+              label: "JavaScript",
+              link: "/javascript",
+              icon: "starlight",
+              items: [
+                {
+                  label: "Basic Elements",
+                  autogenerate: {
+                    directory: "javascript/",
+                  }
+                }
+              ],
+            },
+            {
+              label: "Resources",
               link: "reference/example",
               icon: "starlight",
               items: [

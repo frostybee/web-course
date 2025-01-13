@@ -2,9 +2,9 @@ export default
   [
     // Each item here is one entry in the navigation menu.
     {
-      label: "Components",
+      label: "HTML Topics",
       autogenerate: {
-        directory: "components/",
+        directory: "html/",
       }
     }
   ];

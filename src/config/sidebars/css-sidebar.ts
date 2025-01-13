@@ -2,9 +2,9 @@ export default
   [
     // Each item here is one entry in the navigation menu.
     {
-      label: "Basic Elements",
+      label: "CSS Topics",
       autogenerate: {
-        directory: "guides/",
+        directory: "css/",
       }
     }
   ];
