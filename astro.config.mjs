@@ -9,8 +9,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from 'rehype-slug';
 import starlightSidebarTopics from "starlight-sidebar-topics";
 
-import guidesSidebar from './src/config/sidebars/html-sidebar.ts'
-import componentsSidebar from './src/config/sidebars/css-sidebar.ts'
+import htmlSidebar from './src/config/sidebars/html-sidebar.ts'
+import cssSidebar from './src/config/sidebars/css-sidebar.ts'
 // TODO: clean the following imports
 import mdx from "@astrojs/mdx";
 import starlightLinksValidator from 'starlight-links-validator'
@@ -45,25 +45,38 @@ export default defineConfig({
         starlightSidebarTopics(
           [
             {
-              label: "HTML",
-              link: "/html",
+              label: "Guides",
+              link: "/guides",
               icon: "open-book",
               items: [
-                ...guidesSidebar
+                {
+                  label: "Home",
+                  autogenerate: {
+                    directory: "guides/",
+                  }
+                }
+                ],
+            },
+            {
+              label: "HTML",
+              link: "/html",
+              icon: "seti:html",
+              items: [
+                ...htmlSidebar
                 ],
             },
             {
               label: "CSS",
               link: "/css",
-              icon: "puzzle",
+              icon: "seti:css",
               items: [
-                ...componentsSidebar
+                ...cssSidebar
               ],
             },
             {
               label: "JavaScript",
               link: "/javascript",
-              icon: "starlight",
+              icon: "seti:javascript",
               items: [
                 {
                   label: "Basic Elements",
@@ -75,13 +88,13 @@ export default defineConfig({
             },
             {
               label: "Resources",
-              link: "reference/example",
-              icon: "starlight",
+              link: "resources/example",
+              icon: "seti:notebook",
               items: [
                 {
-                  label: "Basic Elements",
+                  label: "Recommended Resources",
                   autogenerate: {
-                    directory: "reference/",
+                    directory: "resources/",
                   }
                 }
               ],
