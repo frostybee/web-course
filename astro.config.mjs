@@ -79,7 +79,7 @@ export default defineConfig({
               icon: "seti:javascript",
               items: [
                 {
-                  label: "Basic Elements",
+                  label: "JavaScript Topics",
                   autogenerate: {
                     directory: "javascript/",
                   }
