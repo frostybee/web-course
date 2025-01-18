@@ -24,6 +24,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Internet Programming',
+      favicon: '/public/svgrepo-com.svg',
       social: {
         github: 'https://github.com/frostybee/web-course',
       },

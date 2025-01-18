@@ -12,10 +12,12 @@
   --sl-content-width: 55rem;
   /* --sl-color-bg: #0d1117; */
   /* --sl-color-bg: #1b1b1f; */
-  --sl-color-bg: hsl(224, 10%, 10%);
+  --sl-color-bg: #121213;
+  /* --sl-color-bg: #17181c; */
   /* SL's main text color  */
   /* --sl-color-text: #e3e3e3; */
   /* --sl-color-text: #f0f6fc; */
+  --sl-color-text: #d7dadc;
   /* --sl-color-bg: #1b1b1f; */
   --sl-color-white: hsl(0, 0%, 100%);
   --sl-color-gray-7: hsl(224, 10%, 10%);
@@ -404,10 +406,13 @@ Style overrides: Right sidebar, items of the table of content */
   counter-reset: listitem;
 }
 
-.sl-markdown-content ol:not(:where(.sl-steps, .not-content *))>li,
 .sl-markdown-content ul:not( :where(.sl-steps, .not-content *))>li {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1.6rem;
+}
+.sl-markdown-content ol:not(:where(.sl-steps, .not-content *))>li {
+  position: relative;
+  padding-left: 2.2rem;
 }
 
 .sl-markdown-content li:not(:where(.not-content *))>ol,
@@ -440,7 +445,8 @@ Style overrides: Right sidebar, items of the table of content */
   line-height: 1.3rem;
   text-align: center;
   height: 22px;
-  width: 22px;
+  width: 26px;
+  /* width: fit-content; */
   min-width: 22px;
   padding-inline: 4px;
   left: 0;
@@ -514,6 +520,7 @@ Style overrides: Right sidebar, items of the table of content */
 
 [data-has-hero] .hero>img {
   filter: drop-shadow(0 0 3rem var(--overlay-blurple));
+  margin-left: 2.5rem;
 }
 
 [data-page-title] {
@@ -544,4 +551,3 @@ font-weight: 600;
     border-inline-end: 1px solid var(--sl-color-hairline-shade);
   }
 } */
-
