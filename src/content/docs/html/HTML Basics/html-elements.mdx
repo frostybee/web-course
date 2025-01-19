@@ -1,0 +1,58 @@
+---
+title: HTML Elements
+description: HTML Elements
+sidebar:
+  label: 'HTML Elements'
+  order: 2
+---
+
+## What are HTML Elements?
+HTML elements are the fundamental building blocks of a web page. They define the structure and content of the page, such as text, images, links, tables, forms, and more.   
+
+HTML elements are categorized into **two** main **categorizes**: 
+1. **Two-sided Elements**: Enclose content and must have both an **opening tag** and a **closing tag**.
+2. **One-sided Elements**: Do not require a closing tag and are also known as **void**, or self-closing elements.
+
+### 1. Two-Sided HTML Elements (Also Known as **Container Elements** or **Paired Tags**)
+
+**Definition**: Two-sided elements are HTML elements that require both an opening tag and a closing tag. These tags work in pairs: the opening tag defines the start of the element, and the closing tag marks the end of the element.
+
+#### Syntax:
+```html
+<opening-tag>Content goes here</closing-tag>
+```
+
+Where the opening tag and the closing tag are the same, but the closing tag includes a forward slash (`/`) before the tag name. The content between these tags represents the content of the element.
+
+#### Example:
+```html
+<p>This is a paragraph.</p>
+```
+- `<p>`: The opening tag.
+- `</p>`: The closing tag.
+
+#### Common Two-Sided Elements:
+
+- **Text Formatting Elements**:
+  - `<strong>`, `<em>`, `<b>`, `<i>`, `<u>`, etc.
+- **Structural Elements**:
+  - `<div>`, `<section>`, `<header>`, `<footer>`, `<article>`, `<nav>`, etc.
+- **List Elements**:
+  - `<ul>`, `<ol>`, `<li>`, etc.
+- **Form Elements**:
+  - `<form>`, `<input>`, `<textarea>`, `<label>`, `<select>`, etc.
+- **Media Elements**:
+  - `<audio>`, `<video>`, `<figure>`, etc.
+
+#### Characteristics:
+- **Requires Closing Tag**: You must use both the opening and closing tags to ensure the element functions correctly in HTML. 
+- **Contains Content**: These elements can contain other HTML elements or text content between the tags.
+- **Nested**: You can nest two-sided elements inside one another. The nesting order must be properly maintained for the HTML to be valid.
+
+#### Example with Nesting:
+```html
+<div>
+  <h1>Welcome to My Website</h1>
+  <p>This is a paragraph inside a div element.</p>
+</div>
+```

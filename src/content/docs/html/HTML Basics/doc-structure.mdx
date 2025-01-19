@@ -1,0 +1,225 @@
+---
+title: Structure of an HTML Document 
+description: Structure of an HTML Document 
+sidebar:
+  label: 'HTML Doc Structure'
+  order: 3
+---
+## What Is an HTML Document?
+:::note
+- An HTML document is a text-based **structured collection** of **HTML elements** that web browsers parse and interpret to display content. 
+- The structure of an HTML document consists of **various elements** (tags) that define the **content** and **layout** of a webpage. 
+- HTML elements are written using **HTML tags** which are typically enclosed within **angle brackets** (`< >`).   
+- The purpose of HTML is to ensure content is organized logically for both human users and document parsers.
+:::
+
+## Components of an HTML Document:
+
+### 1. **Document Type Declaration (DOCTYPE)**
+At the very top of the HTML document, you must declare the document type. This tells the browser which version of HTML the page is written in. The most common declaration today is for HTML5, which is written as:
+
+```html
+<!DOCTYPE html>
+```
+
+This declaration ensures that the page will be rendered according to the HTML5 standard.
+
+### 2. **The HTML Element**
+The **root element** of the HTML document is the `<html>` tag. This tag encapsulates all the content of the webpage, except for the DOCTYPE declaration. It has two common attributes: `lang` (to specify the language of the document) and `dir` (for text direction, like left-to-right or right-to-left). Example:
+
+```html
+<html lang="en">
+```
+
+### 3. **The Head Section**
+The `<head>` element comes immediately after the opening `<html>` tag and contains meta-information about the document, which is **not visible** to the user but essential for how the page behaves and is interpreted by browsers and search engines.
+
+Here are some common elements inside the `<head>`:
+
+- **Meta Tags:**
+  Meta tags provide metadata about the document, such as the character encoding, viewport settings, and SEO (Search Engine Optimization) information. Example:
+
+    1. **Character Encoding (`<meta charset="UTF-8">`)**
+    Defines the **character encoding** for the document. UTF-8 is the most widely used encoding, which includes characters from virtually all languages.  
+        This meta tag **ensures** that special characters (such as accented letters, symbols, etc.) are displayed correctly. UTF-8 is recommended because it supports a wide range of characters.
+
+    2. **Meta Tags for SEO and Accessibility**
+    Meta tags provide important information for search engines, social media, and accessibility tools.
+    ```html
+    <meta name="description" content="This is a sample HTML page demonstrating structure">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    ```
+    - The `description` meta tag provides a brief description of the webpage content, often shown in search engine results.
+    - The `author` meta tag specifies the author of the page.
+    - The `viewport` meta tag ensures the page is mobile-friendly by controlling the layout on different screen sizes.
+      
+- **Title:**
+  The `<title>` element sets the title of the page, which appears in the browser’s tab or title bar.      
+  
+  ```html
+  <title>My Webpage</title>
+  ```
+  The title of the page is an essential part of SEO and user experience. It's visible in the browser's tab and in search engine results.
+
+
+- **Link to External Files:**
+  The `<link>` tag links to external resources like stylesheets (CSS files) or icons.
+
+  ```html
+  <link rel="stylesheet" href="styles.css">
+  ```
+  The title of the page is an essential part of SEO and user experience. It's visible in the browser's tab and in search engine results.
+
+- **Script Tag:**
+  The `<script>` tag links to or contains JavaScript code. While it's often placed in the `<body>` for performance reasons, it can be included in the `<head>`.
+
+  ```html
+  <script src="script.js"></script>
+  ```
+
+### 4. **The Body Section**
+The `<body>` element comes after the closing `</head>` tag and contains all the **visible content** of the webpage that users can interact with, such as text, images, links, and forms.
+
+### Some key elements inside the `<body>` section:
+
+- **Header Tags:**
+  These tags define headings on the page. HTML supports six levels of headings (`<h1>` to `<h6>`), with `<h1>` being the highest (largest) and `<h6>` being the lowest (smallest).
+
+  ```html
+  <h1>This is a main heading</h1>
+  <h2>This is a subheading</h2>
+  ```
+
+- **Paragraph:**
+  The `<p>` tag represents a block of text, creating a new paragraph.
+
+  ```html
+  <p>This is a paragraph of text.</p>
+  ```
+
+- **Links:**
+  The `<a>` (anchor) tag is used to create hyperlinks that link to other pages or resources.
+
+  ```html
+  <a href="https://www.example.com">Click here to visit Example</a>
+  ```
+
+- **Images:**
+  The `<img>` tag embeds images in the document. It requires the `src` attribute to specify the image’s file path.
+
+  ```html
+  <img src="image.jpg" alt="An example image">
+  ```
+
+- **Lists:**
+  There are two common types of lists in HTML:
+  - **Ordered List (`<ol>`):** A numbered list.
+  - **Unordered List (`<ul>`):** A bulleted list.
+
+  ```html
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+
+  <ol>
+    <li>First item</li>
+    <li>Second item</li>
+  </ol>
+  ```
+
+- **Divisions and Sections:**
+  The `<div>` and `<section>` tags are used to divide the page into sections. These are commonly used for layout purposes.
+
+  ```html
+  <div class="container">
+    <section>
+      <h2>Section Title</h2>
+      <p>Content for this section.</p>
+    </section>
+  </div>
+  ```
+
+- **Forms:**
+  The `<form>` tag is used to create forms for user input, which can be submitted to a server. It can contain various elements like text fields, checkboxes, and submit buttons.
+
+  ```html
+  <form action="/submit" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <button type="submit">Submit</button>
+  </form>
+  ```
+
+- **Tables:**
+  The `<table>` tag is used for creating tables.
+
+  ```html
+  <table>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+    </tr>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+    </tr>
+  </table>
+  ```
+
+### **Document Footer**
+It is common practice to include a `<footer>` element at the bottom of the document to contain copyright information, links, or other footnotes. This is not mandatory but is widely used for organizational purposes.
+
+```html
+<footer>
+  <p>Copyright © 2025 My Website</p>
+</footer>
+```
+
+### Example of a Complete HTML Document
+
+Here’s an example of a basic, fully structured HTML document:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A sample webpage">
+  <title>Sample Webpage</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to My Sample Webpage</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>About This Webpage</h2>
+      <p>This is a paragraph about the webpage.</p>
+    </section>
+    <section>
+      <h2>Another Section</h2>
+      <p>Here's some more content.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Sample Website</p>
+  </footer>
+
+</body>
+</html>
+```
