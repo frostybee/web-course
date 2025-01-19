@@ -237,13 +237,15 @@ Style overrides: Right sidebar, items of the table of content */
 .right-sidebar-panel starlight-toc ul li[class^=astro-] a {
   border-radius: 0%;
   display: inline-block;
-  padding: .5rem 1.1rem;
+  /* padding: .5rem 1.1rem; */
+  padding-top: .5rem;
+  padding-bottom: .3rem;
   text-decoration: none;
   width: fit-content;
   border-left: 2px solid var(--sl-color-gray-5);
   font-weight: 400;
 
-  /* Current selected item in the TOC */
+  /* Currently selected item in the TOC */
   &:where([aria-current='true']) {
     border-left: 3px solid var(--fb-toc-color-border);
     color: var(--sl-color-white);

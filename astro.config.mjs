@@ -89,7 +89,7 @@ export default defineConfig({
             },
             {
               label: "Resources",
-              link: "resources/example",
+              link: "resources/references",
               icon: "seti:notebook",
               items: [
                 {

@@ -5,54 +5,150 @@ sidebar:
   label: 'HTML Elements'
   order: 2
 ---
+import { Aside } from '@astrojs/starlight/components';
 
-## What are HTML Elements?
+## 🚀 What is HTML Element?
+
+An element is a part of a webpage. An HTML element may contain content, a data item or a chunk of text or an image, or perhaps nothing. A typical element includes an opening tag with some attributes, enclosed text content, and a closing tag.
+:::note
+Elements and tags are not the same things. Tags **begin** or **end** an element in source code, whereas elements are part of the DOM, the document model for displaying the page in the browser.
+:::
+
 HTML elements are the fundamental building blocks of a web page. They define the structure and content of the page, such as text, images, links, tables, forms, and more.   
 
 HTML elements are categorized into **two** main **categorizes**: 
 1. **Two-sided Elements**: Enclose content and must have both an **opening tag** and a **closing tag**.
 2. **One-sided Elements**: Do not require a closing tag and are also known as **void**, or self-closing elements.
 
-### 1. Two-Sided HTML Elements (Also Known as **Container Elements** or **Paired Tags**)
+## 1. Two-Sided HTML Elements 
 
-**Definition**: Two-sided elements are HTML elements that require both an opening tag and a closing tag. These tags work in pairs: the opening tag defines the start of the element, and the closing tag marks the end of the element.
+Also Known as **[container elements](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#anatomy_of_an_html_element)** or **paired tags**, they require both an **opening tag** and a **closing tag**. These tags work in pairs: the opening tag defines the **start** of the element, and the closing tag marks the **end** of the element.
 
-#### Syntax:
+**Syntax:**
 ```html
-<opening-tag>Content goes here</closing-tag>
+<elementName>Content goes here</elementName>
 ```
 
 Where the opening tag and the closing tag are the same, but the closing tag includes a forward slash (`/`) before the tag name. The content between these tags represents the content of the element.
 
-#### Example:
+**Example:**
 ```html
 <p>This is a paragraph.</p>
 ```
-- `<p>`: The opening tag.
-- `</p>`: The closing tag.
-
-#### Common Two-Sided Elements:
+### Common Two-Sided Elements:
 
 - **Text Formatting Elements**:
-  - `<strong>`, `<em>`, `<b>`, `<i>`, `<u>`, etc.
+   `<strong>`, `<em>`, `<b>`, `<i>`, `<u>`, etc.
 - **Structural Elements**:
-  - `<div>`, `<section>`, `<header>`, `<footer>`, `<article>`, `<nav>`, etc.
+   `<div>`, `<section>`, `<header>`, `<footer>`, `<article>`, `<nav>`, etc.
 - **List Elements**:
-  - `<ul>`, `<ol>`, `<li>`, etc.
+   `<ul>`, `<ol>`, `<li>`, etc.
 - **Form Elements**:
-  - `<form>`, `<input>`, `<textarea>`, `<label>`, `<select>`, etc.
+   `<form>`, `<input>`, `<textarea>`, `<label>`, `<select>`, etc.
 - **Media Elements**:
-  - `<audio>`, `<video>`, `<figure>`, etc.
+  `<audio>`, `<video>`, `<figure>`, etc.
 
-#### Characteristics:
+### Characteristics:
+<Aside type="tip" title="📝">
 - **Requires Closing Tag**: You must use both the opening and closing tags to ensure the element functions correctly in HTML. 
 - **Contains Content**: These elements can contain other HTML elements or text content between the tags.
-- **Nested**: You can nest two-sided elements inside one another. The nesting order must be properly maintained for the HTML to be valid.
+- **Nested**: A two-sided element can have one or more HTML elements **nested** in its content section. The nesting order must be properly maintained for the HTML to be valid.
+</Aside>
 
-#### Example with Nesting:
+**Example with Nesting:**
 ```html
 <div>
   <h1>Welcome to My Website</h1>
   <p>This is a paragraph inside a div element.</p>
 </div>
 ```
+## 2. One-Sided HTML Elements 
+
+Also Known as **[void elements](https://developer.mozilla.org/en-US/docs/Glossary/Void_element)**, they do not require a closing tag. These elements stand alone with a single, self-contained tag. Historically, they were written with a trailing slash (`/`) before the closing angle bracket (`>`), but in HTML5, this slash is optional.
+
+**Syntax:**
+```html
+<elementName />
+```
+
+or, in HTML5:
+
+```html
+<elementName>
+```
+
+**Example:**
+```html
+<img src="image.jpg" alt="Description of image">
+```
+- `<img>`: The image element is self-closing and doesn't need a closing tag.
+- It typically requires attributes (like `src` for the source of the image) to function.
+
+### Common Self-Closing Elements:
+
+- **Media Elements**:
+  - `<img>`: Embeds an image.
+  - `<audio>`: Embeds an audio file.
+  - `<video>`: Embeds a video file.
+- **Input Elements**:
+  - `<input>`: Defines an input field.
+  - `<br>`: Inserts a line break.
+  - `<hr>`: Creates a horizontal rule.
+  - `<meta>`: Defines metadata for the document (such as character encoding or viewport settings).
+- **Link Elements**:
+  - `<link>`: Defines the relationship between the current document and an external resource (typically used for linking CSS files).
+  - `<base>`: Specifies a base URL for relative URLs in the document.
+  - `<area>`: Defines an area inside an image map.
+
+### Characteristics
+<Aside type="tip" title="📝">
+  - **No Closing Tag**: These elements do not require a closing tag. They are "self-contained" and represent a single point of functionality.
+- **Attributes**: Self-closing elements often rely on attributes for their functionality. For example, an `<img>` tag needs the `src` attribute to specify the image source.
+- **HTML5 Behavior**: In HTML5, the slash (`/`) before the closing angle bracket is optional, though older HTML versions often used it.
+</Aside>
+
+**Example of Self-Closing Tags:**
+```html
+<img src="example.jpg" alt="An example image">
+<br>
+<hr>
+```
+
+In HTML5, the following is also acceptable:
+```html
+<img src="example.jpg" alt="An example image">
+<br>
+<hr>
+```
+
+---
+
+## Key Differences Between Two-Sided and Self-Closing Elements
+
+| Feature                           | Two-Sided Elements                  | Self-Closing Elements              |
+|-----------------------------------|-------------------------------------|------------------------------------|
+| **Tags**                          | Requires both opening and closing tags | Contains only the opening tag      |
+| **Closing Tag**                   | Must include a separate closing tag  | Does not require a closing tag     |
+| **Content**                       | Can contain text or other elements   | Cannot contain any content (except attributes) |
+| **Examples**                       | `<div>`, `<p>`, `<h1>`, `<a>`        | `<img>`, `<input>`, `<br>`, `<hr>` |
+| **Nesting**                       | Can contain other nested elements  | Cannot contain other elements      |
+
+---
+
+## Best Practices
+
+1. **Ensure proper nesting**:
+   - When using two-sided elements, make sure they are properly nested. For example, you cannot place a closing `</p>` tag before another opening `<p>` tag inside the same parent.
+   
+2. **Use Self-Closing Tags for Non-Content Elements**:
+   - Elements like `<img>`, `<br>`, and `<hr>` are intended for functional purposes and do not require surrounding content, so use them as self-closing elements.
+
+3. **Stay Consistent with HTML Versions**:
+   - HTML5 is more lenient with self-closing tags (no trailing slash required), but older HTML specifications required the slash. For modern HTML development, it's safe to omit the slash, though keeping it in older projects might help ensure compatibility with legacy browsers.
+
+4. **Accessibility**:
+   - For elements like `<img>`, always include an `alt` attribute for accessibility, providing a text alternative for screen readers.
+
+5. **Semantic HTML**:
+   - Use two-sided elements for semantic content (e.g., `<header>`, `<footer>`, `<article>`) to help improve SEO and accessibility.
+   - Use self-closing elements like `<br>`, `<hr>`, or `<img>` only when they make sense in context.
