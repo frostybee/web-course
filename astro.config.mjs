@@ -9,8 +9,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from 'rehype-slug';
 import starlightSidebarTopics from "starlight-sidebar-topics";
 
-import htmlSidebar from './src/config/sidebars/html-sidebar.ts'
-import cssSidebar from './src/config/sidebars/css-sidebar.ts'
+import leftSidebar from './src/config/sidebars/main-sidebar.ts'
+
 // TODO: clean the following imports
 import mdx from "@astrojs/mdx";
 import starlightLinksValidator from 'starlight-links-validator'
@@ -45,61 +45,7 @@ export default defineConfig({
         starlightViewModes(),
         starlightSidebarTopics(
           [
-            {
-              label: "Guides",
-              link: "/guides",
-              icon: "open-book",
-              items: [
-                {
-                  label: "Home",
-                  autogenerate: {
-                    directory: "guides/",
-                  }
-                }
-                ],
-            },
-            {
-              label: "HTML",
-              link: "/html",
-              icon: "seti:html",
-              items: [
-                ...htmlSidebar
-                ],
-            },
-            {
-              label: "CSS",
-              link: "/css",
-              icon: "seti:css",
-              items: [
-                ...cssSidebar
-              ],
-            },
-            {
-              label: "JavaScript",
-              link: "/javascript",
-              icon: "seti:javascript",
-              items: [
-                {
-                  label: "JavaScript Topics",
-                  autogenerate: {
-                    directory: "javascript/",
-                  }
-                }
-              ],
-            },
-            {
-              label: "Resources",
-              link: "resources/references",
-              icon: "seti:notebook",
-              items: [
-                {
-                  label: "Recommended Resources",
-                  autogenerate: {
-                    directory: "resources/",
-                  }
-                }
-              ],
-            },
+            ...leftSidebar
           ]
         )
       ],
