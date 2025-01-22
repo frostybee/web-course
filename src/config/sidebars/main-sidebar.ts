@@ -21,9 +21,9 @@ export default
       items: [
 
         {
-          label: "HTML Topics",
+          label: "HTML Basics",
           autogenerate: {
-            directory: "html/",
+            directory: "html/Basics",
           }
         }
       ],
