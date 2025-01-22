@@ -1,0 +1,177 @@
+---
+title: Working with HTML Attributes
+description: Working with HTML Attributes
+sidebar:
+  label: 'HTML Attributes'
+  order: 3
+---
+
+## What Are HTML Attributes?
+:::note
+- HTML attributes provide additional information about HTML elements. 
+- They are used to modify or configure the behavior, appearance, and functionality of elements on a webpage. 
+- Attributes are always specified in the **opening tag** of an element and come in **name-value pairs**, like `name="value"`. 
+- Check out the MDN [HTML attribute reference
+](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
+:::
+
+## General Syntax of HTML Attributes
+An attribute is written within the opening tag of an HTML element, after the tag name, with a name and value. 
+
+HTML attributes have the following syntax:
+```html
+<element attribute1="value" attribute2="value">
+```
+- **element**: This is the HTML tag (e.g., `<a>`, `<img>`, `<div>`, etc.).
+- **attribute**: This is the name of the attribute (e.g., `href`, `src`, `class`, etc.).
+- **value**: This is the value associated with the attribute, often **enclosed in quotes**.
+
+**For example:**
+   ```html
+   <img src="image.jpg" alt="An image" />
+   ```
+   In this example, `src` and `alt` are attributes of the `<img>` element, with `src` specifying the image source file and `alt` providing alternative text for accessibility.
+
+---
+
+## Types of HTML Attributes
+
+HTML attributes can be broadly categorized into several types, including global attributes, event attributes, and specific element attributes.
+
+### 1. Global Attributes
+Global attributes can be applied to any HTML element. These attributes are common across many elements, including but not limited to `<div>`, `<a>`, `<img>`, and `<button>`.
+
+- **id**: Specifies a unique identifier for the element.  
+  Example: `<div id="main-content">`  
+- **class**: Specifies one or more class names for an element, often used for styling or JavaScript.  
+  Example: `<p class="highlighted-text">`  
+- **style**: Allows inline CSS styles to be applied directly to an element.  
+  Example: `<button style="background-color: blue;">Click Me</button>`  
+- **data-* attributes**: Used to store custom data associated with an element. The `*` can be any string.  
+  Example: `<div data-user-id="12345"></div>`  
+- **title**: Provides additional information when the user hovers over the element.  
+  Example: `<img src="logo.png" title="Company Logo">`
+
+---
+
+### 2. Event Attributes
+These attributes trigger JavaScript functions in response to user interactions or browser events.
+
+- **onclick**: Fires when the element is clicked.  
+  Example: `<button onclick="alert('Clicked!')">Click Me</button>`  
+- **onmouseover**: Fires when the mouse hovers over an element.  
+  Example: `<div onmouseover="this.style.backgroundColor='yellow'">Hover over me</div>`  
+- **onchange**: Fires when the value of an input field changes.  
+  Example: `<input type="text" onchange="console.log('Value changed')">`
+
+---
+
+### 3. Custom Data Attributes
+
+You can define your own attributes using the `data-` prefix. These are often used for **embedding extra information** that JavaScript can use.
+```html
+<div data-user-id="12">User Profile</div>
+```
+---
+
+### 4. Attributes Specific to Elements
+Some attributes are specific to certain HTML elements. For example:
+
+- **`href`**: Used in `<a>` (anchor) elements to define the URL.  
+  Example: `<a href="https://example.com">Link</a>`  
+- **`src`**: Used in `<img>`, `<script>`, and `<iframe>` to specify the URL of an image, script, or iframe source.  
+  Example: `<img src="image.jpg" alt="An Image">`  
+- **`alt`**: Specifies alternative text for an image if it cannot be displayed.  
+  Example: `<img src="logo.png" alt="Company Logo">`  
+- **`value`**: Used in form elements such as `<input>`, `<textarea>`, `<button>`, etc., to specify the initial value or state.  
+  Example: `<input type="text" value="Hello">`  
+- **`action`**: Used in the `<form>` element to specify where the form data should be sent.  
+  Example: `<form action="/submit">`
+
+---
+
+### 5. Boolean Attributes
+
+Some attributes are boolean in nature. These attributes can be present or absent, and their mere presence means `true`. They don't require a value, though an empty value can be used.
+
+#### Examples:
+- **disabled**: Disables an element (e.g., a button or input).  
+  Example: `<input type="text" disabled>`  
+- **checked**: Specifies that a checkbox or radio button is pre-selected.  
+  Example: `<input type="checkbox" checked>`  
+- **readonly**: Specifies that an input element is read-only.  
+  Example: `<input type="text" readonly>`  
+- **required**: Specifies that an input element must be filled out before submitting a form.  
+  Example: `<input type="text" required>`
+
+---
+
+## Using JavaScript with Attributes
+
+JavaScript can interact with HTML attributes to dynamically manipulate elements on a page.
+
+### Accessing and Changing Attributes
+You can access and modify attributes using JavaScript. The `getAttribute()` and `setAttribute()` methods are commonly used for this.
+
+```javascript
+// Access attribute
+let link = document.getElementById("myLink");
+let hrefValue = link.getAttribute("href");
+
+// Modify attribute
+link.setAttribute("href", "https://new-url.com");
+```
+
+Alternatively, for certain attributes (like `class` or `id`), you can use the corresponding property:
+
+```javascript
+// Change the class using the className property
+link.className = "newClass";
+```
+
+#### Example with `onclick`:
+You can use JavaScript to dynamically assign attributes like `onclick`:
+
+```javascript
+let button = document.getElementById("myButton");
+button.setAttribute("onclick", "alert('Button Clicked!')");
+```
+---
+
+## Attribute Value Types
+
+The value of an HTML attribute can take several forms:
+
+- **String values**: These are the most common values, enclosed in quotes (single or double).  
+ Example: `<a href="https://example.com">Click here</a>`
+- **Numeric values**: Certain attributes may accept numeric values.  
+  Example: `<input type="number" value="10">`
+- **Boolean values**: For boolean attributes like `disabled` and `checked`, the attribute can be present or absent.  
+  Example: `<input type="checkbox" checked>`
+- **URL values**: Attributes like `href`, `src`, `action`, and `background` accept URL values.  
+  Example: `<img src="logo.png">`
+
+---
+
+## Best Practices for Using HTML Attributes
+
+1. **Always use quotes for attribute values**: While you can omit quotes for simple attribute values (e.g., `checked`), it’s best to always use quotes for consistency and to avoid errors.
+   - Example: `<input type="text" value="Hello World">`
+
+2. **Keep attribute values lowercase**: It is a common convention to use lowercase letters for attribute names and values to maintain consistency and avoid potential issues in case-sensitive environments (like URLs).
+
+3. **Use semantic attributes**: Use appropriate attributes for each element to enhance accessibility and maintain functionality.
+   - Example: Use `alt` for images and `title` for links.
+
+4. **Avoid excessive inline styles**: While the `style` attribute allows inline CSS, it’s better to separate styles into external CSS files for better maintainability.
+
+5. **Ensure uniqueness for `id` attributes**: The `id` attribute must be unique within a page. Duplicate `id`s can cause unpredictable behavior and conflicts in JavaScript.
+
+6. **Minimize unnecessary attributes**: Some attributes, like `target="_self"` on links, are redundant because they have default behaviors. Only use attributes when necessary.
+
+---
+
+## Common Mistakes to Avoid
+- **Misplaced attributes**: Ensure that attributes are placed correctly within the opening tag, not inside the element content.
+- **Missing quotes**: Always enclose attribute values in quotes, even if the value doesn’t contain spaces.
+- **Overuse of inline JavaScript**: Avoid placing JavaScript directly within attributes, like `onclick`, unless absolutely necessary. Instead, use event listeners in separate scripts for better organization.
