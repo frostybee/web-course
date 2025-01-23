@@ -1,0 +1,78 @@
+---
+title: Working with HTML Entities
+description: Working with HTML Entities
+sidebar:
+  label: 'HTML Entities'
+  order: 5
+---
+
+>HTML entities are **special codes** used to represent characters that have a specific meaning in HTML syntax or that cannot be directly typed into HTML code (such as symbols, non-ASCII characters, or **reserved characters**).
+
+
+> HTML entity references help ensure that your web pages display the intended characters without interfering with the HTML document structure. 
+
+## What Are HTML Entities?
+
+HTML entities are text strings that begin with an ampersand (`&`) and end with a semicolon (`;`). They represent characters that are either difficult or impossible to type directly into HTML or have special meanings within the language. HTML entities can represent:
+
+- **Reserved characters**: Such as `<`, `>`, `&`, which are used to define HTML syntax.
+- **Special symbols**: Like copyright (`©`) or trademark (`™`).
+- **Non-ASCII characters**: For characters not part of the standard ASCII set, such as accented characters (é, ñ) or non-Latin scripts.
+- **Invisible (whitespace) characters**: For formatting purposes, like non-breaking spaces (`&nbsp;`).
+
+---
+
+## Why Use HTML Entities?
+
+Entities are primarily used to:
+- **Prevent HTML parsing conflicts**: Characters like `<`, `>`, and `&` have specific functions in HTML and need to be represented as entities to avoid confusion.
+- **Display special symbols and characters**: Some characters, such as the copyright symbol or accented characters, are not easily typed on a standard keyboard or may not be supported across all encodings.
+- **Improve compatibility**: Ensuring your HTML content renders correctly across different devices, browsers, and platforms.
+
+## Types of HTML Entity Reference
+
+HTML entities follow a specific structure:
+1. **Named Entities**: These have a descriptive name, e.g., `&amp;` for the ampersand symbol (`&`).
+2. **Numeric Entities**: These use either **decimal** or **hexadecimal** notation to represent a character, e.g., `&#169;` for the copyright symbol or `&#xA9;` in hexadecimal notation.
+
+#### Examples:
+- **`&lt;`** → `<`
+- **`&gt;`** → `>`
+- **`&amp;`** → `&`
+- **`&quot;`** → `"`
+- **`&copy;`** → `©`
+- **`&#169;`** → `©` (decimal)
+- **`&#xA9;`** → `©` (hexadecimal)
+
+---
+
+## How to Use HTML Entities
+
+HTML entities can be used anywhere in the content of an HTML document. Here's how to include them properly:
+
+### Basic Syntax:
+```html
+<p>This is an example of using an entity: &lt;div&gt;Hello&lt;/div&gt;</p>
+```
+
+In the example above:
+- The `<div>` tags are replaced by `&lt;div&gt;` and `&lt;/div&gt;` to avoid them being interpreted as HTML tags.
+
+### Named Entities:
+```html
+<p>John &amp; Jane are friends.</p>
+```
+- The `&amp;` will display as an ampersand (`&`) in the rendered page.
+
+### Numeric Entities (Decimal and Hexadecimal):
+```html
+<p>The copyright symbol is &#169; or &#xA9;.</p>
+```
+- Both decimal (`&#169;`) and hexadecimal (`&#xA9;`) entities will display the copyright symbol (`©`).
+
+## Online References 
+- [Named characters references](https://html.spec.whatwg.org/multipage/named-characters.html)
+- [Characters references](https://tools.w3cub.com/html-entities)
+
+
+

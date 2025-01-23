@@ -1,0 +1,217 @@
+---
+title: Semantic HTML5 Elements
+description: Semantic HTML5 Elements
+sidebar:
+  label: 'Semantic HTML5 Elements'
+  order: 4
+---
+
+:::note
+- HTML5 introduced new **semantic elements** to improve the structure and **meaning** of web pages.
+- These elements provide better accessibility, SEO benefits, and clearer code, helping both developers and search engines better understand the page structure. 
+- By replacing generic elements like `<div>` and `<span>` with more descriptive tags, you can create clearer, more organized web pages that are both easier to maintain and more comprehensible to search engines and assistive technologies.
+:::
+
+## Understanding Semantic Elements
+
+[Semantic elements](https://developer.mozilla.org/en-US/docs/Glossary/Semantics) are HTML tags that describe the **meaning** of the content enclosed. These tags provide context to the browser and search engines, helping them understand the structure of the webpage. 
+
+### Examples of Semantic Tags:
+- `<header>`: Represents introductory content, such as a logo, navigation bar, or header text.
+- `<footer>`: Represents footer content, often including copyright information, links, or contact details.
+- `<article>`: Represents independent content, like a blog post or news article.
+- `<section>`: Represents a section of content that can be thematically grouped.
+- `<nav>`: Represents navigation links for the website or a part of it.
+- `<aside>`: Represents content tangentially related to the main content (like **sidebars**).
+- `<main>`: Represents the main content of the document (unique to a page).
+- `<figure>`: Represents content such as images, illustrations, diagrams, etc., and is often paired with a `<figcaption>`.
+- `<mark>`: Represents highlighted or marked text.
+- `<details>`: Represents content that can be toggled open or closed, like a dropdown or FAQ section.
+- `<summary>`: Represents a summary or heading for a `<details>` element.
+- `<time>`: Represents a specific time or date.
+
+---
+
+## Using HTML5 Semantic Elements
+
+### Basic Structure of HTML5 Semantic Elements
+
+Here’s an example of a basic HTML5 page structure utilizing semantic elements:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Semantic Page</title>
+</head>
+<body>
+
+    <header>
+        <h1>Website Title</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <header>
+                <h2>Article Title</h2>
+                <p>By Author | Date</p>
+            </header>
+            <section>
+                <h3>Section Title</h3>
+                <p>This is some content inside the section.</p>
+            </section>
+            <section>
+                <h3>Another Section</h3>
+                <p>This is more content inside another section.</p>
+            </section>
+        </article>
+
+        <aside>
+            <h3>Related Content</h3>
+            <p>This is some additional, related content.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Website. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+```
+
+### **`<header>`**
+- The `<header>` element represents introductory content, usually at the top of the page. It can contain elements like logos, navigation bars, and introductory text.
+- **Example**:
+  ```html
+  <header>
+      <h1>My Website</h1>
+      <nav>
+          <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Services</a></li>
+          </ul>
+      </nav>
+  </header>
+  ```
+
+### `<footer>`
+- The `<footer>` element typically contains footer information like copyright notices, legal disclaimers, and contact links.
+- **Example**:
+  ```html
+  <footer>
+      <p>&copy; 2024 Your Company. All rights reserved.</p>
+  </footer>
+  ```
+
+### `<main>`
+- The `<main>` element represents the main content of the document. There should only be one `<main>` element per page, and it should contain content that is directly related to the central topic.
+- **Example**:
+  ```html
+  <main>
+      <article>
+          <h2>Blog Post Title</h2>
+          <p>This is the main content of the blog post.</p>
+      </article>
+  </main>
+  ```
+
+### `<article>`
+- The `<article>` element is used for self-contained content that could be reused or syndicated (like a blog post, news article, or forum post).
+- **Example**:
+  ```html
+  <article>
+      <header>
+          <h2>Title of Article</h2>
+          <p>Written by Author | Date</p>
+      </header>
+      <p>This is the content of the article.</p>
+  </article>
+  ```
+
+### `<section>`
+- The `<section>` element represents a distinct section of content, usually with a heading. It can be used to break content into logical parts.
+- **Example**:
+  ```html
+  <section>
+      <h3>Section Heading</h3>
+      <p>This is the content inside this section.</p>
+  </section>
+  ```
+
+### `<nav>`
+- The `<nav>` element contains navigation links. It is typically used to group links for major sections of the site.
+- **Example**:
+  ```html
+  <nav>
+      <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+      </ul>
+  </nav>
+  ```
+
+### `<aside>`
+- The `<aside>` element contains content that is tangentially related to the main content, such as sidebars, related links, or advertisements.
+- **Example**:
+  ```html
+  <aside>
+      <h3>Related Articles</h3>
+      <p>Check out these related articles.</p>
+  </aside>
+  ```
+
+### `<figure>` and `<figcaption>`
+- The `<figure>` element is used for content like images, charts, and videos. The `<figcaption>` element is used to provide a caption for the content.
+- **Example**:
+  ```html
+  <figure>
+      <img src="image.jpg" alt="A beautiful view">
+      <figcaption>A caption describing the image.</figcaption>
+  </figure>
+  ```
+
+### `<mark>`
+- The `<mark>` element is used to highlight parts of text, often used for search results or key information.
+- **Example**:
+  ```html
+  <p>Search results for <mark>HTML5</mark> are highlighted here.</p>
+  ```
+
+### `<details>` and `<summary>`
+- The `<details>` element is used to represent a collapsible section, while `<summary>` provides the heading for the toggleable section.
+- **Example**:
+  ```html
+  <details>
+      <summary>Click to view details</summary>
+      <p>This is some additional content that can be revealed.</p>
+  </details>
+  ```
+
+### `<time>`
+- The `<time>` element is used to represent a specific date or time.
+- **Example**:
+  ```html
+  <p>The event will be held on <time datetime="2024-12-31">December 31, 2024</time>.</p>
+  ```
+
+---
+
+## Best Practices for Using Semantic HTML
+
+:::tip
+- **Structure Content Meaningfully**: Use semantic tags to give meaning to different sections of your page. For instance, don't just use `<div>` for everything. Use `<header>`, `<nav>`, `<article>`, etc., where appropriate.  
+- **Use `<main>` Once**: The `<main>` element should be used once per document. It should not contain elements like `<header>`, `<footer>`, or `<aside>`, as they belong to the outer structure of the page.  
+- **Accessibility**: Semantic tags improve accessibility by providing screen readers with better context. Make sure to also add ARIA roles and other accessibility attributes when necessary.
+- **SEO Benefits**: Search engines can index pages better when semantic elements are used properly, improving your site's visibility.
+:::
