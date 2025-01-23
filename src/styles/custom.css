@@ -476,8 +476,8 @@ Style overrides: Right sidebar, items of the table of content */
     &::before {
       position: absolute;
       top: 0;
-      left: -10px;
-      width: 5px;
+      left: -9px;
+      width: 4px;
       height: 33px;
       content: "";
       background-color: var(--sl-color-text-accent);

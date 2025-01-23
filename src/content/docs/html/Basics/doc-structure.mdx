@@ -2,7 +2,7 @@
 title: Structure of an HTML Document 
 description: Structure of an HTML Document 
 sidebar:
-  label: 'HTML Doc Structure'
+  label: 'HTML Document'
   order: 3
 ---
 ## What Is an HTML Document?
@@ -13,7 +13,15 @@ sidebar:
 - The purpose of HTML is to ensure content is organized logically for both human users and document parsers.
 :::
 
-## Components of an HTML Document:
+## Structure of an HTML Document:
+:::tip
+An HTML document typically starts with a `<!DOCTYPE html>` declaration, followed by `<html>`, and contains **two main sections:**
+
+1. **`<head>`** – This section contains **meta-information** about the document, like its title, linked stylesheets, scripts, and other resources.
+   
+2. **`<body>`** – This section contains the content that is visible to users when they visit a webpage, such as text, images, links, and other media.
+
+:::
 
 ### 1. **Document Type Declaration (DOCTYPE)**
 At the very top of the HTML document, you must declare the document type. This tells the browser which version of HTML the page is written in. The most common declaration today is for HTML5, which is written as:
@@ -22,7 +30,7 @@ At the very top of the HTML document, you must declare the document type. This t
 <!DOCTYPE html>
 ```
 
-This declaration ensures that the page will be rendered according to the HTML5 standard.
+This declaration ensures that the page will be rendered according to the **HTML5 standard**.
 
 ### 2. **The HTML Element**
 The **root element** of the HTML document is the `<html>` tag. This tag encapsulates all the content of the webpage, except for the DOCTYPE declaration. It has two common attributes: `lang` (to specify the language of the document) and `dir` (for text direction, like left-to-right or right-to-left). Example:
