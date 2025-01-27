@@ -25,6 +25,12 @@ export default
           autogenerate: {
             directory: "html/Basics",
           }
+        },
+        {
+          label: "Grouping Elements",
+          autogenerate: {
+            directory: "html/Grouping",
+          }
         }
       ],
     },

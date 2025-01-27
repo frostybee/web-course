@@ -1,0 +1,122 @@
+---
+title: HTML Grouping Elements
+description: HTML Grouping Elements
+sidebar:
+  label: 'Div vs Span'
+  order: 1
+---
+
+## 🧱 Block vs Inline Elements
+
+The difference between inline and block elements in HTML is mainly about how they **behave** in the layout of a webpage:
+
+1. **[Block Elements](https://developer.mozilla.org/en-US/docs/Glossary/Block-level_content)**
+   - These elements take up the **full width** of their container, creating a **block** in the layout.
+   - They start on **a new line**, and any content after them will appear below them (on a new line).
+   - Examples include: `<div>`, `<p>`, `<h1>`, `<ul>`, `<li>`.
+   - They can have defined width and height.
+  
+2. **[Inline Elements](https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content)**
+   - These elements only take up as much width as their content requires and **do not break** the flow of content.
+   - They stay on the same line as the surrounding content (unless the content itself forces a line break).
+   - Examples include: `<span>`, `<a>`, `<strong>`, `<img>`.
+   - They do not have properties for width and height, but can have padding and margins on the left and right.
+
+
+
+## ⚡ Div vs Span Elements
+
+---
+
+In HTML, both `<div>` and `<span>` are used for grouping content, but they have different purposes, default behavior, and use cases. 
+
+:::tip
+- Use **`<div>`** for **structuring** and **grouping** larger blocks of content.
+- Use **`<span>`** for smaller, inline elements that require **styling** or **scripting**.
+:::
+
+---
+
+### `<div>` Division (Block-Level Element)
+- The `<div>` tag is a block-level element. This means it takes up the full width of its parent container, and elements following it will appear on a new line, **stacking vertically**.
+- It is typically used for **grouping** and **styling** large sections of content, like paragraphs, images, sections, or other block-level elements, to structure the page.  
+Example use: Wrapping a section of content like a form, header, or footer.
+```html
+<div>
+  <h2>Title</h2>
+  <p>Some paragraph content.</p>
+</div>
+```
+
+### `<span>` (Inline Element): 
+
+- The `<span>` is an inline element. This means it does not disrupt the flow of content; it only takes up as much width as necessary and doesn't cause a line break.
+- It is typically used for **styling** or **grouping** small chunks of content like a word or part of a sentence without affecting the overall layout.
+- Example use: Highlighting part of a text or applying a class for specific styling within a paragraph.
+
+```html
+<p>This is <span class="highlight">important</span> text.</p>
+```
+---
+
+### 🧪 Common Use Cases
+
+#### `<div>`
+- Used for structural purposes. For example:
+  - Grouping sections of a page (e.g., `header`, `footer`, `main`, `article`, etc.)
+  - Organizing content in grids or columns.
+  - Creating containers for larger sections of the layout.
+
+  ```html
+  <div class="main-container">
+    <div class="left-column">
+      <!-- Left content -->
+    </div>
+    <div class="right-column">
+      <!-- Right content -->
+    </div>
+  </div>
+  ```
+
+#### `<span>`
+- Used for styling or formatting a small piece of content within a larger block. For example:
+  - Highlighting a word or changing the color of text within a paragraph.
+  - Wrapping a part of a string to apply a CSS class or style.
+  - Changing the font size or adding icons next to text.
+
+  ```html
+  <p>Today's weather is <span style="color: red;">sunny</span> and warm.</p>
+  ```
+
+---
+
+## Accessibility and SEO
+- Neither `<div>` nor `<span>` provides semantic meaning by default. Search engines and screen readers typically ignore these elements unless they have specific roles, attributes, or are styled.
+
+- For better accessibility and semantic HTML:
+  - Use `<section>`, `<article>`, `<header>`, or `<footer>` instead of `<div>` when appropriate.
+  - Avoid overusing `<span>`; use tags like `<strong>` or `<em>` for emphasized text.
+
+---
+
+## Styling and Scripting
+Both `<div>` and `<span>` are commonly used with CSS and JavaScript:
+- **Styling with CSS:**
+  - `<div>` is used for layout and larger structures (e.g., grids, containers).
+  - `<span>` is used for small-scale inline styling (e.g., coloring, text effects).
+
+- **Scripting with JavaScript:**
+  - Both can be targeted via classes, IDs, or attributes for dynamic behaviors.
+
+---
+
+## Comparison Table:
+
+| Feature          | `<div>`                   | `<span>`                  |
+|-------------------|---------------------------|---------------------------|
+| **Type**         | Block-level element       | Inline element            |
+| **Default Layout**| Takes full width of parent| Stays in line with text   |
+| **Primary Use**  | Structure/layout          | Styling inline content    |
+| **Example**      | Containers, sections      | Highlighting words/phrases|
+
+---

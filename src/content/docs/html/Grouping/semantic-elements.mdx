@@ -3,7 +3,7 @@ title: Semantic HTML5 Elements
 description: Semantic HTML5 Elements
 sidebar:
   label: 'Semantic HTML5 Elements'
-  order: 4
+  order: 2
 ---
 
 :::note
@@ -22,7 +22,7 @@ sidebar:
 - `<article>`: Represents independent content, like a blog post or news article.
 - `<section>`: Represents a section of content that can be thematically grouped.
 - `<nav>`: Represents navigation links for the website or a part of it.
-- `<aside>`: Represents content tangentially related to the main content (like **sidebars**).
+- `<aside>`: Represents content that is indirectly related to the main content (like **sidebars**).
 - `<main>`: Represents the main content of the document (unique to a page).
 - `<figure>`: Represents content such as images, illustrations, diagrams, etc., and is often paired with a `<figcaption>`.
 - `<mark>`: Represents highlighted or marked text.
@@ -162,7 +162,7 @@ Here’s an example of a basic HTML5 page structure utilizing semantic elements:
   ```
 
 ### `<aside>`
-- The `<aside>` element contains content that is tangentially related to the main content, such as sidebars, related links, or advertisements.
+- The `<aside>` element contains content that is  only indirectly related to the main content, such as sidebars, related links, or advertisements.
 - **Example**:
   ```html
   <aside>
@@ -211,7 +211,7 @@ Here’s an example of a basic HTML5 page structure utilizing semantic elements:
 
 :::tip
 - **Structure Content Meaningfully**: Use semantic tags to give meaning to different sections of your page. For instance, don't just use `<div>` for everything. Use `<header>`, `<nav>`, `<article>`, etc., where appropriate.  
-- **Use `<main>` Once**: The `<main>` element should be used once per document. It should not contain elements like `<header>`, `<footer>`, or `<aside>`, as they belong to the outer structure of the page.  
+- **Use `<main>` Once**: The `<main>` element should be used once per document. It should not contain elements like `<header>` or `<footer>`, as they belong to the outer structure of the page.  
 - **Accessibility**: Semantic tags improve accessibility by providing screen readers with better context. Make sure to also add ARIA roles and other accessibility attributes when necessary.
 - **SEO Benefits**: Search engines can index pages better when semantic elements are used properly, improving your site's visibility.
 :::

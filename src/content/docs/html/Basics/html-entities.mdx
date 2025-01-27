@@ -11,6 +11,11 @@ sidebar:
 
 > HTML entity references help ensure that your web pages display the intended characters without interfering with the HTML document structure. 
 
+## Online References 
+
+- [Named characters references](https://html.spec.whatwg.org/multipage/named-characters.html)
+- [Characters references](https://tools.w3cub.com/html-entities)
+
 ## What Are HTML Entities?
 
 HTML entities are text strings that begin with an ampersand (`&`) and end with a semicolon (`;`). They represent characters that are either difficult or impossible to type directly into HTML or have special meanings within the language. HTML entities can represent:
@@ -22,18 +27,13 @@ HTML entities are text strings that begin with an ampersand (`&`) and end with a
 
 ---
 
-## Why Use HTML Entities?
-
-Entities are primarily used to:
-- **Prevent HTML parsing conflicts**: Characters like `<`, `>`, and `&` have specific functions in HTML and need to be represented as entities to avoid confusion.
-- **Display special symbols and characters**: Some characters, such as the copyright symbol or accented characters, are not easily typed on a standard keyboard or may not be supported across all encodings.
-- **Improve compatibility**: Ensuring your HTML content renders correctly across different devices, browsers, and platforms.
-
 ## Types of HTML Entity Reference
 
 HTML entities follow a specific structure:
+:::note
 1. **Named Entities**: These have a descriptive name, e.g., `&amp;` for the ampersand symbol (`&`).
 2. **Numeric Entities**: These use either **decimal** or **hexadecimal** notation to represent a character, e.g., `&#169;` for the copyright symbol or `&#xA9;` in hexadecimal notation.
+:::
 
 #### Examples:
 - **`&lt;`** → `<`
@@ -70,9 +70,8 @@ In the example above:
 ```
 - Both decimal (`&#169;`) and hexadecimal (`&#xA9;`) entities will display the copyright symbol (`©`).
 
-## Online References 
-- [Named characters references](https://html.spec.whatwg.org/multipage/named-characters.html)
-- [Characters references](https://tools.w3cub.com/html-entities)
-
-
-
+## Why Use HTML Entities?
+Entities are primarily used to:
+- **Prevent HTML parsing conflicts**: Characters like `<`, `>`, and `&` have specific functions in HTML and need to be represented as entities to avoid confusion.
+- **Display special symbols and characters**: Some characters, such as the copyright symbol or accented characters, are not easily typed on a standard keyboard or may not be supported across all encodings.
+- **Improve compatibility**: Ensuring your HTML content renders correctly across different devices, browsers, and platforms.

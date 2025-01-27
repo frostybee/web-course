@@ -125,32 +125,22 @@ In HTML5, the following is also acceptable:
 
 ---
 
-## Key Differences Between Two-Sided and Self-Closing Elements
+## Differences Between One-Sided and Two-Sided Tags
 
-| Feature                           | Two-Sided Elements                  | Self-Closing Elements              |
-|-----------------------------------|-------------------------------------|------------------------------------|
-| **Tags**                          | Requires both opening and closing tags | Contains only the opening tag      |
-| **Closing Tag**                   | Must include a separate closing tag  | Does not require a closing tag     |
-| **Content**                       | Can contain text or other elements   | Cannot contain any content (except attributes) |
-| **Examples**                       | `<div>`, `<p>`, `<h1>`, `<a>`        | `<img>`, `<input>`, `<br>`, `<hr>` |
-| **Nesting**                       | Can contain other nested elements  | Cannot contain other elements      |
+| **Attribute**          | **Two-Sided Tags**                           | **One-Sided Tags**                |
+|------------------------|----------------------------------------------|-----------------------------------|
+| **Structure**          | Requires both opening and closing tags       | Only requires an opening tag     |
+| **Purpose**            | Wraps content                               | Does not wrap content            |
+| **Examples**           | `<p>`, `<h1>`, `<div>`                      | `<img>`, `<br>`, `<hr>`          |
+| **Usage**              | Used for content with structure/formatting   | Used for elements with no content |
 
 ---
 
 ## Best Practices
 
-1. **Ensure proper nesting**:
-   - When using two-sided elements, make sure they are properly nested. For example, you cannot place a closing `</p>` tag before another opening `<p>` tag inside the same parent.
-   
-2. **Use Self-Closing Tags for Non-Content Elements**:
-   - Elements like `<img>`, `<br>`, and `<hr>` are intended for functional purposes and do not require surrounding content, so use them as self-closing elements.
-
-3. **Stay Consistent with HTML Versions**:
-   - HTML5 is more lenient with self-closing tags (no trailing slash required), but older HTML specifications required the slash. For modern HTML development, it's safe to omit the slash, though keeping it in older projects might help ensure compatibility with legacy browsers.
-
-4. **Accessibility**:
-   - For elements like `<img>`, always include an `alt` attribute for accessibility, providing a text alternative for screen readers.
-
-5. **Semantic HTML**:
-   - Use two-sided elements for semantic content (e.g., `<header>`, `<footer>`, `<article>`) to help improve SEO and accessibility.
+1. **Ensure proper nesting**: When using two-sided elements, make sure they are properly nested. For example, you cannot place a closing `</p>` tag before another opening `<p>` tag inside the same parent.   
+2. **Use Self-Closing Tags for Non-Content Elements**: Elements like `<img>`, `<br>`, and `<hr>` are intended for functional purposes and do not require surrounding content, so use them as self-closing elements.
+3. **Stay Consistent with HTML Versions**: HTML5 is more lenient with self-closing tags (no trailing slash required), but older HTML specifications required the slash. For modern HTML development, it's safe to omit the slash, though keeping it in older projects might help ensure compatibility with legacy browsers.
+4. **Accessibility**: For elements like `<img>`, always include an `alt` attribute for accessibility, providing a text alternative for screen readers.
+5. **Semantic HTML**: Use two-sided elements for semantic content (e.g., `<header>`, `<footer>`, `<article>`) to help improve SEO and accessibility.
    - Use self-closing elements like `<br>`, `<hr>`, or `<img>` only when they make sense in context.
