@@ -22,8 +22,6 @@ The difference between inline and block elements in HTML is mainly about how the
    - Examples include: `<span>`, `<a>`, `<strong>`, `<img>`.
    - They do not have properties for width and height, but can have padding and margins on the left and right.
 
-
-
 ## ⚡ Div vs Span Elements
 
 ---
@@ -87,19 +85,29 @@ Example use: Wrapping a section of content like a form, header, or footer.
   ```html
   <p>Today's weather is <span style="color: red;">sunny</span> and warm.</p>
   ```
+---
+
+
+## 📈 Comparison Table:
+
+| Feature          | `<div>`                   | `<span>`                  |
+|-------------------|---------------------------|---------------------------|
+| **Type**         | Block-level element       | Inline element            |
+| **Default Layout**| Takes full width of parent| Stays in line with text   |
+| **Primary Use**  | Structure/layout          | Styling inline content    |
+| **Example**      | Containers, sections      | Highlighting words/phrases|
 
 ---
 
-## Accessibility and SEO
+## 📲 Accessibility and SEO
 - Neither `<div>` nor `<span>` provides semantic meaning by default. Search engines and screen readers typically ignore these elements unless they have specific roles, attributes, or are styled.
-
 - For better accessibility and semantic HTML:
   - Use `<section>`, `<article>`, `<header>`, or `<footer>` instead of `<div>` when appropriate.
   - Avoid overusing `<span>`; use tags like `<strong>` or `<em>` for emphasized text.
 
 ---
 
-## Styling and Scripting
+## 🎄 Styling and Scripting
 Both `<div>` and `<span>` are commonly used with CSS and JavaScript:
 - **Styling with CSS:**
   - `<div>` is used for layout and larger structures (e.g., grids, containers).
@@ -110,13 +118,3 @@ Both `<div>` and `<span>` are commonly used with CSS and JavaScript:
 
 ---
 
-## Comparison Table:
-
-| Feature          | `<div>`                   | `<span>`                  |
-|-------------------|---------------------------|---------------------------|
-| **Type**         | Block-level element       | Inline element            |
-| **Default Layout**| Takes full width of parent| Stays in line with text   |
-| **Primary Use**  | Structure/layout          | Styling inline content    |
-| **Example**      | Containers, sections      | Highlighting words/phrases|
-
----

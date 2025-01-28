@@ -1,0 +1,191 @@
+---
+title: HTML Elements Cheatsheet
+description: HTML Elements Cheatsheet
+sidebar:
+  label: 'HTML Elements Cheatsheet'
+  order: 1
+---
+
+## Basic Structure
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Title</title>
+</head>
+<body>
+  <!-- Content goes here -->
+</body>
+</html>
+```
+
+## Text Elements
+
+```html
+<h1>Heading 1</h1>  <!-- Largest heading -->
+<h2>Heading 2</h2>  <!-- Second largest heading -->
+<h3>Heading 3</h3>  <!-- Third largest heading -->
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+<h6>Heading 6</h6>  <!-- Smallest heading -->
+
+<p>This is a paragraph.</p>  <!-- Paragraph -->
+
+<strong>Strong text</strong>  <!-- Bold text -->
+<em>Emphasized text</em>  <!-- Italic text -->
+
+<small>Small text</small>  <!-- Small text -->
+<mark>Highlighted text</mark>  <!-- Highlighted text -->
+<del>Deleted text</del>  <!-- Strikethrough text -->
+```
+
+## Grouping Elements
+
+```html
+<div> <!-- Division/Container -->
+  <p>Text inside a div</p>
+</div>
+
+<section> <!-- Section of content -->
+  <h2>Section Header</h2>
+  <p>Content of section.</p>
+</section>
+
+<article> <!-- Independent article -->
+  <h2>Article Title</h2>
+  <p>Article content.</p>
+</article>
+
+<aside> <!-- Sidebar or content aside -->
+  <p>Sidebar content.</p>
+</aside>
+
+<footer> <!-- Footer content -->
+  <p>Footer information</p>
+</footer>
+
+<header> <!-- Header content -->
+  <h1>Header of the page</h1>
+</header>
+```
+
+## Links and Media
+
+```html
+<a href="https://example.com" target="_blank">Visit Example</a>  <!-- Hyperlink -->
+
+<img src="image.jpg" alt="Image description">  <!-- Image with alt text -->
+
+<video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>  <!-- Video element -->
+
+<audio controls>
+  <source src="audio.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>  <!-- Audio element -->
+```
+
+## Lists
+```html
+<ul> <!-- Unordered List -->
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<ol> <!-- Ordered List -->
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
+</ol>
+
+<dl> <!-- Description List -->
+  <dt>Term 1</dt>
+  <dd>Description of Term 1</dd>
+  <dt>Term 2</dt>
+  <dd>Description of Term 2</dd>
+</dl>
+```
+
+## Forms and Inputs
+
+```html
+<form action="/submit" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password">
+
+  <input type="submit" value="Submit">
+</form>  <!-- Basic form -->
+```
+
+## Tables
+
+```html
+<table>
+  <caption>Table Caption</caption>
+  <thead>
+    <tr>
+      <th>Header 1</th>
+      <th>Header 2</th>
+      <th>Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data 1</td>
+      <td>Data 2</td>
+      <td>Data 3</td>
+    </tr>
+    <tr>
+      <td>Data 4</td>
+      <td>Data 5</td>
+      <td>Data 6</td>
+    </tr>
+  </tbody>
+</table>  <!-- Table with rows and headers -->
+```
+## Semantic Elements
+
+```html
+<article> <!-- Represents an independent, self-contained piece of content -->
+<main> <!-- Specifies the main content of a document -->
+<figure> <!-- Used for images, diagrams, charts -->
+  <img src="image.jpg" alt="Figure">
+  <figcaption>Caption for image</figcaption>
+</figure>
+```
+#### **Comments**
+```html
+<!-- This is a comment in HTML -->
+```
+
+## Meta Tags
+```html
+<meta charset="UTF-8">  <!-- Character encoding -->
+<meta name="description" content="Description of the page">  <!-- Page description -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Responsive design -->
+```
+
+## Script and Style
+
+```html
+<script src="script.js"></script>  <!-- External JavaScript -->
+<script>
+  alert('Hello World!');
+</script>  <!-- Inline JavaScript -->
+
+<style>
+  body { font-family: Arial, sans-serif; }
+</style>  <!-- Inline CSS -->
+```

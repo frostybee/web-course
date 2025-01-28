@@ -1,0 +1,133 @@
+---
+title: Introduction to CSS
+description: Introduction to CSS
+sidebar:
+  label: 'Intro to CSS'
+  order: 1
+---
+import { Aside } from '@astrojs/starlight/components';
+
+## 💡 CSS Fundamentals
+- CSS (Cascading Style Sheets) is the language used to describe the **style** and **layout** of webpages. 
+- It controls elements' appearance such as colors, fonts, spacing, and positioning. 
+- A **CSS stylesheet** is a set of **rules** that define the visual appearance of elements on a webpage. 
+- A CSS rule is made up of a **selector** and a **declaration block**.
+
+## ✅ Basic Structure of a CSS Rule
+
+A CSS rule consist of a **selector** and a **declaration block**:
+
+```css
+selector {
+  property: value;
+}
+```
+
+## 🎯 Ways to Include CSS in an HTML Document
+1. **External CSS**: Linked in the `<head>` section of an HTML document.
+    ```html
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    ```
+2. **Internal CSS**: Within style tags in the `<head>` section of an HTML document.
+    ```html
+    <head>
+        <style>
+            /* CSS rules here */
+        </style>
+    </head>
+    ```
+3. **Inline CSS**: Directly in the **opening tag** of an element.
+    ```html
+    <div style="color: blue;">
+    ```
+## 🔍 CSS Selectors
+Selectors define which HTML elements the CSS rules apply to. 
+
+---
+    <Aside type='tip' title='Basic CSS Selectors'>
+    1. **Element Selector:** Targets all elements of a specific type.
+        - Example: `h1 { color: red; }`
+    2. **Class Selector:** Targets elements with a specific class.
+        - Example: `.button { background-color: green; }`
+    3. **ID Selector:** Targets an element with a specific ID.
+        - Example: `#header { padding: 20px; }`
+    </Aside>
+
+---
+
+The following are the **different types** of CSS selectors:
+
+- **Type (Element) Selector**: Targets an element by its tag name.
+  ```css
+  p {
+    color: blue;
+  }
+  ```
+  This targets all `<p>` elements.
+
+- **Class Selector**: Targets elements by their class attribute.
+  ```css
+  .example {
+    font-size: 16px;
+  }
+  ```
+  This targets all elements with the class "example" (e.g., `<div class="example">`).
+
+- **ID Selector**: Targets an element by its ID attribute.
+  ```css
+  #header {
+    background-color: #333;
+  }
+  ```
+  This targets the element with `id="header"`.
+
+- **Universal Selector**: Targets all elements on the page.
+  ```css
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  ```
+  This applies to every single element.
+
+- **Attribute Selector**: Targets elements based on the presence or value of an attribute.
+  ```css
+  input[type="text"] {
+    border: 1px solid #ccc;
+  }
+  ```
+  This targets `<input>` elements with `type="text"`.
+
+- **Descendant Selector**: Targets elements that are nested within other elements.
+  ```css
+  div p {
+    color: red;
+  }
+  ```
+  This targets all `<p>` elements inside `<div>` elements.
+
+- **Child Selector**: Targets direct children of an element.
+  ```css
+  div > p {
+    color: green;
+  }
+  ```
+  This targets `<p>` elements that are direct children of a `<div>`.
+
+- **Pseudo-classes**: Targets elements in specific states (e.g., hover, focus).
+  ```css
+  a:hover {
+    color: red;
+  }
+  ```
+  This targets `<a>` elements when the user hovers over them.
+
+- **Pseudo-elements**: Targets part of an element (e.g., first letter, first line).
+  ```css
+  p::first-letter {
+    font-size: 2em;
+  }
+  ```
+  This targets the first letter of every `<p>` element.

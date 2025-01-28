@@ -19,7 +19,6 @@ export default
       link: "/html",
       icon: "seti:html",
       items: [
-
         {
           label: "HTML Basics",
           autogenerate: {
@@ -31,6 +30,10 @@ export default
           autogenerate: {
             directory: "html/Grouping",
           }
+        },
+        {
+          label: "Cheatsheet",
+          items: ['html/cheatsheet']
         }
       ],
     },
@@ -39,13 +42,12 @@ export default
       link: "/css",
       icon: "seti:css",
       items: [
-        // Each item here is one entry in the navigation menu.
         {
-          label: "CSS Topics",
+          label: "CSS Basics",
           autogenerate: {
-            directory: "css/",
+            directory: "css/Basics",
           }
-        }
+        },
       ],
     },
     {
