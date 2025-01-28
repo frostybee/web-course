@@ -12,6 +12,8 @@ import { Aside } from '@astrojs/starlight/components';
 - It controls elements' appearance such as colors, fonts, spacing, and positioning. 
 - A **CSS stylesheet** is a set of **rules** that define the visual appearance of elements on a webpage. 
 - A CSS rule is made up of a **selector** and a **declaration block**.
+- **Check out the [MDN CSS reference
+](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)**
 
 ## ✅ Basic Structure of a CSS Rule
 
@@ -23,37 +25,17 @@ selector {
 }
 ```
 
-## 🎯 Ways to Include CSS in an HTML Document
-1. **External CSS**: Linked in the `<head>` section of an HTML document.
-    ```html
-    <head>
-        <link rel="stylesheet" type="text/css" href="styles.css">
-    </head>
-    ```
-2. **Internal CSS**: Within style tags in the `<head>` section of an HTML document.
-    ```html
-    <head>
-        <style>
-            /* CSS rules here */
-        </style>
-    </head>
-    ```
-3. **Inline CSS**: Directly in the **opening tag** of an element.
-    ```html
-    <div style="color: blue;">
-    ```
-## 🔍 CSS Selectors
+### 🔍 CSS Selectors
 Selectors define which HTML elements the CSS rules apply to. 
 
----
-    <Aside type='tip' title='Basic CSS Selectors'>
-    1. **Element Selector:** Targets all elements of a specific type.
-        - Example: `h1 { color: red; }`
-    2. **Class Selector:** Targets elements with a specific class.
-        - Example: `.button { background-color: green; }`
-    3. **ID Selector:** Targets an element with a specific ID.
-        - Example: `#header { padding: 20px; }`
-    </Aside>
+<Aside type='tip' title='Basic CSS Selectors'>
+1. **Element Selector:** Targets all elements of a specific type.
+    - Example: `h1 { color: red; }`
+2. **Class Selector:** Targets elements with a specific class.
+    - Example: `.button { background-color: green; }`
+3. **ID Selector:** Targets an element with a specific ID.
+    - Example: `#header { padding: 20px; }`
+</Aside>
 
 ---
 
@@ -131,3 +113,38 @@ The following are the **different types** of CSS selectors:
   }
   ```
   This targets the first letter of every `<p>` element.
+
+### 📝 Declaration Block
+
+The declaration block contains one or more CSS declarations (**property-value pairs**) separated by semicolons (`;`). Each declaration consists of a **property** and its associated **value**.
+
+Example:
+
+```css
+selector {
+  property: value;
+}
+```
+
+- **Property**: Defines what you want to change (e.g., `color`, `font-size`, `margin`).
+- **Value**: Specifies the value for the property (e.g., `blue`, `16px`, `10px`).
+
+## 🎯 Ways to Include CSS in an HTML Document
+1. **External CSS**: Linked in the `<head>` section of an HTML document.
+    ```html
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    ```
+2. **Internal CSS**: Within style tags in the `<head>` section of an HTML document.
+    ```html
+    <head>
+        <style>
+            /* CSS rules here */
+        </style>
+    </head>
+    ```
+3. **Inline CSS**: Directly in the **opening tag** of an element.
+    ```html
+    <div style="color: blue;">
+    ```
