@@ -1,0 +1,213 @@
+---
+title: Working with CSS Variables
+description: Working with CSS Variables
+sidebar:
+  label: 'CSS Variables'
+  order: 3
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## 👩‍💻 What Are CSS Variables?
+
+:::note
+- CSS variables, also known as **custom properties**, are a feature of CSS that allow you to **store values** that can be **reused** throughout your stylesheets. 
+- These variables make it easier to maintain and update styles by creating a **centralized location** for values such as **colors**, **sizes**, or even more complex CSS values. 
+:::
+
+## 🧮 Introduction to CSS Variables
+
+A **CSS variable** is a custom property that can be defined in CSS and reused throughout your stylesheets. Unlike regular CSS properties, which are **fixed values**, CSS variables are dynamic and can be updated or manipulated with JavaScript.
+
+**Syntax for defining a CSS variable:**
+
+```css
+:root {
+    --main-color: #3498db;
+    --font-size: 16px;
+}
+```
+
+Here:
+- `--main-color` and `--font-size` are the variable names (note the double dash `--` at the beginning).
+- `:root` is a **pseudo-class** that represents the **highest-level parent** in the DOM (typically the `<html>` element). Defining variables here makes them global across your document.
+
+**Using a CSS variable:**
+
+Once you’ve defined a CSS variable, you can use it within other properties.
+
+```css
+body {
+    background-color: var(--main-color);
+    font-size: var(--font-size);
+}
+```
+
+## 📈 Benefits of Using CSS Variables
+:::tip
+- **Maintainability**: You can change a value in one place, and it automatically reflects throughout your stylesheet.
+- **Readability**: Using meaningful names for variables can make your styles more readable.
+- **Dynamic updates**: CSS variables can be updated at runtime with JavaScript, allowing for dynamic changes like theme switching.
+:::
+
+## 💥 Defining and Using CSS Variables
+
+Variables are **usually defined inside a selector**, and they can be accessed using the [`var()` function](https://developer.mozilla.org/en-US/docs/Web/CSS/var) .
+
+**Example:**
+
+```css
+:root {
+    --primary-bg: #f0f0f0;
+    --text-color: #333;
+    --padding: 10px;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    padding: var(--padding);
+}
+```
+
+- The `:root` selector is used to define global variables for the background color, text color, and padding.
+- The `var(--primary-bg)`, `var(--text-color)`, and `var(--padding)` functions are used to apply the values.
+
+**Default Value for `var()` function:**
+
+You can also provide a fallback value in case the variable is not defined.
+
+```css
+color: var(--accent-color, #ff0000);
+```
+
+In this case, if `--accent-color` is not defined, `#ff0000` will be used as the fallback color.
+
+### Scope and Inheritance of CSS Variables
+
+CSS variables are subject to the **cascade**, which means they can inherit from their parent elements. Variables defined on an element are available within that element and its children.
+
+**Example of scoped variables:**
+
+```css
+/* Global variables */
+:root {
+    --font-size: 16px;
+}
+
+/* Scoped variables */
+.section {
+    --font-size: 18px; /* Overrides global variable */
+}
+
+h1 {
+    font-size: var(--font-size); /* 18px, since it's inside .section */
+}
+
+p {
+    font-size: var(--font-size); /* 16px, using global variable */
+}
+```
+
+- `.section` overrides the global `--font-size` to `18px`.
+- The `h1` inside `.section` uses the overridden variable, but the `p` outside uses the global one.
+
+### Manipulating CSS Variables with JavaScript
+
+CSS variables can be accessed and manipulated through JavaScript, allowing for dynamic changes to styles.
+
+**Example of changing a variable with JavaScript:**
+
+```javascript
+// Change the --primary-bg variable on the :root element
+document.documentElement.style.setProperty('--primary-bg', '#ffcc00');
+```
+
+This will update the background color throughout the page wherever the `--primary-bg` variable is used.
+
+## Advanced Use Cases
+
+### Responsive Design with CSS Variables
+
+CSS variables can be combined with media queries to create responsive designs.
+
+**Example:**
+
+```css
+:root {
+    --font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-size: 14px; /* Override variable for smaller screens */
+    }
+}
+
+body {
+    font-size: var(--font-size);
+}
+```
+
+In this example, the font size will adjust based on the viewport width.
+
+### Creating Themes with CSS Variables
+
+CSS variables are useful for **creating dynamic themes**. You can define different sets of variables for different themes and switch them using JavaScript.
+
+**Example:**
+
+```css
+:root {
+    --primary-bg: #ffffff;
+    --text-color: #333;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --primary-bg: #333;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+}
+```
+
+With JavaScript, you can change the theme:
+
+```javascript
+document.documentElement.setAttribute('data-theme', 'dark');
+```
+
+### Using Variables in Complex Calculations
+
+CSS variables can be used in complex calculations, such as [calc()](https://developer.mozilla.org/en-US/docs/Web/CSS/calc), which is helpful for dynamic layouts.
+
+**Example:**
+
+```css
+:root {
+    --base-size: 20px;
+}
+
+div {
+    width: calc(var(--base-size) * 5);
+    height: calc(var(--base-size) * 10);
+}
+```
+
+In this case, the width and height are dynamically calculated based on the `--base-size` variable.
+
+## Browser Support for CSS Variables
+
+CSS variables are supported in most modern browsers, including Chrome, Firefox, Safari, and Edge. However, some older versions do not support them. You can check for compatibility at [Can I use CSS variables](https://caniuse.com/css-variables).
+
+## Limitations of CSS Variables
+
+- **No support for arrays or objects**: You can't store complex structures (like arrays or objects) in CSS variables. They're best for single values like colors, sizes, and fonts.
+- **Inheritance**: While variables are inherited by child elements, this can sometimes lead to unexpected results if not scoped carefully.
+- **Not supported in older browsers**: Ensure your audience uses modern browsers or use feature detection to handle fallbacks.

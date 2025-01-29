@@ -4,10 +4,14 @@ description: Working with CSS Colors
 sidebar:
   label: 'CSS Colors'
   order: 2
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
 ---
 import { Aside } from '@astrojs/starlight/components';
 
-## Color Values in CSS
+## 🎨 Color Values in CSS
 
 CSS provides [several ways to define colors](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value), including keywords (aka named colors), hexadecimal values, RGB, RGBA, HSL, HSLA, and CSS Color Functions.
 
@@ -49,20 +53,25 @@ For example:
   ```
 
 ### 4. HSL and HSLA
-- **HSL** (Hue, Saturation, Lightness) is a cylindrical color model where colors are defined by their hue (0 to 360 degrees), saturation (0% to 100%), and lightness (0% to 100%).
+- [HSL](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl)  (Hue, Saturation, Lightness) is a cylindrical color model where colors are defined by their hue (0 to 360 degrees), saturation (0% to 100%), and lightness (0% to 100%).
 - **HSLA** adds an alpha channel to HSL for transparency.
+- **Hue**: 0° to 360° (corresponding to colors on the color wheel).
+- **Saturation**: 0% (gray) to 100% (full color).
+- **Lightness**: 0% (black) to 100% (white).
+- The advantage of HSL is that it aligns with how humans perceive and choose colors.
+
 
 ```css
 color: hsl(120, 100%, 50%); /* Green color */
 background-color: hsla(210, 100%, 50%, 0.3); /* Semi-transparent blue */
 ```
-## CSS Color Functions
+## ⛽ CSS Color Functions
 - **`rgb()`, `rgba()`, `hsl()`, `hsla()`**: These are the functional syntax for RGB and HSL values.
 - **`currentColor`**: Refers to the current color of the element (the current value of the color property.), used in properties like `border` or `box-shadow`.
   ```css
   border: 1px solid currentColor;
   ```
-## CSS Variables
+## 🔠 CSS Variables
 
 CSS Variables (**custom properties**) allow you to define reusable color values. This improves maintainability and consistency.
 ```css
@@ -79,7 +88,7 @@ p {
   color: var(--secondary-color);
 }
 ```
-## Backgrounds and Gradients  
+## 💹 Backgrounds and Gradients  
 
 ### Solid Background Colors
 You can define simple background colors for elements using any of the color methods mentioned above:
@@ -105,7 +114,7 @@ background: radial-gradient(circle, #ff7e5f, #feb47b);
 ```
 - **Syntax**: `radial-gradient(shape, color1, color2, ...)`
 
-## Working with Opacity
+## ⚡ Working with Opacity
 
 ### Opacity Property
 To change the transparency of an element, you can use the `opacity` property, which takes values from `0` (fully transparent) to `1` (fully opaque).
