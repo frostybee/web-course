@@ -32,6 +32,12 @@ export default
           }
         },
         {
+          label: "Hyperlinks",
+          autogenerate: {
+            directory: "html/hyperlinks",
+          }
+        },
+        {
           label: "Cheatsheet",
           items: ['html/cheatsheet']
         }
