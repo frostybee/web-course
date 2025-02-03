@@ -4,13 +4,67 @@ description: Working with Hyperlinks
 sidebar:
   label: 'Hyperlinks'
   order: 1
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
 ---
 
 ## What Are Hyperlinks?
 :::note
 - Hyperlinks (or simply "links") allows users to **navigate between pages** and **resources** on the web. 
-- Links are created using the **`<a>`** (anchor) element, which stands for "anchor."
+- Links are created using the **`<a>`** (anchor) element, which stands for **"anchor"**.
 :::
 
+## Basic Link Syntax
+Links in HTML are created using the `<a>` (anchor) element. The most important attribute is `href`, which specifies the **destination** of the link.
+
+```html
+<a href="absolute URL|relative path|#elementID"> Link content </a>
+```
+- `<a>`: The anchor element that defines the link.
+- `href`: The attribute that specifies the destination URL (Uniform Resource Locator), relative path, or fragment (element ID) of the link.
+- `Link content`: The **clickable area** that users will see on the webpage. The content may consist of  text, a mixture of text and other HTML elements, or just other HTML elements.
+
+**Example:**
+```html
+<a href="https://www.example.com">Click here to visit Example</a>
+```
 
 ## Types of Links?
+
+
+---
+
+## Best Practices
+
+1. **Always use descriptive link text.** Make sure your link text is descriptive so that **users** and **search engines** **can understand** its purpose.
+   - Good: `<a href="products.html">View our product catalog</a>`
+   - Bad: `<a href="products.html">Click here</a>`
+
+2. Include **title attribute** for additional context:
+   ```html
+   <a href="product.html" title="View detailed product specifications">
+     Product Details
+   </a>
+   ```
+
+3. **Make links accessible:**
+   - Use sufficient color contrast
+   - Ensure links are recognizable (underlined or distinctly colored)
+   - Add `aria-label` attribute for screen readers when needed:
+     ```html
+     <a href="pdf.html" aria-label="Download annual report (PDF, 2MB)">
+       Annual Report
+     </a>
+     ```
+
+4. **Use appropriate security measures for external links:**
+   ```html
+   <a href="https://external-site.com" 
+      target="_blank" 
+      rel="noopener noreferrer">
+     External Site
+   </a>
+   ```
+5. **Link Testing**: Regularly test your links to ensure they are not broken or leading to outdated pages.   

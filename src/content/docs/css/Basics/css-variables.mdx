@@ -54,18 +54,20 @@ body {
 
 ## 💥 Defining and Using CSS Variables
 
-Variables are **usually defined inside a selector**, and they can be accessed using the [`var()` function](https://developer.mozilla.org/en-US/docs/Web/CSS/var) .
+Variables are **usually defined inside a CSS rule**, and they can be accessed using the [`var()` function](https://developer.mozilla.org/en-US/docs/Web/CSS/var) .
 
 **Example:**
 
 ```css
 :root {
+    /* Variable declarations */
     --primary-bg: #f0f0f0;
     --text-color: #333;
     --padding: 10px;
 }
 
 body {
+    /* Accessing variables */
     background-color: var(--primary-bg);
     color: var(--text-color);
     padding: var(--padding);
