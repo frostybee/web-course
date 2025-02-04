@@ -54,6 +54,12 @@ export default
             directory: "css/Basics",
           }
         },
+        {
+          label: "Advanced CSS",
+          autogenerate: {
+            directory: "css/advanced",
+          }
+        },
       ],
     },
     {
