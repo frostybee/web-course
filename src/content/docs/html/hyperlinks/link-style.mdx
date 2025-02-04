@@ -1,0 +1,73 @@
+---
+title: Styling Hyperlinks
+description: Styling Hyperlinks
+sidebar:
+  label: 'Styling Links'
+  order: 1
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## Hyperlinks States
+
+:::note
+- The `<a>` element (used to define hyperlinks) has **different "states"** that describe its interaction with the user. 
+- These **states** are typically **controlled using CSS pseudo-classes**, which define the appearance of links under **different conditions** and based on **user interaction**. 
+:::
+
+The following link states can be styled using CSS to provide visual feedback to users during interaction with links.
+
+| **Link State**          | **CSS Pseudo-class** | **Description**                                                                                                                                 | **Example**                                                                                                                                       |
+|-------------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Normal State**         | `a`                  | This is the **default state** of a link before any interaction.                                                                                     | `<a href="https://example.com">Click Here</a>`                                                                                                     |
+| **Hovered State**        | `a:hover`            | Activated when the user **hovers over** the link, typically used to indicate interactivity.                                                        | `a:hover { color: blue; }`                                                                                                                        |
+| **Visited State**        | `a:visited`          | This state represents a link that the user has already **clicked and visited**. Often styled to show the user that they have previously interacted.  | `a:visited { color: purple; }`                                                                                                                     |
+| **Active State**         | `a:active`           | Triggered when the link is **being clicked or activated**. It lasts only for the duration of the click.                                               | `a:active { color: red; }`                                                                                                                       |
+| **Focus State**          | `a:focus`            | Indicates that the link **has received focus**, such as when a user navigates to it using the keyboard (e.g., tabbing).                             | `a:focus { outline: 2px solid blue; }`                                                                                                          |
+
+
+## Styling Link States
+
+Link states are decorated using CSS pseudo-classes and can be customized with different styles to give the user **visual feedback** about the link's state.
+
+### CSS Pseudo-classes
+
+1. **`:link`** – This state applies to links that have not yet been visited by the user.   
+2. **`:visited`** – This state applies to links that the user has already clicked and visited.   
+3. **`:hover`** – This state applies when the user hovers their mouse over the link.
+4. **`:active`** – This state applies when the link is being clicked (actively pressed by the user).
+5. **`:focus`** – The link is focused (e.g., selected by the user through mouse click or keyboard navigation).
+
+
+
+## Example
+Styling links in different states:
+```css
+/* Unvisited links */
+a:link {
+    color: blue;
+    text-decoration: none;
+}
+
+/* Visited links */
+a:visited {
+    color: purple;
+}
+
+/* Mouse over links */
+a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+/* Active/clicked links */
+a:active {
+    color: orange;
+}
+/* Focused links */
+a:focus {
+    color: yellow;    
+}
+```

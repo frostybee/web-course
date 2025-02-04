@@ -1,0 +1,86 @@
+---
+title: Configuring Hyperlinks
+description: Configuring Hyperlinks
+sidebar:
+  label: 'Link Configuration'
+  order: 1
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## Links Configuration
+
+### Opening Links in a New Tab or Window
+
+- By default, clicking a link opens it in **the same** browser tab. 
+- To make the link open in a **new browser tab** or window, use the **`target="_blank"`** attribute. 
+
+```html
+<a href="https://www.example.com" target="_blank">Open Example in New Tab</a>
+```
+### Target Attribute
+Control how the link opens:
+```html
+<a href="page.html" target="_blank">Opens in a new browser tab/window</a>
+<a href="page.html" target="_self">Opens in same window (default)</a>
+<a href="page.html" target="_parent">Opens in parent frame</a>
+<a href="page.html" target="_top">Opens in a new browser window</a>
+```
+
+### Download Attribute
+Specify that the target will be downloaded:
+```html
+<a href="file.pdf" download>Download PDF</a>
+<a href="file.pdf" download="custom-filename.pdf">Download with custom filename</a>
+```
+---
+
+### Adding Titles to Links
+
+You can add a **`title`** attribute to provide additional information when the user **hovers over** the link.
+
+```html
+<a href="https://www.example.com" title="Visit Example Website">Example</a>
+```
+
+The title text "Visit Example Website" will appear when the user hovers over the link.
+
+## Common Link Patterns
+
+### Navigation Menus
+```html
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+```
+
+### Button-Style Links
+```html
+<a href="/signup" class="button">
+  Sign Up Now
+</a>
+
+<style>
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+</style>
+```
+
+### Image Links
+```html
+<a href="product.html">
+  <img src="product-thumb.jpg" alt="Product Name">
+</a>
+```
