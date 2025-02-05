@@ -8,25 +8,26 @@ sidebar:
 
 ## 🧱 Block vs Inline Elements
 
-The difference between inline and block elements in HTML is mainly about how they **behave** in the layout of a webpage:
+The difference between **[Inline Elements](https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content)** and **[Block Elements](https://developer.mozilla.org/en-US/docs/Glossary/Block-level_content)** in HTML is mainly about how they **behave** in the layout of a webpage:
 
-1. **[Block Elements](https://developer.mozilla.org/en-US/docs/Glossary/Block-level_content)**
-   - These elements take up the **full width** of their container, creating a **block** in the layout.
-   - They start on **a new line**, and any content after them will appear below them (on a new line).
-   - Examples include: `<div>`, `<p>`, `<h1>`, `<ul>`, `<li>`.
-   - They can have defined width and height.
-  
-2. **[Inline Elements](https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content)**
-   - These elements only take up as much width as their content requires and **do not break** the flow of content.
-   - They stay on the same line as the surrounding content (unless the content itself forces a line break).
-   - Examples include: `<span>`, `<a>`, `<strong>`, `<img>`.
-   - They do not have properties for width and height, but can have padding and margins on the left and right.
+| Feature                       | **Block Elements**                          | **Inline Elements**                         |
+|-------------------------------|---------------------------------------------|--------------------------------------------|
+| **Display Behavior**           | Takes up the **full width available**, with a line break before and after. | Takes up only as **much width as necessary**, no line break before or after. |
+| **Examples**                   | `<div>`, `<p>`, `<h1>`, `<ul>`, `<section>` | `<span>`, `<a>`, `<strong>`, `<em>`, `<img>` |
+| **Height and Width**           | Can have both **height** and **width** specified.    | **Cannot** have **height** or **width specified** directly (unless changed to block-level with CSS), but can have **padding** and **margins** on the left and right. |
+| **Positioning**                | Always starts on **a new line** (block formatting context). | Flows along with the **surrounding content**, staying on the same line. |
+| **Content**                    | Usually contains other block or inline elements. | Typically contains text or other inline elements. |
+| **Common Usage**               | Used for layout structure (headers, paragraphs, sections). | Used for styling text, links, or small elements within block elements. |
+| **Impact on Page Layout**      | Can create a new "block" of content and affects overall page layout. | Does not affect the layout significantly; flows within the parent element. |
+| **Examples of CSS Styles**     | `width`, `height`, `margin`, `padding`, `border`. | `font-style`, `color`, `text-decoration`. |
+
+---
 
 ## ⚡ Div vs Span Elements
 
 ---
 
-In HTML, both `<div>` and `<span>` are used for grouping content, but they have different purposes, default behavior, and use cases. 
+In HTML, both `<div>` and `<span>` are used for **grouping content**, but they have **different purposes**, default behavior, and use cases. 
 
 :::tip
 - Use **`<div>`** for **structuring** and **grouping** larger blocks of content.
@@ -88,7 +89,7 @@ Example use: Wrapping a section of content like a form, header, or footer.
 ---
 
 
-## 📈 Comparison Table:
+## 📈 Comparison Table: Div vs Span
 
 | Feature          | `<div>`                   | `<span>`                  |
 |-------------------|---------------------------|---------------------------|
@@ -110,7 +111,7 @@ Example use: Wrapping a section of content like a form, header, or footer.
 ## 🎄 Styling and Scripting
 Both `<div>` and `<span>` are commonly used with CSS and JavaScript:
 - **Styling with CSS:**
-  - `<div>` is used for layout and larger structures (e.g., grids, containers).
+  - `<div>` is used for layout and **larger structures** (e.g., grids, containers).
   - `<span>` is used for small-scale inline styling (e.g., coloring, text effects).
 
 - **Scripting with JavaScript:**
