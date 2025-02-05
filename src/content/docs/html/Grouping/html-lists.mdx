@@ -1,0 +1,230 @@
+---
+title: Structuring Content with Lists
+description: Structuring Content with Lists
+sidebar:
+  label: 'Working with Lists'
+  order: 3
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## What Are HTML Lists?
+
+- In HTML, lists are used to **group** together **related items**. 
+- Lists are useful for **structuring content** in HTML, whether you're showing a series of items, instructions, or definitions.
+
+---
+
+## Types of HTML Lists
+
+- There are **three primary types** of lists you can create:
+:::note
+1. **Ordered Lists** (`<ol>`): Items are listed in a specific, **numbered order**.
+2. **Unordered Lists** (`<ul>`): Items are listed **without a specific order**, usually with bullets.
+3. **Description Lists** (`<dl>`): Used for items that consist of a **term** and its **description**.
+:::
+
+
+## 1. Ordered Lists (`<ol>`)
+
+- An ordered list is used when the order of the **items matters** (e.g., steps in a recipe, ranking, etc.). 
+- The items **are numbered** by default.
+
+### Syntax & Example
+```html
+<ol>
+  <li>First step: Gather ingredients.</li>
+  <li>Second step: Mix ingredients.</li>
+  <li>Third step: Bake at 350°F.</li>
+</ol>
+```
+
+### Customizing Ordered Lists:
+
+- **Changing the starting number:**
+  You can start the numbering from a specific value using the `start` attribute.
+
+  ```html
+  <ol start="5">
+    <li>First item (but numbered 5)</li>
+    <li>Second item</li>
+  </ol>
+  ```
+
+- **Changing the numbering style:**
+  You can use the `type` attribute to change the numbering style:
+  
+  - `type="1"` (default): Numbers (1, 2, 3, …)
+  - `type="A"`: Uppercase letters (A, B, C, …)
+  - `type="a"`: Lowercase letters (a, b, c, …)
+  - `type="I"`: Uppercase Roman numerals (I, II, III, …)
+  - `type="i"`: Lowercase Roman numerals (i, ii, iii, …)
+
+  ```html
+  <ol type="A">
+    <li>First item</li>
+    <li>Second item</li>
+  </ol>
+  ```
+
+---
+
+## 2. Unordered Lists (`<ul>`)
+
+An unordered list is used when the **order** of the items **doesn't matter**. By default, the list items are displayed with **bullets**.
+
+### Syntax & Example:
+
+```html
+<ul>
+  <li>Apples</li>
+  <li>Bananas</li>
+  <li>Oranges</li>
+</ul>
+```
+
+### Customizing Unordered Lists:
+
+- **Changing the bullet style:**
+  The `list-style-type` CSS property allows you to change the appearance of the bullets.
+
+  ```html
+  <ul style="list-style-type: square;">
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+  ```
+
+  **Possible values for `list-style-type`:**
+  - `disc` (default): Filled circle.
+  - `circle`: Empty circle.
+  - `square`: Square bullet.
+  - `none`: No bullet.
+
+- **Using custom bullets:**
+  You can also use an image as a bullet by using the `list-style-image` property.
+
+  ```html
+  <ul style="list-style-image: url('bullet.png');">
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+  ```
+
+---
+
+## 3. Description Lists (`<dl>`)
+
+A description list is used **to define** a list of terms and their descriptions. It consists of the following elements:
+
+- **`<dl>`**: Defines the description list.
+- **`<dt>`**: Defines a **term** or name.
+- **`<dd>`**: Defines the description or **definition** of the term.
+
+### Syntax & Example:
+
+```html
+<dl>
+  <dt>HTML</dt>
+  <dd>A markup language used for creating web pages.</dd>
+  <dt>CSS</dt>
+  <dd>A stylesheet language used for describing the look and format of a document.</dd>
+</dl>
+```
+
+---
+
+## Nested Lists
+
+You can also **nest lists** inside one another. This is helpful when you need to **categorize items** under **different sections**.
+
+**Example:**
+
+```html
+<ul>
+  <li>Fruits
+    <ul>
+      <li>Apple</li>
+      <li>Banana</li>
+    </ul>
+  </li>
+  <li>Vegetables
+    <ul>
+      <li>Carrot</li>
+      <li>Spinach</li>
+    </ul>
+  </li>
+</ul>
+```
+
+---
+
+## List Styling with CSS
+
+Lists can be styled using CSS to enhance their appearance. Here are some examples:
+
+### Changing Bullet Style:
+
+```html
+<ul style="list-style-type: none;">
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+```
+
+### Adding Spacing and Alignment:
+
+```html
+<ul style="margin-left: 20px; padding-left: 20px;">
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+```
+
+### Customizing List Items:
+
+```html
+<ul>
+  <li style="font-size: 20px; color: red;">Item 1</li>
+  <li style="font-size: 18px; color: blue;">Item 2</li>
+</ul>
+```
+
+---
+
+## Additional List Elements
+
+- **`<li>` with Links:**
+  You can also include links inside list items.
+
+  ```html
+  <ul>
+    <li><a href="https://www.example.com">Visit Example</a></li>
+    <li><a href="https://www.another.com">Visit Another</a></li>
+  </ul>
+  ```
+
+- **`<li>` with Images:**
+  You can add images inside list items for more visual appeal.
+
+  ```html
+  <ul>
+    <li><img src="apple.jpg" alt="Apple" /> Apple</li>
+    <li><img src="banana.jpg" alt="Banana" /> Banana</li>
+  </ul>
+  ```
+
+---
+
+## Accessibility Considerations
+
+When working with lists, it’s important to consider accessibility to ensure that screen readers can interpret the structure of your content properly. Here are some tips:
+
+- **Descriptive List Item Text:**
+  Ensure the text of list items is descriptive enough to make sense when read out loud.
+- **Using Lists for Grouping:**
+  Use lists (`<ul>`, `<ol>`, and `<dl>`) to group related items logically. Avoid using `<div>` tags or other elements for list-like structures unless necessary.
+
+---
