@@ -1,0 +1,71 @@
+---
+title: Working with Images
+description: Working with Images
+sidebar:
+  label: 'Working with Images'
+  order: 1
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## Basic Image Syntax
+:::note
+- The HTML **`<img>`** element is the foundation for **embedding images** in web pages. 
+- It is a **self-closing element**, meaning it doesn't require a closing tag.
+- The basic syntax requires **two key attributes:**
+:::
+
+```html
+<img src="image_source" alt="image_description">
+```
+- **`src`**: Specifies the image source (URL or path).
+- **`alt`**: Provides **alternative text** for accessibility and cases where the image fails to load.
+
+---
+
+## Image Sources
+### Relative Paths
+Use **relative paths** when referencing images **within** your **project structure**: The image file is in the **same directory** or a **subdirectory** of your HTML file
+```html
+<img src="images/photo.jpg" alt="Local image">
+<img src="../images/photo.jpg" alt="Image in parent directory">
+```
+
+### Absolute Paths (URL)
+External images require complete URLs: The image is hosted on a different domain or server.
+```html
+<img src="https://example.com/images/photo.jpg" alt="External image">
+```
+---
+
+## Essential Attributes
+
+### Width and Height
+You can control the size of an image using the `width` and `height` attributes or via CSS.
+```html
+<img src="image.jpg" alt="Sized image" width="800" height="600">
+```
+
+### Loading Behavior
+Control image loading for performance optimization:
+```html
+<img src="image.jpg" alt="Lazy loaded image" loading="lazy">
+```
+
+The `loading` attribute accepts three values:
+- `eager`: Load immediately (default)
+- `lazy`: Defer loading until near viewport
+- `auto`: Browser determines loading strategy
+
+
+## Common Image Formats
+
+There are various image formats that HTML supports, each suited for different types of images:
+
+- **JPEG (.jpg or .jpeg)**: Best for photographs or images with many colors. Supports lossy compression.
+- **PNG (.png)**: Best for images that require transparency or images with sharp edges (e.g., logos).
+- **GIF (.gif)**: Used for animations or images with fewer colors.
+- **SVG (.svg)**: Scalable vector graphic, used for logos and icons that can scale without losing quality.
+- **WebP (.webp)**: A modern format offering both lossless and lossy compression with smaller file sizes.

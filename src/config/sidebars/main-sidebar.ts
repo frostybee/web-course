@@ -38,11 +38,18 @@ export default
           }
         },
         {
+          label: "Multimedia",
+          autogenerate: {
+            directory: "html/multimedia",
+          }
+        },
+        {
           label: "Cheatsheet",
           items: ['html/cheatsheet']
         }
       ],
     },
+    // CSS Topics
     {
       label: "CSS",
       link: "/css",
@@ -62,6 +69,7 @@ export default
         },
       ],
     },
+    // JS Topics
     {
       label: "JavaScript",
       link: "/javascript",
