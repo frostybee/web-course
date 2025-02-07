@@ -1,0 +1,93 @@
+---
+title: Favorites Icon
+description: Favorites Icon
+sidebar:
+  label: 'Favicon'
+  order: 2
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## What Is a Favicon?
+
+:::note
+- A **favicon** (short for **favorites icon**) is the **small image** (typically 16x16, 32x32, or 48x48 pixels in size) or **icon** displayed in the browser tab next to the page title. 
+- It helps with **brand identity** and makes your website **easier to recognize** in browser tabs or bookmark lists.
+:::
+
+---
+
+## Favicon File Formats 
+:::tip
+The common file formats for favicons are:
+- **ICO**: Traditional format used for favicons. It supports multiple sizes (e.g., 16x16, 32x32, 48x48, and more).
+- **PNG**: A popular format, offering **high-quality images** with transparency support.
+- **SVG**: Scalable vector graphics, used for **resolution-independent** icons.
+- **JPG**: Less common for favicons due to its lack of transparency and larger file sizes.
+:::
+
+ICO format is still the most widely used, but **PNG** and **SVG** are becoming popular due to their flexibility and better rendering on **high-DPI screens**.
+
+---
+
+## Creating a Favicon
+
+1. **Choose or Create an Image**:
+   - Keep it simple, as favicons are small and need to be recognizable at a glance. 
+   - A logo or an icon representing your brand or website theme works best.
+
+2. **Resize the Image**:
+   - The ideal size for a favicon is **16x16**, but you may also create larger sizes like **32x32**, 48x48, and **64x64** for better resolution on modern devices.
+   - You can use online tools like **[Favicon Generator](https://www.favicon-generator.org/)** to create favicons in different sizes and formats.
+
+3. **Convert the Image**:
+   - Convert your image to **ICO** format, if necessary. There are many online converters available for this purpose. You can also create multiple sizes in a single **.ico** file.
+
+---
+
+
+## Adding a Favicon to Your Website
+
+To add a favicon to your website, you need to link it in the `<head>`   section of your HTML.   
+Use the **`<link>`** element as follows:
+
+```html
+<head>
+  <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
+</head>
+```
+
+### Key attributes:
+- **`rel="icon"`**: This tells the browser that the file is a favicon.
+- **`href`**: Specifies the path to the favicon image.
+- **`type="image/x-icon"`**: Defines the Media type of the file.
+
+---
+
+### Supporting Multiple Favicon Sizes
+
+To ensure your favicon looks good across all devices, it's important to include different sizes. 
+
+You can include multiple `<link>` tags for various sizes and formats. For example:
+
+```html
+<head>
+  <!-- Favicon for traditional browsers -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- High-Resolution Retina Display Icons -->
+  <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  <!-- Apple Touch Icon (for iOS devices) -->
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+  
+  <!-- Android Devices / Chrome (to provide a custom icon in the browser toolbar) -->
+  <link rel="icon" href="favicon-192x192.png" sizes="192x192">
+  
+  <!-- Windows 8 / 10 Tiles -->
+  <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+</head>
+```
