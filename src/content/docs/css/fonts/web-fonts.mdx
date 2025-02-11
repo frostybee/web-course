@@ -1,0 +1,154 @@
+---
+title: Working with Web Fonts
+description: Working with Web Fonts
+sidebar:
+  label: 'Web Fonts'
+  order: 1
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+
+## Understanding the Basics of Fonts in CSS
+
+:::note
+- In CSS, fonts are **primarily controlled** through the **`font-family`**, **`font-size`**, and other related properties. 
+
+- A **font family** refers to a **group of fonts** that are related to each other, often with variations in weight, style, and size.
+
+- There are multiple techniques you can use to create **readable**, **visually appealing** text. 
+
+- By **combining font families** with properties like font size, weight, line height, and letter spacing, you can ensure that your typography adapts well across **different devices** and **screen sizes**.
+:::
+
+## Font Classification
+Fonts are classified into the following generic font families:
+1. **Serif Fonts:** Fonts **with small lines** at the ends of characters (e.g., Times New Roman).
+2. **Sans-serif Fonts:** Fonts without these lines (e.g., Arial, Helvetica).
+3. **Monospace Fonts:** Each character takes up the **same amount of space** (e.g., Courier New).
+4. **Cursive Fonts:** Fonts with a handwritten or slanted style (e.g., Comic Sans MS).
+5. **Fantasy Fonts:** Decorative fonts (e.g., Impact).
+:::tip
+In CSS, you can define font families using either predefined **web-safe fonts** or **custom fonts** hosted on external servers.
+:::
+
+
+## Font Basics in CSS
+
+The `font-family` property is used to specify the font for the text within an element. Fonts are typically defined by specifying **a generic font family**,  **a system font**, or **a web font**.
+
+### Basic Font Declaration Syntax
+
+```css
+selector {
+    font-family: "Font Name", fallback-font, generic-font;
+}
+```
+- `selector`: The CSS selector (e.g., body, h1, .class, #id, etc.).
+- `font-family`: The CSS property used to specify the font.
+
+### Font-Family List
+You can define a **list** of **font names**, which is helpful if a user’s system **doesn't have** the first font. CSS will try each font in the list in order until it finds one available on the user's system.
+
+```css
+body {
+    font-family: "Helvetica", "Arial", sans-serif;
+}
+```
+
+In the example above:
+- `"Helvetica"` is the preferred font.
+- If `"Helvetica"` is unavailable, the browser will try `"Arial"`.
+- If neither font is available, the browser will **fall back** to the **generic** `sans-serif` font.
+
+### Generic Font Families
+CSS has a set of **[generic font families](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family)** that can be used as **fallbacks**:
+- `serif`: Fonts with small lines or extensions at the end of the strokes (e.g., Times New Roman).
+- `sans-serif`: Fonts without serifs (e.g., Arial).
+- `monospace`: Fonts where each character takes up the same width (e.g., Courier New).
+- `cursive`: Fonts that resemble handwritten or calligraphic styles (e.g., Comic Sans MS).
+- `fantasy`: Decorative fonts (e.g., Impact).
+
+---
+
+## Using Web Safe Fonts
+
+**Web-safe fonts** are fonts that are commonly **installed on most devices**. These include fonts like Arial, Times New Roman, and Courier New. Because these fonts are ubiquitous, you **can safely** use them in web design without worrying about compatibility.
+
+### Example with Web-Safe Fonts:
+
+```css
+body {
+  font-family: 'Times New Roman', serif;
+}
+```
+
+Web-safe fonts ensure consistent typography across different platforms, as they are available on most operating systems. However, relying solely on web-safe fonts can **limit your design choices**, which is why **custom fonts are often preferred**.
+
+---
+
+## Custom Fonts with `@font-face`
+
+If you want to use a specific font that may not be available on the user's device, you can use the `@font-face` rule to load a custom font from a **URL** or **local file**.
+
+**Syntax:**
+
+```css
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('path-to-font.woff2') format('woff2'),
+       url('path-to-font.woff') format('woff');
+}
+```
+
+- **font-family:** The name you want to assign to your custom font.
+- **src:** Specifies the location of the font file.
+
+### Example:
+```css
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/assets/fonts/OpenSans-Regular.woff2') format('woff2'),
+       url('/assets/fonts/OpenSans-Regular.woff') format('woff');
+}
+
+body {
+  font-family: 'OpenSans', sans-serif;
+}
+```
+
+This method ensures that the font will be downloaded from the server and used across all browsers, as long as the font files are properly hosted.
+
+---
+
+## Google Fonts Integration
+
+**Google Fonts** is a free and open-source collection of fonts that can be easily integrated into your website. The fonts are optimized for fast loading and can be added to your website using a `<link>` tag in the `<head>` section.
+
+### Steps:
+1. Visit [Google Fonts](https://fonts.google.com) and choose a font.
+2. Copy the `<link>` tag provided.
+3. Paste the `<link>` tag into the `<head>` section of your HTML document.
+4. Use the font in your CSS.
+
+### Example:
+
+1. Link to Google Fonts in HTML:
+
+```html
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+```
+
+2. Use the font in CSS:
+
+```css
+body {
+  font-family: 'Roboto', sans-serif;
+}
+```
+
+---

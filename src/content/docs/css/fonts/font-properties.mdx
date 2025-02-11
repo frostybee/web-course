@@ -1,0 +1,137 @@
+---
+title: Working with CSS Font Properties
+description: Working with CSS Font Properties
+sidebar:
+  label: 'CSS Font Properties'
+  order: 2
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+**CSS Font Properties**
+   - `font-family`
+   - `font-size`
+   - `font-weight`
+   - `font-style`
+   - `font-variant`
+   - `line-height`
+   - `letter-spacing`
+   - `text-transform`
+
+## Font Style and Variants
+
+### Font Style
+The `font-style` property defines the style of the font, such as normal, italic, or oblique.
+
+Example:
+```css
+em {
+    font-style: italic;
+}
+```
+
+### Font Variant
+The `font-variant` property is used to control features such as **small caps**, **alternate characters**, and others that might be supported by certain fonts.
+
+Example:
+```css
+small {
+    font-variant: small-caps;
+}
+```
+
+## Line Height and Letter Spacing
+
+### Line Height
+The `line-height` property controls the **space between lines** of text. You can set it in units such as `px`, `em`, or `rem`, or use a unitless value (which is a multiplier of the font size).
+
+Example:
+```css
+p {
+    line-height: 1.6; /* 1.6 times the font size */
+}
+```
+
+### Letter Spacing
+The `letter-spacing` property controls the **spacing between characters** in a text.
+
+Example:
+```css
+h1 {
+    letter-spacing: 1px;
+}
+```
+
+## Text Alignment and Transformation
+
+### Text Align
+The `text-align` property is used to set the **horizontal alignment** of text within a container.   
+Common values include:
+- `left`: Aligns text to the left.
+- `right`: Aligns text to the right.
+- `center`: Centers the text.
+- `justify`: Stretches text to fit the width of the container.
+
+Example:
+```css
+p {
+    text-align: justify;
+}
+```
+
+### Text Transformation
+The `text-transform` property is used to **control text casing**:
+- `uppercase`: Converts all letters to uppercase.
+- `lowercase`: Converts all letters to lowercase.
+- `capitalize`: Capitalizes the **first letter** of each word.
+
+Example:
+```css
+h2 {
+    text-transform: uppercase;
+}
+```
+
+## Font Rendering and Smoothing
+
+Some browsers and operating systems allow you to control font rendering and anti-aliasing. In CSS, you can use the `-webkit-font-smoothing` and `font-smooth` properties for smoother text rendering, particularly on macOS.
+
+Example:
+```css
+body {
+    -webkit-font-smoothing: antialiased; /* For Webkit-based browsers (e.g., Chrome, Safari) */
+    font-smooth: always; /* For Firefox */
+}
+```
+
+
+
+## Responsive Typography with `viewport` Units
+
+---
+
+You can make font sizes responsive to screen sizes using **relative** and **viewport units** (`vw`, `vh`, `em`, `rem`). This allows the text to scale appropriately based on the size of the viewport, providing a better user experience across different devices.
+
+Responsive typography ensures that your text looks good on all screen sizes. A common technique is using relative units like `em` or `rem` for font size. You can also use media queries to adjust font sizes based on the viewport.
+
+
+```css
+h1 {
+    font-size: 5vw; /* Font size will adjust to 5% of the viewport width */
+}
+```
+### Example using `rem` and Media Queries:
+
+```css
+body {
+  font-size: 16px; /* Base font size */
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: 18px; /* Larger font for bigger screens */
+  }
+}
+```

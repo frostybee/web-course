@@ -67,6 +67,12 @@ export default
             directory: "css/advanced",
           }
         },
+        {
+          label: "CSS Fonts",
+          autogenerate: {
+            directory: "css/fonts",
+          }
+        }
       ],
     },
     // JS Topics
