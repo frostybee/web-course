@@ -11,6 +11,10 @@ sidebar:
 ---
 
 ## What Is the CSS Box Model?
+- The CSS Box Model is the foundation of how HTML elements are displayed on a webpage.
+- Every HTML element is treated as a **rectangular box**, and the box model determines how the content, padding, borders, and margins of that element interact.
+- The box model defines how the elements' dimensions and space are calculated. It is essential for **managing layout** and **spacing**.
+
 
 ## Components of the CSS Box Model
 
@@ -22,7 +26,7 @@ The box model consists of **four main components**, from the inside out:
 
 2. **Padding**:
    - Padding is the **space between** the **content and the border**. It provides inner spacing within the box to ensure the content doesn't touch the border directly.
-   - Padding is **transparent** and can be adjusted individually for each side: **`padding-top`**, **`padding-right`**, **`padding-bottom`**, and **`padding-left`**.
+   - Padding is **transparent** and can be adjusted individually for **each side**: **`padding-top`**, **`padding-right`**, **`padding-bottom`**, and **`padding-left`**.
 
 3. **Border**:
    - The border **surrounds the padding** (if any) and **content**. It can have a width, color, and style (e.g., solid, dotted, dashed).
@@ -30,5 +34,88 @@ The box model consists of **four main components**, from the inside out:
 
 4. **Margin**:
    - The margin is the **outermost space** around the border, **separating** the element **from other elements** on the page.
-   - Margins are **transparent**, and like padding, they can be adjusted on each side: **`margin-top`**, **`margin-right`**, **`margin-bottom`**, and **`margin-left`**.
-   - The margin also helps with **positioning** and **spacing between** elements.
+   - Margins are **transparent**, and like padding, they can be adjusted on **each side**: **`margin-top`**, **`margin-right`**, **`margin-bottom`**, and **`margin-left`**.
+   - The margin also helps with **positioning** and **spacing between** elements. 
+
+## Computed Dimensions of an Element 
+
+The total **width** and **height** of an element are calculated as:
+
+- **Total width** = `width` + `padding-left` + `padding-right` + `border-left` + `border-right`
+- **Total height** = `height` + `padding-top` + `padding-bottom` + `border-top` + `border-bottom`
+
+## Box-sizing Property:
+
+- **`box-sizing`** property controls how the **total width** and **height** of an element are calculated.
+- By default, the `width` and `height` properties include only the **content area**. However, you can change this behavior using the `box-sizing` property:
+
+1. **`box-sizing: content-box;`** (**default**): The `width` and `height` are applied only to the content area.
+2. **`box-sizing: border-box;`**: The `width` and `height` include padding and border, so the total size of the element will stay within the specified dimensions.
+
+---
+
+## Box Model CSS properties
+
+| **Property**            | **Description**                                                                 | **Shorthand**                             | **Example**                                                   |
+|-------------------------|---------------------------------------------------------------------------------|-------------------------------------------|---------------------------------------------------------------|
+| `width`                 | Specifies the width of the content area.                                         | -                                         | `width: 200px;`                                               |
+| `height`                | Specifies the height of the content area.                                        | -                                         | `height: 150px;`                                              |
+| `padding`               | Controls the space between the content and the border. Can be set for each side. | `padding: top right bottom left;`         | `padding: 10px 20px 30px 40px;`                               |
+| `border`                | Defines the border around the content. Can include width, style, and color.      | `border: width style color;`              | `border: 2px solid red;`                                      |
+| `margin`                | Defines the space outside the border. Can be set for each side.                  | `margin: top right bottom left;`          | `margin: 10px 20px 30px 40px;`                                |
+| `box-sizing`            | Specifies how the total width and height are calculated (including padding/border). | -                                         | `box-sizing: border-box;`                                      |
+| `border-width`          | Sets the thickness of the border.                                                | `border-width: top right bottom left;`    | `border-width: 2px 4px 6px 8px;`                               |
+| `border-style`          | Defines the style of the border (e.g., solid, dotted, dashed).                   | `border-style: top right bottom left;`    | `border-style: solid dashed dotted double;`                     |
+| `border-color`          | Specifies the color of the border.                                               | `border-color: top right bottom left;`    | `border-color: red blue green yellow;`                         |
+| `padding-top`           | Specifies padding on the top of the content.                                     | -                                         | `padding-top: 10px;`                                           |
+| `padding-right`         | Specifies padding on the right of the content.                                   | -                                         | `padding-right: 20px;`                                         |
+| `padding-bottom`        | Specifies padding on the bottom of the content.                                  | -                                         | `padding-bottom: 30px;`                                        |
+| `padding-left`          | Specifies padding on the left of the content.                                    | -                                         | `padding-left: 40px;`                                          |
+| `margin-top`            | Specifies margin on the top of the element.                                      | -                                         | `margin-top: 10px;`                                            |
+| `margin-right`          | Specifies margin on the right of the element.                                    | -                                         | `margin-right: 20px;`                                          |
+| `margin-bottom`         | Specifies margin on the bottom of the element.                                   | -                                         | `margin-bottom: 30px;`                                         |
+| `margin-left`           | Specifies margin on the left of the element.                                     | -                                         | `margin-left: 40px;`                                           |
+
+### Examples:
+- **Padding Shorthand**:
+   ```css
+   padding: 10px 20px 30px 40px; 
+   /* top: 10px, right: 20px, bottom: 30px, left: 40px */
+   ```
+   
+- **Margin Shorthand**:
+   ```css
+   margin: 15px 25px 35px 45px; 
+   /* top: 15px, right: 25px, bottom: 35px, left: 45px */
+   ```
+
+- **Border Shorthand**:
+   ```css
+   border: 2px solid red; 
+   /* width: 2px, style: solid, color: red */
+   ```
+
+- **Box-Sizing**:
+   ```css
+   box-sizing: border-box; 
+   /* Includes padding and border in width/height */
+   ```
+
+### Examples of Two-Value Shorthand:
+
+- **Padding (Two Values)**:
+   ```css
+   padding: 10px 20px;
+   /* top and bottom padding: 10px, left and right padding: 20px */
+   ```
+
+- **Margin (Two Values)**:
+   ```css
+   margin: 15px 25px;
+   /* top and bottom margin: 15px, left and right margin: 25px */
+   ```
+
+:::tip
+- When you specify **two values** for `margin` or `padding`, the first value applies to the **top and bottom**, while the second value applies to the **left and right**.
+- If you provide **one value**, it applies to **all four sides** (top, right, bottom, left). When two values are given, the first applies vertically (top and bottom), and the second applies horizontally (left and right).
+:::
