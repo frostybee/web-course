@@ -68,6 +68,12 @@ export default
           }
         },
         {
+          label: "Box Model",
+          autogenerate: {
+            directory: "css/box-model",
+          }
+        },
+        {
           label: "CSS Fonts",
           autogenerate: {
             directory: "css/fonts",
