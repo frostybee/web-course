@@ -10,3 +10,63 @@ sidebar:
     variant: danger
 ---
 
+:::note
+- The CSS **[border properties](https://developer.mozilla.org/en-US/docs/Web/CSS/border)** are used to style the borders of HTML elements.
+- They control the **appearance** of the borders, including their **width**, **color**, and **style**.
+:::
+
+## CSS Border Properties
+- **`border`**: This [shorthand property](https://developer.mozilla.org/en-US/docs/Web/CSS/border) sets the width, style, and color of all four borders of an element in one declaration.
+   ```css
+   border: 2px solid #000;
+   ```
+
+- **`border-width`**: Specifies the width of the border. You can set different values for each side (top, right, bottom, left) or a single value for all sides.
+   ```css
+   border-width: 5px; /* all sides */
+   border-width: 5px 10px 15px 20px; /* top, right, bottom, left */
+   ```
+- **`border-style`**: Defines the style of the border, such as solid, dashed, dotted, double, groove, ridge, inset, or outset.
+   ```css
+   border-style: solid; /* solid border */
+   border-style: dashed; /* dashed border */
+   ```
+
+- **`border-color`**: Sets the color of the border. You can specify different colors for each side or a single color for all.
+   ```css
+   border-color: red; /* all sides */
+   border-color: red green blue yellow; /* top, right, bottom, left */
+   ```
+
+- **`border-top`, `border-right`, `border-bottom`, `border-left`**: These properties allow you to apply styles to individual borders (top, right, bottom, left).
+   ```css
+   border-top: 2px solid black;
+   border-right: 3px dashed green;
+   ```
+
+- **`border-radius`**: Rounds the corners of an element's border. You can specify one value for all corners or individual values for each corner.
+   ```css
+   border-radius: 10px; /* all corners */
+   border-radius: 10px 20px 30px 40px; /* top-left, top-right, bottom-right, bottom-left */
+   ```
+
+- **`border-image`**: This property allows you to use an image as the border of an element. It includes several sub-properties, such as `border-image-source`, `border-image-slice`, and `border-image-repeat`.
+   ```css
+   border-image: url(border-image.png) 30 round;
+   ```
+
+## Summary of CSS Border Properties
+
+| **Property**               | **Description**                                                                                      | **Example**                                 |
+|----------------------------|------------------------------------------------------------------------------------------------------|---------------------------------------------|
+| **`border`**               | **Shorthand** property for setting `border-width`, `border-style`, and `border-color` together.          | `border: 2px solid #000;`                  |
+| **`border-width`**         | Specifies the width of the border. Can be set for all sides or individually.                         | `border-width: 5px 10px 15px 20px;`        |
+| **`border-style`**         | Defines the style of the border (solid, dashed, dotted, etc.).                                        | `border-style: dashed;`                    |
+| **`border-color`**         | Sets the color of the border. Can be set for all sides or individually.                              | `border-color: red green blue yellow;`     |
+| **`border-top`**           | Specifies the style for the top border.                                                              | `border-top: 2px solid black;`             |
+| **`border-right`**         | Specifies the style for the right border.                                                            | `border-right: 3px dashed green;`          |
+| **`border-bottom`**        | Specifies the style for the bottom border.                                                           | `border-bottom: 1px dotted blue;`          |
+| **`border-left`**          | Specifies the style for the left border.                                                             | `border-left: 5px solid red;`              |
+| **`border-radius`**        | Rounds the corners of the border. Can be applied to all corners or individually.                    | `border-radius: 10px;`                     |
+| **`border-image`**         | Allows the use of an image as a border. Includes sub-properties like `border-image-source`.         | `border-image: url(border.png) 30 round;`  |
+
