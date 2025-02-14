@@ -9,10 +9,31 @@ sidebar:
     text: New
     variant: danger
 ---
+import { Aside } from '@astrojs/starlight/components';
 
 :::note
 - The CSS **[border properties](https://developer.mozilla.org/en-US/docs/Web/CSS/border)** are used to style the borders of HTML elements.
 - They control the **appearance** of the borders, including their **width**, **color**, and **style**.
+:::
+
+## Border Shorthand Property
+The **`border`** shorthand property allows you to set the **width**, **style**, and **color** of an element's border in a single declaration.
+
+**You need to provide three values:**
+1. **`border-width`**: Specifies the **width** of the border (such as `1px`, `medium`, `thick`).
+2. **`border-style`**: Defines the **style** of the border (like `solid`, `dashed`, `dotted`, or `none`).
+3. **`border-color`**: Sets the **color** of the border (such as `#000`, `red`, or `rgb(255, 0, 0)`).
+
+The syntax for the CSS **`border`** **shorthand property** is as follows:
+   ```css
+   border: 2px solid #000;
+   ```
+
+### Important Notes:
+:::tip
+- The **`border-style`** is **required** for the border to **be visible**. If you omit the style, the border **won't appear**, even if you provide a width and color.
+- All three values (`border-width`, `border-style`, and `border-color`) **are optional** in the shorthand. However, **`border-style`** is required; otherwise, the border will not appear.
+- The **`border`** shorthand can also be used for **individual sides** (top, right, bottom, left), allowing for **different borders** on each side of an element.
 :::
 
 ## CSS Border Properties
@@ -54,6 +75,35 @@ sidebar:
    ```css
    border-image: url(border-image.png) 30 round;
    ```
+### Examples:
+
+- **Basic Example**  
+   ```css
+   border: 2px solid black;
+   ```
+   - **`2px`** is the width of the border.
+   - **`solid`** is the border style.
+   - **`black`** is the color of the border.
+
+- **Border with Only Width and Style**  
+   ```css
+   border: 3px dashed;
+   ```
+   - **`3px`** is the width.
+   - **`dashed`** is the style, and the default border color (usually `black`) will be used.
+
+- **Border with Only Style**  
+   ```css
+   border: solid;
+   ```
+   - **`solid`** is the style. If you omit width and color, the default width will be `medium` (typically `3px`) and the default color will be `black`.
+
+- **Border with Width and Color Only**  
+   ```css
+   border: 5px red;
+   ```
+   - **`5px`** is the width.
+   - **`red`** is the color. The default style is `solid`.
 
 ## Summary of CSS Border Properties
 
