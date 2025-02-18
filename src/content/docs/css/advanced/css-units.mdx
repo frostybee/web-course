@@ -1,0 +1,62 @@
+---
+title: Working with CSS Units 
+description: CSS Units
+sidebar:
+  label: 'CSS Units'
+  order: 1
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## What Are CSS Units?
+
+- [CSS units](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#lengths) are used to specify the **measurements** for sizes, **lengths**, positions, and other properties on a webpage.
+- **Fixed units** and **relative units** are two broad categories of these units, each serving distinct purposes. 
+
+## Using CSS Units: Syntax
+To specify a unit in CSS, you simply follow the **property name** with **a value**, and **then append** the appropriate unit. Here's the basic syntax:
+
+```css
+property: value unit;
+```
+
+### Example:
+```css
+font-size: 16px;  /* 16 pixels */
+width: 5cm;       /* 5 centimeters */
+margin: 1in;      /* 1 inch */
+line-height: 1.5pt; /* 1.5 points */
+```
+
+- **property**: The CSS property (e.g., `border-width`, `font-size`, `width`, `margin`, etc.)
+- **value**: The numerical value (e.g., `16`, `5`, `1.5`)
+- **unit**: The unit of measurement (e.g., `px`, `cm`, `in`, `pt`)
+
+**Note:** Each unit corresponds to a specific measurement, and you use them based on what you're trying to style (like sizing, spacing, or positioning).
+
+## Fixed Units
+
+Fixed units are used when you want to define **precise measurements**, regardless of the surrounding elements or viewport size. These units **do not change** based on the context in which they are used.
+Common examples of fixed units include:
+
+### Pixels (px)
+- The pixel (**px**) is the most widely used **fixed unit**. It represents a **single point** on the screen (a pixel) and **is not affected** by the size of the screen or viewport. This makes it an ideal choice for specifying **exact sizes**.
+- **Use cases**:
+  - Setting precise element sizes (e.g., widths, heights).
+  - Defining **padding** and **margins**.
+  - Font size when you want consistent text size across all devices.
+
+The following table contains all the CSS fixed units. They are considered fixed units because they don't adjust **relative to other elements** or screen sizes.
+
+| **Unit**  | **Description**                                       | **Example**        |
+|-----------|-------------------------------------------------------|--------------------|
+| **px**    | Pixels, relative to the display resolution.           | `16px`             |
+| **cm**    | Centimeters, based on the physical size of the display. | `5cm`              |
+| **mm**    | Millimeters, based on the physical size of the display. | `10mm`             |
+| **in**    | Inches, based on the physical size of the display.    | `2in`              |
+| **pt**    | Points, 1 point is 1/72 of an inch.                   | `12pt`             |
+| **pc**    | Picas, 1 pica is 12 points.                          | `3pc`              |
+
+
