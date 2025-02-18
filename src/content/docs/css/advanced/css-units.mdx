@@ -11,9 +11,10 @@ sidebar:
 ---
 
 ## What Are CSS Units?
-
+:::note
 - [CSS units](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#lengths) are used to specify the **measurements** for sizes, **lengths**, positions, and other properties on a webpage.
 - **Fixed units** and **relative units** are two broad categories of these units, each serving distinct purposes. 
+:::
 
 ## Using CSS Units: Syntax
 To specify a unit in CSS, you simply follow the **property name** with **a value**, and **then append** the appropriate unit. Here's the basic syntax:
@@ -38,8 +39,9 @@ line-height: 1.5pt; /* 1.5 points */
 
 ## Fixed Units
 
-Fixed units are used when you want to define **precise measurements**, regardless of the surrounding elements or viewport size. These units **do not change** based on the context in which they are used.
-Common examples of fixed units include:
+- Fixed units are used when you want to define **precise measurements**, regardless of the surrounding elements or viewport size. These units **do not change** based on the context in which they are used.
+- Absolute units are more fixed and less flexible, making them less commonly recommended unless you need a specific, precise measurement.
+- The viewport is the user's **visible area** of a web page. 
 
 ### Pixels (px)
 - The pixel (**px**) is the most widely used **fixed unit**. It represents a **single point** on the screen (a pixel) and **is not affected** by the size of the screen or viewport. This makes it an ideal choice for specifying **exact sizes**.
@@ -48,11 +50,12 @@ Common examples of fixed units include:
   - Defining **padding** and **margins**.
   - Font size when you want consistent text size across all devices.
 
+### List of CSS Fixed Units
 The following table contains all the CSS fixed units. They are considered fixed units because they don't adjust **relative to other elements** or screen sizes.
 
 | **Unit**  | **Description**                                       | **Example**        |
 |-----------|-------------------------------------------------------|--------------------|
-| **px**    | Pixels, relative to the display resolution.           | `16px`             |
+| **px**    | Pixels, represents a specific number of pixels on the screen.           | `16px`             |
 | **cm**    | Centimeters, based on the physical size of the display. | `5cm`              |
 | **mm**    | Millimeters, based on the physical size of the display. | `10mm`             |
 | **in**    | Inches, based on the physical size of the display.    | `2in`              |
@@ -60,3 +63,136 @@ The following table contains all the CSS fixed units. They are considered fixed 
 | **pc**    | Picas, 1 pica is 12 points.                          | `3pc`              |
 
 
+## Relative Units
+
+- Relative units are based on the size of **some reference element** (such as the parent element, the viewport, or the root element) rather than having a fixed value. 
+- These units allow for **more flexible**, responsive designs that **adapt** to different screen sizes and devices.
+
+#### em:
+- **Description**: The `em` unit is relative to the font-size of the parent element. This makes `em` a powerful tool for creating scalable, hierarchical designs where child elements inherit a proportional size relative to their parent.
+- **Use cases**:
+  - Setting font sizes in relation to a parent''s font size.
+  - Defining margins, padding, and widths relative to text size.
+  
+**Example**:
+```css
+body {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 2em; /* 2 times the size of the parent (16px * 2 = 32px) */
+}
+
+p {
+  margin-top: 1em; /* Margin is equal to the font-size of the parent element */
+}
+```
+
+#### rem (Root em):
+- **Description**: `rem` is similar to `em`, but it's always relative to the **root element's** font-size (`<html>` or `<body>`). This unit is useful when you want consistent scaling across the entire page based on the root font-size.
+- **Use cases**:
+  - Defining consistent and scalable typography.
+  - Setting consistent margins and padding across the website.
+
+**Example**:
+```css
+html {
+  font-size: 16px; /* This is the base font-size */
+}
+
+h1 {
+  font-size: 2rem; /* 2 * 16px = 32px */
+}
+```
+
+#### Percentage (%):
+- **Description**: The percentage unit is relative to the **parent element's size**. It's commonly used for widths, heights, margins, padding, and positioning. This unit allows for fluid, responsive layouts.
+- **Use cases**:
+  - Setting widths and heights relative to the parent container.
+  - Defining fluid margins and paddings.
+  
+**Example**:
+```css
+.container {
+  width: 100%;
+}
+
+.child {
+  width: 50%; /* 50% of the parent's width */
+}
+```
+
+#### Viewport Width (vw) and Viewport Height (vh):
+- **Description**: These units are relative to the **dimensions** of the **viewport** (the visible area of the browser window). 
+  - 1vw is equal to 1% of the viewport width.
+  - 1vh is equal to 1% of the viewport height.
+  
+- **Use cases**:
+  - Creating full-screen layouts or elements that scale based on the browser window size.
+  - Setting typography sizes that scale with the viewport.
+  
+**Example**:
+```css
+.header {
+  height: 10vh; /* 10% of the viewport height */
+}
+
+.text {
+  font-size: 5vw; /* 5% of the viewport width */
+}
+```
+#### vw (Viewport Width) and vh (Viewport Height)
+
+- **Description**: These units are relative to the viewport’s width (vw) and height (vh). 
+  - 1vw is 1% of the width of the viewport
+  - 1vh is 1% of the height of the viewport
+  
+- **Use cases**: Great for creating layouts that need to adapt to viewport changes. Used for full-page designs and elements that scale proportionally.
+
+```css
+.header {
+  height: 100vh; /* Take up full height of the viewport */
+  font-size: 5vw; /* Font size adjusts relative to viewport width */
+}
+```
+
+### List of CSS Relative Units
+
+| **Unit**  | **Description**                                                                                   | **Example**            |
+|-----------|---------------------------------------------------------------------------------------------------|------------------------|
+| **em**    | Relative to the font-size of the element. 1em is equal to the current font size.                 | `1.5em` (1.5 times the current font size) |
+| **rem**   | Relative to the font-size of the root element (`<html>`). 1rem is equal to the root font size.   | `2rem` (2 times the root font size) |
+| **%**     | Relative to the parent element's size (for width, height, padding, margin, etc.).                 | `50%` (50% of the parent element's size) |
+| **ch**    | Relative to the width of the "0" (zero) character in the current font.                           | `10ch` (10 characters wide) |
+| **ex**    | Relative to the height of the lowercase letter "x" in the current font.                          | `5ex` (5 times the height of "x") |
+| **lh**    | Relative to the line height of the element (if defined).                                         | `2lh` (2 times the line height) |
+
+---
+
+### List of Viewport Units
+
+| **Unit**  | **Description**                                                                                   | **Example**            |
+|-----------|---------------------------------------------------------------------------------------------------|------------------------|
+| **vw**    | Relative to 1% of the viewport's width.                                                          | `10vw` (10% of the viewport width) |
+| **vh**    | Relative to 1% of the viewport's height.                                                         | `5vh` (5% of the viewport height) |
+| **vmin**  | Relative to the smaller of the viewport's width or height.                                       | `10vmin` (10% of the smaller dimension) |
+| **vmax**  | Relative to the larger of the viewport's width or height.                                        | `15vmax` (15% of the larger dimension) |
+
+## Key Differences between Fixed and Relative Units
+
+| **Fixed Units** | **Relative Units** |
+|-----------------|---------------------|
+| Do not change based on the surrounding elements or screen size | Adapt to their parent element or viewport size |
+| Pixels (px), points (pt), inches (in), centimeters (cm) | Percentages (%), em, rem, vw, vh |
+| Best for precise, consistent layouts | Best for flexible, responsive layouts |
+
+## Best Practices
+
+:::tip
+- **Typography**: Use `rem` or `em` for font sizes. This ensures that text **scales properly** across devices and allows users to change the default font size in the browser settings.  
+- **Layouts**: Use `vw`, `vh`, `%`, and `em` to create fluid layouts. Avoid using **fixed pixel** widths for large containers or elements that should **adjust based** on screen size.
+- **Padding and Margins**: Consider using `em` or `rem` for padding and margin values. This ensures that spacing remains proportional to font sizes.
+- **Viewport-based Layouts**: For full-screen or full-width sections, use `100vw` or `100vh` to make sure the element takes up the entire viewport.
+- **Flexibility**: When designing responsive layouts, combine relative and fixed units strategically. For instance, use `%` or `vw` for widths and heights, but `px` for very specific spacing or borders.
+:::
