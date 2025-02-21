@@ -74,6 +74,12 @@ export default
           }
         },
         {
+          label: "CSS Layout",
+          autogenerate: {
+            directory: "css/layout",
+          }
+        },
+        {
           label: "CSS Fonts",
           autogenerate: {
             directory: "css/fonts",

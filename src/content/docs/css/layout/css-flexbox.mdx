@@ -1,0 +1,192 @@
+---
+title: CSS Layout  
+description: CSS Layout
+sidebar:
+  label: 'CSS Flexbox'
+  order: 1
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## CSS Flexbox 
+:::note
+- Flexbox (Flexible Box Layout) is a CSS **layout model** designed to help distribute space along a **single axis** (either **horizontally** or **vertically**) and align items efficiently within **a container**. 
+- It provides **better control** over alignment, spacing, and responsiveness compared to traditional layout methods like floats or inline-block.
+:::
+
+### Online Resources
+- [Flexbox Froggy](https://flexboxfroggy.com/)
+- [CSS Flexbox Layout Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Flexbox Layout Patterns](https://tobiasahlin.com/blog/common-flexbox-patterns/)
+
+
+
+## How Flexbox Works
+:::tip
+- Flexbox operates on a **parent-child relationship** model. When applied, The parent element becomes a **flex container**, while its immediate children become **flex items**. This relationship forms the foundation of the Flexbox layout system.
+:::
+**Flexbox consists of two main elements:**
+1. **Flex container**: The **parent** element that holds the flex items.
+2. **Flex items**: The **child** elements inside the container that are laid out using flexbox properties.
+
+### Main Axis & Cross Axis:
+1. **Main Axis**: The primary axis along which the flex items are laid out. By default, it's horizontal (left to right), but it can be changed to vertical using `flex-direction`.
+2. **Cross Axis**: The axis perpendicular to the main axis. If the main axis is horizontal, the cross axis will be vertical, and vice versa.
+
+
+## Setting Up a Flex Container
+
+To enable Flexbox on a container, use the `display` property:
+
+```css
+.container {
+    display: flex; /* or inline-flex */
+}
+```
+- `flex`: The container behaves as a **block-level** element.
+- `inline-flex`: The container behaves as **an inline** element.
+
+## Flex Container Properties
+
+:::tip
+These properties control the **layout** and **alignment** of the flex container.
+:::
+
+### `flex-direction`
+
+Defines the direction in which the flex items are placed inside the container. This property is key for controlling the layout's flow (row, column, or reversed).
+
+```css
+.container {
+    flex-direction: row;  /* Default. Left to right */
+    /* Other options: */
+    flex-direction: row-reverse;  /* Right to left */
+    flex-direction: column;  /* Top to bottom */
+    flex-direction: column-reverse;  /* Bottom to top */
+}
+```
+1. **`flex-direction`**: Determines the direction of the main axis.
+    - `row` (default): Items are laid out horizontally.
+    - `column`: Items are laid out vertically.
+    - `row-reverse`/`column-reverse`: Reverses the direction of the layout.
+
+2. **`flex-wrap`**: Controls whether the flex items should wrap onto multiple lines if there's not enough space.
+    - `nowrap` (default): Items will stay in a single line.
+    - `wrap`: Items will wrap onto a new line.
+    - `wrap-reverse`: Items will wrap in the opposite direction.
+
+3. **`justify-content`**: Aligns flex items along the main axis.
+    - `flex-start`: Items are packed to the start of the container.
+    - `flex-end`: Items are packed to the end.
+    - `center`: Items are centered in the container.
+    - `space-between`: Items are spaced evenly, with the first item at the start and the last at the end.
+    - `space-around`: Items are spaced evenly, with space around each item.
+
+4. **`align-items`**: Aligns flex items along the cross axis (perpendicular to the main axis).
+    - `flex-start`: Items are aligned at the start of the container.
+    - `flex-end`: Items are aligned at the end.
+    - `center`: Items are centered.
+    - `stretch` (default): Items stretch to fill the container.
+    - `baseline`: Items align along their baseline.
+
+5. **`align-content`**: Aligns lines of flex items (if wrapping occurs) along the cross axis.
+    - Similar values to `align-items`, but it affects multiple lines of items when wrapping is enabled.
+
+## Flexbox Properties for the Items:
+:::tip
+These properties apply to **individual flex items** inside the flex container.
+:::
+
+#### **4.1. `flex-grow`**
+
+Defines the ability of a flex item to grow relative to other flex items inside the container.
+
+```css
+.item {
+    flex-grow: 1;  /* The item will take up available space */
+    flex-grow: 0;  /* The item will not grow */
+}
+```
+
+#### **4.2. `flex-shrink`**
+
+Controls the ability of a flex item to shrink when the container is too small.
+
+```css
+.item {
+    flex-shrink: 1;  /* The item will shrink */
+    flex-shrink: 0;  /* The item will not shrink */
+}
+```
+
+#### **4.3. `flex-basis`**
+
+Defines the initial size of a flex item before it starts growing or shrinking. It can be set as a specific value (e.g., px, %, em, etc.) or `auto` (based on the item’s content).
+
+```css
+.item {
+    flex-basis: 200px;  /* Start with 200px */
+    flex-basis: auto;  /* Use the item's natural size */
+}
+```
+
+#### **4.4. `flex` (Shorthand)**
+
+The `flex` property is a shorthand for `flex-grow`, `flex-shrink`, and `flex-basis`.
+
+```css
+.item {
+    flex: 1; /* Equivalent to flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+    flex: 0 1 200px;  /* flex-grow, flex-shrink, flex-basis */
+}
+```
+
+#### **4.5. `align-self`**
+
+Allows individual flex items to override the `align-items` property of the container.
+
+```css
+.item {
+    align-self: auto;  /* Inherits from container */
+    align-self: flex-start;  /* Aligns item at the start */
+    align-self: flex-end;    /* Aligns item at the end */
+    align-self: center;      /* Aligns item in the center */
+    align-self: baseline;    /* Aligns item based on baseline */
+    align-self: stretch;     /* Stretches item */
+}
+```
+---
+
+## Example Layout:
+```html
+<div class="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+</div>
+```
+
+```css
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+    padding: 20px;
+    background-color: lightblue;
+}
+```
+
+In this example:
+- The container uses `display: flex` to activate the flexbox layout.
+- `justify-content: space-between` ensures the items are spaced evenly along the main axis (horizontal by default).
+- `align-items: center` centers the items vertically within the container.
+- `flex-wrap: wrap` makes the items wrap onto a new line if needed.
