@@ -1,0 +1,214 @@
+---
+title: Working with HTML Tables
+description: Working with HTML Tables
+sidebar:
+  label: 'HTML Tables'
+  order: 3
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## What Is an HTML Table?
+---
+
+:::note
+- **[HTML tables](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics)** are used to **structure** and **display** data in a **tabular format** on web pages. 
+- Data is arranged in rows and columns, with each row containing one or more cells, similar to **a spreadsheet**.
+- These tables are defined using HTML `<table>` tags.
+:::
+
+## Basic Structure of an HTML Table
+---
+
+### HTML Table Elements
+
+An **[HTML tables](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics)** is built using a set of specific HTML elements that define the table's structure:
+
+- **`<table>`**: This tag defines the entire table.
+- **`<tr>`**: This stands for **table row** and is used to define a row within the table.
+- `<th>`: Stands for **table header** and is used to define a **header cell** (typically bold and centered by default).
+- **`<td>`**: This defines a table data cell. It holds the actual content for each row and column in the table.
+- **`<thead>`, `<tbody>`, `<tfoot>`**: These are **optional elements** used to group the table header, body, and footer respectively, which can help with **styling** and **organizing content**.
+
+### The `<thead>` section (Header)
+:::tip
+- The **number of columns** is typically **determined** by **the number of** **`<th>`** elements in the **first row** of the `<thead>`. This row often defines the table's column headers.
+- Each row should ideally have the **same number** of `<th>` or `<td>` elements to maintain a consistent structure across the table.
+:::
+
+### **Consistency Across Rows**
+:::tip
+- Every subsequent row (`<tr>`) in the `<tbody>` or `<tfoot>` sections **should have the same number** of **`<td>`** elements as the **number of** **`<th>`** elements in the header row. 
+- This ensures that each data cell corresponds correctly with the headers.
+:::
+
+- If a row has fewer `<td>` or `<th>` elements than another row, it might cause **layout issues** or **misalignment** in the table.
+- If a row has more `<td>` or `<th>` elements, the table structure might **appear broken** or **incorrectly formatted**.
+
+**Example:**
+```html title='Basic structure of an HTML table'
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>30</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <td>Jane Smith</td>
+      <td>25</td>
+      <td>Canada</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">End of Table</td>
+    </tr>
+  </tfoot>
+</table>
+```
+---
+
+### Adding Row and Column Spans
+
+You can **merge** or **span cells** across multiple rows or columns using the **`colspan`** and **`rowspan`** attributes.
+
+- **`colspan`**: This attribute allows a cell to span across multiple **columns**.
+- **`rowspan`**: This attribute allows a cell to span across multiple **rows**.
+
+Example:
+
+```html
+<table>
+  <tr>
+    <th rowspan="2">Name</th>
+    <th>Age</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td colspan="2">Information</td>
+  </tr>
+  <tr>
+    <td>John Doe</td>
+    <td>30</td>
+    <td>USA</td>
+  </tr>
+</table>
+```
+
+In this example, the first `<th>` (Name) spans two rows, and the second row's `<td>` spans two columns.
+
+---
+
+## Table Styling
+
+- Tables can be styled using CSS to improve **their appearance**. Here are some common styles to apply:
+- For more details: [MDN CSS Table Styling](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Tables)
+
+### Basic Styling
+
+```html
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+    <tr>
+      <th style="border: 1px solid black; padding: 8px; text-align: left;">Name</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left;">Age</th>
+      <th style="border: 1px solid black; padding: 8px; text-align: left;">Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid black; padding: 8px;">John Doe</td>
+      <td style="border: 1px solid black; padding: 8px;">30</td>
+      <td style="border: 1px solid black; padding: 8px;">USA</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### External CSS Styling
+
+It's recommended to separate styles from content by using **external** or **internal** CSS:
+
+```html
+<head>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #e2e2e2;
+    }
+  </style>
+</head>
+```
+
+- **`border-collapse`**: Makes the table borders collapse into a single line.
+- **`nth-child(even)`**: Adds a background color to every even row for a striped effect.
+- **`:hover`**: Changes the background color when the user hovers over a row.
+
+---
+
+## Advanced Table Features
+
+### Accessibility
+
+For better accessibility, use the `<caption>` tag to add a title to the table, and `<th>` for headers with the `scope` attribute.
+
+```html
+<table>
+  <caption>Employee Information</caption>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>30</td>
+      <td>Marketing</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### Fixed Header Tables
+
+For long tables, it's often useful to keep the header visible while scrolling. This can be done with CSS.
+
+```css
+thead {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+}
+```

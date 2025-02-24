@@ -44,12 +44,19 @@ export default
           }
         },
         {
+          label: "Structuring Content",
+          autogenerate: {
+            directory: "html/structuring",
+          }
+        },
+        {
           label: "Cheatsheet",
           items: ['html/cheatsheet']
         }
       ],
     },
     // CSS Topics
+    //-------------------------
     {
       label: "CSS",
       link: "/css",
@@ -88,6 +95,7 @@ export default
       ],
     },
     // JS Topics
+    //-------------------------
     {
       label: "JavaScript",
       link: "/javascript",
