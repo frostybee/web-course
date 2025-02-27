@@ -1,0 +1,248 @@
+---
+title: CSS Media Query  
+description: CSS Media Query
+sidebar:
+  label: 'Media Query'
+  order: 3
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## What Are CSS Media Queries?
+---
+
+:::note
+- CSS Media queries let you **apply specific CSS rules** to a webpage **based on certain conditions**, like the characteristics of the **device displaying** the content, such as the viewport width, height, screen resolution, the **size of the screen**, device type, or even whether it's being viewed in **portrait** or **landscape** mode. 
+- They allow you to create **adaptive layouts**, adjust content based on device characteristics, and ensure that users have a smooth experience no matter what device they are using.
+:::
+
+## Basic Syntax of Media Queries
+---
+
+The basic syntax of a CSS media query is:
+
+```css
+@media [media-type] and (condition) {
+  /* CSS rules */
+}
+```
+
+- **`@media`**: The keyword that starts the media query.
+- **`[media-type]`**: Optional. Specifies the type of device (screen, print, etc.).
+- **`and`**: Combines multiple conditions (optional).
+- **`(condition)`**: Specifies the condition for the query (e.g., max-width, min-height, width of the viewport, resolution, orientation).
+
+### Example:
+
+In the following example, the background color of the body will change to light blue only if the viewport width is 600px or smaller.
+
+```css
+@media screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+```
+
+## Common Use Cases of Media Queries
+---
+:::tip
+1. **Responsive Layouts:** Change the number of columns or layout structure based on **screen size** (e.g., one column for small screens and multiple columns for larger screens).
+2. **Font size adjustments:** Adjust font sizes for readability on various devices.
+3. **Visibility of elements:** Show or hide specific elements depending on the device (e.g., a mobile-friendly menu might be hidden on desktop and shown on mobile).
+4. **Orientation-based styles:** Adjust the layout when the device is in **portrait** or **landscape** orientation.
+:::
+---
+
+## Types of Media Features
+
+Media queries can target various media features. Some of the most commonly used features include:
+
+### 1. **Width and Height**
+   - **`width`**: The width of the viewport (or device screen).
+   - **`height`**: The height of the viewport (or device screen).
+
+### 2. **Min-width and Max-width**
+   - **`min-width`**: Specifies the minimum width of the viewport.
+   - **`max-width`**: Specifies the maximum width of the viewport.
+
+These are the **most commonly used features** for responsive design, allowing you to target devices based on their screen size.
+
+### 3. **Orientation**
+   - **`orientation`**: Defines whether the device is in portrait or landscape mode.
+
+   ```css
+   @media (orientation: portrait) { ... }
+   @media (orientation: landscape) { ... }
+   ```
+
+### 4. **Resolution**
+   - **`resolution`**: Specifies the resolution of the device, which is useful for high-DPI (dots per inch) screens like Retina displays.
+
+   ```css
+   @media (min-resolution: 192dpi) { ... }
+   ```
+
+### 5. **Aspect Ratio**
+   - **`aspect-ratio`**: Specifies the aspect ratio of the device’s screen.
+
+   ```css
+   @media (max-aspect-ratio: 16/9) { ... }
+   ```
+
+---
+
+## Media Query Ranges
+
+You can use `min-width` and `max-width` to create responsive ranges that define the different breakpoints for different screen sizes. This technique is often used in responsive web design to ensure your layout adapts at specific intervals.
+
+### Example:
+
+```css
+/* Styles for small screens */
+@media (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+/* Styles for medium screens */
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+/* Styles for large screens */
+@media (min-width: 1025px) {
+  body {
+    background-color: lightcoral;
+  }
+}
+```
+
+---
+
+## Using Media Queries with CSS
+
+You can write media queries directly within a CSS file, or you can include them in an external stylesheet. Below is an example of a media query applied within a CSS file:
+
+```css
+/* Default styles for larger screens */
+body {
+  font-size: 18px;
+  background-color: lightgray;
+}
+
+/* Styles for smaller screens */
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+    background-color: lightblue;
+  }
+}
+```
+
+In the above example, the body font size and background color change depending on the screen width.
+
+---
+
+## Best Practices for Media Queries
+
+### 1. **Mobile-First Approach**
+   - Start by designing your layout for the smallest devices first, and then use media queries to adapt it for larger devices.
+   - Example:
+     ```css
+     body {
+       font-size: 14px;
+     }
+
+     /* Larger screens */
+     @media (min-width: 600px) {
+       body {
+         font-size: 18px;
+       }
+     }
+     ```
+
+### 2. **Minimize Breakpoints**
+   - Use as few breakpoints as possible to keep the CSS maintainable.
+   - Start with basic ranges (e.g., 600px, 1024px) and refine from there if needed.
+
+### 3. **Avoid Overloading Styles**
+   - Don’t define styles in every media query unless necessary; instead, override only the properties that need adjusting.
+
+### 4. **Use Relative Units**
+   - Use relative units (e.g., `em`, `rem`, `vw`, `vh`) for font sizes, margins, paddings, etc., to make your layout more flexible.
+
+---
+
+## Examples of Media Queries
+
+Here are some examples of common media queries used in responsive web design:
+
+### 1. **Mobile-First Design**
+```css
+/* Mobile-first styles */
+body {
+  font-size: 14px;
+  background-color: lightgray;
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: 16px;
+    background-color: lightgreen;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+    background-color: lightblue;
+  }
+}
+```
+
+### 2. **Portrait vs. Landscape Orientation**
+```css
+@media (orientation: portrait) {
+  .sidebar {
+    display: block;
+  }
+}
+
+@media (orientation: landscape) {
+  .sidebar {
+    display: none;
+  }
+}
+```
+
+### 3. **High-DPI Devices (Retina Displays)**
+```css
+@media only screen and (min-resolution: 192dpi) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+```
+
+## Combining Multiple Media Queries
+---
+You can also combine multiple media queries using the `and`, `or`, and `not` operators to create more specific conditions.
+
+### Example:
+```css
+@media screen and (max-width: 800px) and (orientation: landscape) {
+  body {
+    background-color: lightgreen;
+  }
+}
+```
+
+---
+
