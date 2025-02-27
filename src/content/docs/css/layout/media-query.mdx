@@ -243,6 +243,37 @@ You can also combine multiple media queries using the `and`, `or`, and `not` ope
   }
 }
 ```
-
 ---
 
+## Sizes of Various Device Screens
+
+Below is a table listing the sizes of various device screens in pixels commonly used in CSS responsive design. This is based on common screen resolutions and device types:
+
+| **Device**               | **Screen Resolution (Width x Height)** | **Device Type**      | **CSS Media Query Range**             |
+|--------------------------|----------------------------------------|----------------------|---------------------------------------|
+| **iPhone 12/13/14**       | 1170 x 2532                            | Mobile               | max-width: 767px                      |
+| **iPhone SE (2nd Gen)**   | 750 x 1334                             | Mobile               | max-width: 767px                      |
+| **iPhone 6/7/8**          | 750 x 1334                             | Mobile               | max-width: 767px                      |
+| **iPhone X/XS**           | 1125 x 2436                            | Mobile               | max-width: 767px                      |
+| **Samsung Galaxy S20**    | 1440 x 3200                            | Mobile               | max-width: 767px                      |
+| **Pixel 5**               | 1080 x 2340                            | Mobile               | max-width: 767px                      |
+| **iPad Mini (5th Gen)**   | 768 x 1024                             | Tablet               | 768px - 1024px                        |
+| **iPad (8th Gen)**        | 810 x 1080                             | Tablet               | 768px - 1024px                        |
+| **iPad Air (4th Gen)**    | 820 x 1180                             | Tablet               | 768px - 1024px                        |
+| **iPad Pro 11"**          | 834 x 1194                             | Tablet               | 768px - 1024px                        |
+| **iPad Pro 12.9"**        | 1024 x 1366                            | Tablet               | 768px - 1024px                        |
+| **MacBook Air (13")**     | 2560 x 1600                            | Laptop/PC            | min-width: 1025px                     |
+| **MacBook Pro (13")**     | 2560 x 1600                            | Laptop/PC            | min-width: 1025px                     |
+| **Dell XPS 13**           | 1920 x 1080                            | Laptop/PC            | min-width: 1025px                     |
+| **MacBook Pro (16")**     | 3072 x 1920                            | Laptop/PC            | min-width: 1025px                     |
+| **Microsoft Surface Pro** | 2736 x 1824                            | Laptop/Tablet Hybrid | min-width: 1025px                     |
+| **Samsung Galaxy Tab S7** | 1600 x 2560                            | Tablet               | 768px - 1024px                        |
+| **Desktop (Full HD)**     | 1920 x 1080                            | Desktop              | min-width: 1025px                     |
+| **Desktop (4K)**          | 3840 x 2160                            | Desktop              | min-width: 1025px                     |
+
+### Media Queries for CSS (Examples):
+- **Mobile Devices (portrait)**: `max-width: 767px`
+- **Tablets (portrait)**: `min-width: 768px` and `max-width: 1024px`
+- **Laptops & Desktops**: `min-width: 1025px`
+
+This table is useful for creating responsive designs that adapt to various device sizes.
