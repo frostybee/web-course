@@ -1,0 +1,314 @@
+---
+title: HTML Forms
+description: Working with HTML Forms
+sidebar:
+  label: 'Web Forms'
+  order: 1
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+
+## What Are Web Forms?
+---
+
+- HTML forms are the primary way websites **collect information** (as input data) from users, which can then be processed by a server. 
+- Forms can contain **various elements** (called from controls) like text fields, checkboxes, radio buttons, and more. 
+- When a user submits a form, the browser collects the data and sends it to the server specified in the form's attributes.
+- Forms are used for various purposes, including user registration, login, contact forms, order forms, and more.
+
+## Basic Form Structure
+
+Every HTML form begins with the **`<form>`** element, which serves as a container for all form controls:
+
+```html
+<form action="server-endpoint" method="POST">
+  <!-- Form elements go here -->
+  <input type="submit" value="Submit">
+</form>
+```
+
+### Key Attributes for Forms
+
+- **action**: Specifies the URI or server endpoint to which the form data will be sent for processing. 
+- **method**: Determines how the form data will be sent to the server. Common methods are:
+  - `GET`: Data is appended to the URL, visible in the browser's address bar (not suitable for sensitive data).
+  - `POST`: Data is sent in the body of the request, more secure for sensitive or large amounts of data.
+  
+**Example:**
+
+```html
+<form action="/submit-form" method="post">
+    <!-- Form controls go here -->
+    <input type="text" name="username">
+    <input type="submit" value="Submit">
+</form>
+```
+## Form Input Types
+
+HTML offers a wide variety of input types to collect different kinds of data:
+
+### Text Inputs
+```html
+<!-- Simple text input -->
+<input type="text" name="username" placeholder="Enter your username">
+
+<!-- Password field (masks input) -->
+<input type="password" name="password" placeholder="Enter your password">
+
+<!-- Multi-line text area -->
+<textarea name="comments" rows="4" cols="50">Enter your comments here...</textarea>
+```
+
+### Selection Inputs
+```html
+<!-- Dropdown select menu -->
+<select name="country">
+    <option value="us">United States</option>
+    <option value="ca">Canada</option>
+    <option value="mx">Mexico</option>
+</select>
+
+<!-- Radio buttons (single choice from group) -->
+<input type="radio" name="gender" value="male" id="male">
+<label for="male">Male</label>
+<input type="radio" name="gender" value="female" id="female">
+<label for="female">Female</label>
+
+<!-- Checkboxes (multiple choices) -->
+<input type="checkbox" name="interests" value="sports" id="sports">
+<label for="sports">Sports</label>
+<input type="checkbox" name="interests" value="music" id="music">
+<label for="music">Music</label>
+```
+
+### HTML5 Specialized Inputs
+```html
+<!-- Email with validation -->
+<input type="email" name="email" placeholder="Enter your email">
+
+<!-- Number with min/max -->
+<input type="number" name="quantity" min="1" max="5">
+
+<!-- Date picker -->
+<input type="date" name="birthday">
+
+<!-- Color picker -->
+<input type="color" name="favorite_color">
+
+<!-- Range slider -->
+<input type="range" name="volume" min="0" max="100" value="50">
+
+<!-- URL with validation -->
+<input type="url" name="website" placeholder="Enter your website">
+
+<!-- Search field -->
+<input type="search" name="search" placeholder="Search...">
+
+<!-- Telephone number -->
+<input type="tel" name="phone" placeholder="123-456-7890">
+```
+
+### Buttons
+```html
+<!-- Submit button -->
+<input type="submit" value="Submit Form">
+
+<!-- Reset button (clears form) -->
+<input type="reset" value="Clear Form">
+
+<!-- Generic button (for JavaScript) -->
+<button type="button" onclick="doSomething()">Click Me</button>
+```
+
+### File Upload
+```html
+<!-- File selector -->
+<input type="file" name="document">
+
+<!-- Multiple file selector -->
+<input type="file" name="photos" multiple>
+```
+
+### Hidden Fields
+```html
+<!-- Hidden data (not visible to user) -->
+<input type="hidden" name="user_id" value="12345">
+```
+
+## Form Attributes
+
+Forms and form elements can have various attributes that control their behavior:
+
+### Form Element Attributes
+```html
+<form 
+    action="/process" 
+    method="post" 
+    enctype="multipart/form-data" 
+    autocomplete="on" 
+    novalidate 
+    target="_self">
+    <!-- Form content -->
+</form>
+```
+
+- `action`: URL where form data is sent
+- `method`: HTTP method ("get" or "post")
+- `enctype`: How form data is encoded (required for file uploads)
+- `autocomplete`: Browser should offer completion suggestions
+- `novalidate`: Disables browser's built-in validation
+- `target`: Where to display the response (`_self`, `_blank`, etc.)
+
+### Input Element Attributes
+```html
+<input 
+    type="text" 
+    name="username" 
+    id="username" 
+    value="default value" 
+    placeholder="Enter username" 
+    required 
+    disabled 
+    readonly 
+    autofocus 
+    minlength="3" 
+    maxlength="20"
+    pattern="[A-Za-z0-9]+"
+    aria-label="Username">
+```
+
+- `type`: What kind of input it is
+- `name`: Identifier used when submitting data
+- `id`: Unique identifier for the element (for labels and CSS)
+- `value`: Default or current value
+- `placeholder`: Hint text displayed when empty
+- `required`: Field must be filled before submission
+- `disabled`: Field cannot be used
+- `readonly`: Field cannot be modified
+- `autofocus`: Field gets focus when page loads
+- `minlength`/`maxlength`: Minimum/maximum text length
+- `pattern`: Regular expression for validation
+- `aria-*`: Accessibility attributes
+
+
+## Form Styling with CSS
+
+Plain HTML forms are functional but often unattractive. CSS allows you to create visually appealing forms:
+
+```css
+/* Basic styling for a cleaner form */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Style all text inputs and textareas */
+input[type=text], input[type=email], input[type=password], textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+/* Style for submit button */
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+/* Style for focus state */
+input:focus, textarea:focus, select:focus {
+    border-color: #2684FF;
+    box-shadow: 0 0 0 2px rgba(38,132,255,0.2);
+    outline: none;
+}
+
+/* Style for form groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Style for checkboxes and radio buttons */
+.checkbox-group, .radio-group {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.checkbox-group input, .radio-group input {
+    margin-right: 10px;
+}
+```
+## Accessibility Considerations
+
+Making forms accessible ensures everyone can use them, including people with disabilities:
+
+### Labels and Associations
+
+The **`for`** attribute in a **`<label>`** element is used to **associate** the label with a specific form element. When the **`for`** attribute is set, it specifies which input element the label is describing or controls.
+
+- For example, if you have a form input for a username, you would use the `for="username"` in the `<label>` to associate the label with the input field that has the `id="username"`. 
+
+#### Purpose:
+- **Improved Usability**: Clicking the label will focus on the associated input field.
+- **Accessibility**: Screen readers use the `for` attribute to associate the label with the input field, making it easier for users with disabilities to understand and interact with the form.
+
+```html
+<!-- Explicit label association -->
+<label for="username">Username:</label>
+<input type="text" id="username" name="username">
+
+<!-- Fieldset and legend for grouping related inputs -->
+<fieldset>
+    <legend>Contact Information</legend>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+</fieldset>
+```
+
+### ARIA Attributes
+```html
+<!-- Required field with aria-required -->
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required aria-required="true">
+
+<!-- Error messages with aria-describedby -->
+<div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" aria-describedby="password-error">
+    <div id="password-error" class="error-message" role="alert"></div>
+</div>
+
+<!-- Using aria-live to announce validation results -->
+<div aria-live="polite" id="form-feedback"></div>
+```

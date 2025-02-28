@@ -50,6 +50,12 @@ export default
           }
         },
         {
+          label: "Web Forms",
+          autogenerate: {
+            directory: "html/forms",
+          }
+        },
+        {
           label: "Cheatsheet",
           items: ['html/cheatsheet']
         }
