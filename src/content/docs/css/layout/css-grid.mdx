@@ -133,6 +133,17 @@ This creates a middle column that:
 - Will never be larger than 500px
 - Will grow and shrink within those constraints
 
+:::tip
+You can use the `minmax()` function to create flexible grid tracks that **adapt to content**.
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 1fr) 2fr;
+}
+```
+- This means the **second column** will have a minimum width of 200px but can expand to take up remaining space.
+:::
+
 ### Auto-Fill and Auto-Fit
 
 For responsive design, `auto-fill` and `auto-fit` are useful:
@@ -174,8 +185,233 @@ For implicitly created grid tracks:
 - `1fr 2fr 1fr` means the grid will have three columns. The first and third columns will take **1 fraction** of available space each, while the second column will take **2 fractions**.
 - `auto` means the row height will **adjust automatically** based on the content.
 
----
 
+## Placing Items on the Grid
+---
+Once your grid is defined, you can position grid items using various methods:
+
+### Placing Items by Grid Lines
+
+Grid lines are automatically numbered starting from 1:
+
+```css
+.item {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+```
+
+This places the item:
+- From column line 1 to column line 3 (spanning 2 columns)
+- From row line 2 to row line 4 (spanning 2 rows)
+
+#### Using Shorthand Properties
+
+```css
+.item {
+  grid-column: 1 / 3;  /* Start at line 1, end at line 3 */
+  grid-row: 2 / 4;     /* Start at line 2, end at line 4 */
+}
+```
+
+Even shorter using the unified `grid-area` property:
+
+```css
+.item {
+  /* Format: row-start / column-start / row-end / column-end */
+  grid-area: 2 / 1 / 4 / 3;
+}
+```
+
+### Using the span Keyword
+
+```css
+.item {
+  grid-column: 1 / span 2;  /* Start at line 1 and span 2 columns */
+  grid-row: span 2 / 4;     /* End at line 4 and span 2 rows upward */
+}
+```
+
+### Negative Line Numbers
+
+You can count grid lines from the end using negative numbers:
+
+```css
+.item {
+  grid-column: 1 / -1;  /* Spans from first line to last line */
+}
+```
+### Placing Items by Grid Areas
+
+You can also assign a **name** to **grid areas** and place grid items in those areas:
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 
+    "header header header"
+    "sidebar content aside"
+    "footer footer footer";
+  height: 100vh;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.aside { grid-area: aside; }
+.footer { grid-area: footer; }
+```
+
+This creates a classic page layout with header, footer, main content and sidebars.
+
+### Empty Cells
+
+You can leave cells empty using a period (`.`):
+
+```css
+grid-template-areas: 
+  "header header header"
+  "sidebar content . "
+  "footer footer footer";
+```
+In this example, the top-right cell in the middle row is left empty.
+
+## Alignment in CSS Grid
+---
+CSS Grid has powerful alignment capabilities, divided into two categories:
+
+### Aligning Grid Items Within Their Cells
+
+```css
+.container {
+  /* Horizontal alignment */
+  justify-items: start | end | center | stretch;
+  
+  /* Vertical alignment */
+  align-items: start | end | center | stretch;
+  
+  /* Shorthand for both */
+  place-items: <align-items> <justify-items>;
+}
+```
+
+### Self-Alignment (Individual Items)
+
+```css
+.item {
+  justify-self: start | end | center | stretch;
+  align-self: start | end | center | stretch;
+  place-self: <align-self> <justify-self>;
+}
+```
+
+### Aligning the Grid Tracks Within the Container
+
+If the grid tracks don't use all available space:
+
+```css
+.container {
+  /* Horizontal alignment of all tracks */
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+  
+  /* Vertical alignment of all tracks */
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;
+  
+  /* Shorthand for both */
+  place-content: <align-content> <justify-content>;
+}
+```
+## Responsive Layouts with CSS Grid
+:::note
+- CSS Grid excels at creating responsive layouts **without media queries**, although they can be combined for more control.
+- You can use media queries to **adjust** your grid layout for different **screen sizes**.
+:::
+
+#### **Example: Responsive 2-Column to 1-Column Layout**
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr; /* Switches to 1 column layout */
+  }
+}
+```
+
+### Auto-Responsive Grids
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+```
+
+This creates a responsive grid where:
+- Each column is at least 250px wide
+- Columns expand to fill available space
+- The number of columns adjusts automatically as the viewport changes
+
+### Combining Grid with Media Queries
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "header"
+    "content"
+    "sidebar"
+    "footer";
+}
+
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 200px 1fr;
+    grid-template-areas: 
+      "header header"
+      "sidebar content"
+      "footer footer";
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-areas: 
+      "header header header"
+      "sidebar content aside"
+      "footer footer footer";
+  }
+}
+```
+
+## Grid vs. Flexbox
+---
+Grid and Flexbox are complementary, not competing layout systems. Here's when to use each:
+
+### Use CSS Grid When:
+- Creating two-dimensional layouts (rows AND columns)
+- Working with the overall page layout
+- Precise placement of elements is needed
+- Creating complex, asymmetrical layouts
+- Designing from the "outside in" (defining the container first)
+
+### Use Flexbox When:
+- Creating one-dimensional layouts (either rows OR columns)
+- Distributing space among elements of unknown size
+- Aligning items within a container
+- Working with content flow rather than explicit placement
+- Designing from the "inside out" (letting the content dictate the layout)
 
 
 
