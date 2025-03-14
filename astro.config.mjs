@@ -28,7 +28,7 @@ export default defineConfig({
       social: {
         github: 'https://github.com/frostybee/web-course',
       },
-      tableOfContents: {minHeadingLevel: 1, maxHeadingLevel: 4},
+      tableOfContents: {minHeadingLevel: 2, maxHeadingLevel: 4},
       //TODO: add the head property.
       defaultLocale: "en",
       components: {
