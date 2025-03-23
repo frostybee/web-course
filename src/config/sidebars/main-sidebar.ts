@@ -108,11 +108,17 @@ export default
       icon: "seti:javascript",
       items: [
         {
-          label: "JavaScript Topics",
+          label: "JavaScript Basics",
           autogenerate: {
-            directory: "javascript/",
+            directory: "javascript/basics",
           }
-        }
+        },
+        // {
+        //   label: "JavaScript Topics",
+        //   autogenerate: {
+        //     directory: "javascript/",
+        //   }
+        // }
       ],
     },
     {

@@ -1,20 +1,17 @@
 import { defineConfig } from "astro/config";
 import starlight from '@astrojs/starlight';
-import starlightImageZoom from 'starlight-image-zoom'
-import starlightViewModes from 'starlight-view-modes'
-
+import starlightImageZoom from 'starlight-image-zoom';
+import starlightViewModes from 'starlight-view-modes';
 import rehypeExternalLinks from "rehype-external-links";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from 'rehype-slug';
 import starlightSidebarTopics from "starlight-sidebar-topics";
-
 import leftSidebar from './src/config/sidebars/main-sidebar.ts'
 
 // TODO: clean the following imports
 import mdx from "@astrojs/mdx";
 import starlightLinksValidator from 'starlight-links-validator'
-
 
 const siteURI = 'https://frostybee.github.io';
 //@see: https://astro.build/config
@@ -47,7 +44,10 @@ export default defineConfig({
         starlightSidebarTopics(
           [
             ...leftSidebar
-          ]
+          ],
+          {
+            exclude: ["/zen-mode/**/*"],
+			    }
         )
       ],
       // plugins: [
