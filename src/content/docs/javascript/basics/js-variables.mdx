@@ -1,14 +1,118 @@
 ---
-title: JavaScript Variables
-description: JavaScript Variables
+title: Working with Variables in JavaScript
+description: Working with Variables in JavaScript
 sidebar:
   label: 'JS Variables'
   order: 1
 ---
 
 ## Intro to JavaScript
-JavaScript is a **dynamically typed** language, meaning that variables can hold values of any type without explicit declaration.
+:::tip[Note]
+- JavaScript is a **dynamically typed** language, meaning that variables can hold values of any type without explicit declaration.
+:::
 
 ## What Are Variables in JS? 
-- Variables are containers for storing data in JavaScript.
+- in JavaScript, variables are containers for storing data values .
 - They allow you to name and **reuse values** (e.g., numbers, strings, booleans, objects) throughout your code.
+
+## Declaring Variables
+---
+JavaScript offers **three keywords** for declaring variables: `var`, `let`, and `const`. Each has **distinct behavior**.
+
+### 1. `var` (Legacy)
+- The traditional way to declare variables. It has function scope or global scope if declared outside a function.
+- Variables declared with `var` can be **redeclared** and **reassigned**.  
+
+```javascript title="Example: Declaring variables with var" 
+var name = "Alex";
+var name = "Sam"; // Redeclaration OK
+name = "Jess";    // Reassignment OK
+console.log(name); // "Jess"
+```
+- **Issue**: Hoisting (moved to top of scope) can lead to bugs.
+```javascript
+console.log(x); // undefined (not an error!)
+var x = 5;
+```
+
+### 2. `let` (Modern)
+- Introduced in ECMAScript 6 (ES6, 2015).
+- Block-scoped, can be reassigned but **not redeclared** in the same scope.
+- **`let`** provides better control over variable scoping compared to `var`
+
+```javascript title="Example: Declaring variables with let"
+let age = 25;
+age = 26;         // OK
+let age = 30;     // Error: Cannot redeclare
+console.log(age); // 26
+```
+
+### 3. `const` (Modern)
+- Also introduced in ES6, **`const`** is used to declare variables that cannot be reassigned or redeclared after their initial value has been set.  
+- **`const`** is block-scoped, 
+
+:::note
+- Objects/arrays `const` variables hold **can be mutated**.
+:::
+
+```javascript title="Example: Declaring variables with const" 
+const pi = 3.14;
+pi = 3.15;        // Error: Assignment to constant
+const person = { name: "Alex" };
+person.name = "Sam"; // OK (object mutation)
+console.log(person.name); // "Sam"
+```
+:::tip[Note]
+- Use **`let`** for variables that change.
+- Use **`const`** for values that won’t be reassigned.
+- Avoid **`var`** unless working with legacy code.
+:::
+---
+
+## Variable Assignment
+
+Variables are assigned values using the `=` operator.
+
+```javascript title="Example: Assigning value to a JS variable"
+let name = "Josée"; // Assign a string to 'name'
+name = "Bob"; // Reassign the value of "Bob" to 'name'
+```
+
+- For **`const`** variables, the value must be assigned during declaration and cannot be reassigned afterward.
+
+
+## Scope
+Scope determines where a variable is accessible.
+
+#### **Global Scope**
+- Declared outside functions, accessible everywhere.
+```javascript
+let globalVar = "I'm everywhere";
+function logIt() {
+    console.log(globalVar); // "I’m everywhere"
+}
+logIt();
+```
+
+#### **Function Scope (var)**
+- `var` is limited to the function it's declared in.
+```javascript
+function test() {
+    var localVar = "I'm local";
+    console.log(localVar); // "I’m local"
+}
+test();
+console.log(localVar); // Error: localVar is not defined
+```
+
+#### **Block Scope (let, const)**
+- `let` and `const` are limited to `{}` blocks (e.g., `if`, `for`).
+```javascript
+if (true) {
+    let blockVar = "I'm trapped";
+    console.log(blockVar); // "I’m trapped"
+}
+console.log(blockVar); // Error: blockVar is not defined
+```
+
+---
