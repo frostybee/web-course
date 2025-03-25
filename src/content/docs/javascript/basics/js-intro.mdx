@@ -8,8 +8,9 @@ sidebar:
 
 ## Introduction to JavaScript
 :::note
-- JavaScript is a high-level, interpreted programming language that conforms to the ECMAScript specification. 
-- JavaScript has **curly-bracket** syntax, dynamic typing, prototype-based object-orientation, and first-class functions.
+- JavaScript is a high-level, **interpreted** programming language that conforms to the [ECMAScript specification](https://ecma-international.org/publications-and-standards/standards/ecma-262/). 
+- JavaScript has **curly-bracket** syntax, dynamic typing, prototype-based and class-based object-orientation, and first-class functions.
+- JavaScript **borrows** most of its syntax from Java, C, and C++, but it has also been influenced by Awk, Perl, and Python.
 :::
 
 ## Adding JavaScript to an HTML Document
@@ -84,3 +85,31 @@ function showMessage() {
     alert('Hello from external JavaScript!');
 }
 ```
+
+### When to Use Each Method?
+
+- **Inline JavaScript**: Use for **simple interactions** tied to specific elements (small snippets).
+- **Internal JavaScript**: Ideal for small-to-medium projects or when you don't want to manage multiple files.
+- **External JavaScript**: Best for larger projects for maintainability and separation of concerns.
+
+### Best Practices for Adding JavaScript
+:::note[Note:]
+1. **Place `<script>` tags just before `</body>` for faster page loading**: 
+    - This ensures that the DOM (HTML structure) is **fully loaded** before your JavaScript runs. 
+    - This also helps prevent issues where JavaScript tries to interact with elements that haven't been rendered yet.
+  
+2. **Use `defer` attribute for external scripts**: 
+    - If you prefer to include your external JavaScript file in the `<head>`, then use the **`defer`** attribute to ensure it runs after the HTML is parsed.
+    - Using `defer` the script is executed after the HTML document is fully parsed.
+
+   ```html title="Example: Using defer attribute"
+   <script src="script.js" defer type="text/javascript"></script>
+   ```
+3. **Use `async` attribute for non-blocking scripts**: 
+    - Script is fetched and executed asynchronously (without blocking HTML parsing).
+    - If the script doesn't depend on the DOM, you can use the **`async`**  attribute to load it asynchronously.    
+
+    ```html title="Example: Using async attribute"
+    <script src="script.js" type="text/javascript" async></script>
+    ```   
+:::
