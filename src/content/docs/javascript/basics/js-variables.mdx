@@ -3,12 +3,12 @@ title: Working with Variables in JavaScript
 description: Working with Variables in JavaScript
 sidebar:
   label: 'JS Variables'
-  order: 1
+  order: 2
 ---
 
 ## Intro to JavaScript
 :::tip[Note]
-- JavaScript is a **dynamically typed** language, meaning that variables can hold values of any type without explicit declaration.
+- JavaScript is a **dynamically typed** language, meaning that variables can hold values of any type without **explicit** declaration.
 :::
 
 ## What Are Variables in JS? 
@@ -48,8 +48,8 @@ console.log(age); // 26
 ```
 
 ### 3. `const` (Modern)
-- Also introduced in ES6, **`const`** is used to declare variables that cannot be reassigned or redeclared after their initial value has been set.  
-- **`const`** is block-scoped, 
+- Also introduced in ES6, **`const`** is used to declare variables that **cannot be reassigned** or **redeclared** after their initial value has been set.  
+- **`const`** is block scoped.
 
 :::note
 - Objects/arrays `const` variables hold **can be mutated**.
@@ -72,19 +72,26 @@ console.log(person.name); // "Sam"
 ## Variable Assignment
 
 Variables are assigned values using the `=` operator.
+- For **`const`** variables, the value must be assigned during declaration and cannot be reassigned afterward.
 
 ```javascript title="Example: Assigning value to a JS variable"
 let name = "Josée"; // Assign a string to 'name'
 name = "Bob"; // Reassign the value of "Bob" to 'name'
 ```
 
-- For **`const`** variables, the value must be assigned during declaration and cannot be reassigned afterward.
+## Variable Scope
 
+The scope of a variable determines where in the code the variable can be accessed.
 
-## Scope
-Scope determines where a variable is accessible.
+:::note[Note]
+1. **Global scope**: A variable declared outside any function or block is in the global scope and can be accessed from anywhere in the code.
+   
+2. **Function scope**: Variables declared with `var` inside a function are scoped to that function. They are not accessible outside the function.
 
-#### **Global Scope**
+3. **Block scope**: Variables declared with `let` and `const` inside a block (e.g., inside `{}`) are limited to that block.
+:::
+
+### **Global Scope**
 - Declared outside functions, accessible everywhere.
 ```javascript
 let globalVar = "I'm everywhere";
@@ -94,7 +101,7 @@ function logIt() {
 logIt();
 ```
 
-#### **Function Scope (var)**
+### **Function Scope (var)**
 - `var` is limited to the function it's declared in.
 ```javascript
 function test() {
@@ -105,7 +112,7 @@ test();
 console.log(localVar); // Error: localVar is not defined
 ```
 
-#### **Block Scope (let, const)**
+### **Block Scope (let, const)**
 - `let` and `const` are limited to `{}` blocks (e.g., `if`, `for`).
 ```javascript
 if (true) {
@@ -116,3 +123,26 @@ console.log(blockVar); // Error: blockVar is not defined
 ```
 
 ---
+
+### **Example of Scoping:**
+
+```javascript
+// Global scope
+let globalVar = "I am global";
+
+function testScope() {
+  var functionVar = "I am inside the function"; // Function scope
+  let blockVar = "I am inside a block"; // Block scope
+
+  if (true) {
+    let innerBlockVar = "I am inside an if block"; // Block scope
+    console.log(innerBlockVar); // Accessible here
+  }
+  
+  // console.log(innerBlockVar); // Error: innerBlockVar is not defined outside the if block
+}
+
+testScope();
+// console.log(functionVar); // Error: functionVar is not defined outside the function
+console.log(globalVar); // Accessible globally
+```
