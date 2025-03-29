@@ -2,23 +2,93 @@
 title: Data Types in JavaScript
 description: Data Types in JavaScript
 sidebar:
-  label: 'JS Data Types'
+  label: 'Data Types'
   order: 3
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
 ---
 
 ## Data Types
+---
 
-JavaScript is a **dynamically typed** language, meaning the type of a variable is determined at runtime.
+- JavaScript is a **dynamically typed** language, meaning the type of a variable is determined at runtime.
 
-There are **primitives** and **reference** types in JavaScript:
+**There are two main categories:** 
+1. **Primitive data types** and, 
+2. **Non-primitive (reference) data types**.
 
-- **Primitive types**: 
-  - `String`: Represents a sequence of characters.
-  - `Number`: Represents both **integer** and **floating-point** numbers.
-  - `Boolean`: Represents a true or false value.
-  - `Undefined`: Represents a variable that has been declared but not assigned a value.
-  - `Null`: Represents a non-existent or invalid value.
-  - `Symbol` (ES6, 2015): A unique identifier.
-  - `BigInt` (ES11, 2020): Represents integers that are too large for the `Number` type.
+:::tip[Key Differences]
+- **Primitive types** are **copied by value**, meaning changes to one variable don't affect another.
+- **Reference types** are **copied by reference**, meaning changes to one reference affect all references to the same object.
+:::
 
-- **Reference types**: More complex types like arrays, functions, and regular objects.
+### Primitive Data Types
+---
+
+:::note
+- Primitive data types are the basic building blocks of data in JavaScript, and they hold a **single value**. 
+:::
+1. **Number**: Represents both **integer** and **floating-point** numbers.
+   - Examples: `42`, `-7.5`, `0.001`
+   - Special values: `Infinity`, `-Infinity`, `NaN` (Not a Number)
+
+2. **String**: Represents a sequence of characters, enclosed in single (`'`), double (`"`), or backticks (```) for template literals.
+   - Examples: `"hello"`, `'world'`, `` `Hi, ${name}` ``
+
+3. **Boolean**: Represents a logical value, either `true` or `false`.
+   - Used in conditional statements and logic operations.
+
+4. **Undefined**: A variable that has been declared but **not assigned** a value.
+   - Example: `let x;` (x is `undefined`)
+
+5. **Null**: Represents the intentional absence of any value.
+   - Example: `let y = null;`
+
+6. **Symbol**: A unique and immutable value, often used as object property keys (introduced in ES6).
+   - Example: `const sym = Symbol('description');`
+
+7. **BigInt**: Represents large integers with arbitrary precision (introduced in ES2020).
+   - Example: `12345678901234567890n` (note the `n` suffix)
+
+### Non-Primitive (Reference) Data Types
+---
+:::note
+- Non-primitive data types are **more complex** and can hold **multiple values** or **properties**. They are mutable (can be changed) and are stored as references in memory.
+:::
+
+- **Object**: A collection of **key-value pairs**.
+   - Example: `const obj = { name: "Alex", age: 30 };`
+   - Includes special types like:
+     1. **Arrays**: Ordered lists of values.
+        - Example: `const arr = [1, 2, 3];`
+     2. **Functions**: Reusable blocks of code.
+        - Example: `function greet() { return "Hello"; }`
+     3. - **Dates**, **RegExp**, etc.
+        - Example: `const date = new Date();` (Date object)
+        - Example: `const regex = /abc/;` (Regular expression object)
+        - Example: `const regex = new RegExp('abc');` (Regular expression object)
+
+## Checking Data Types
+---
+
+To check the type of a variable, you can use the **`typeof`** operator or the **`instanceof`** operator.
+
+:::tip
+- **`typeof`**: Returns a string indicating the type of the unevaluated operand.
+  - Example: `typeof "hello"` returns `"string"`
+- **`instanceof`**: Tests whether an object is an instance of a specific constructor or class.
+   - Example: `[] instanceof Array` returns `true`
+   - Example: `{} instanceof Object` returns `true`
+
+**Examples:**
+- `typeof 42` → `"number"`
+- `typeof "hello"` → `"string"`
+- `typeof true` → `"boolean"`
+- `typeof undefined` → `"undefined"`
+- `typeof null` → `"object"` (historical quirk in JavaScript)
+- `typeof {}` → `"object"`
+- `typeof []` → `"object"` (use `Array.isArray()` to check for arrays)
+- `typeof function(){}` → `"function"`
+:::

@@ -1,0 +1,207 @@
+---
+title: Type Conversion in JavaScript
+description: Type Conversion in JavaScript
+sidebar:
+  label: 'Data Type Conversion'
+  order: 4
+  # Add a badge to the link
+  badge:
+    text: New
+    variant: danger
+---
+## Type Conversion vs Type Coercion
+---
+:::note
+- JavaScript is a dynamically-typed language, meaning variables can hold values of any type **without explicit** declaration. 
+- When performing **operations** or **comparisons**, JavaScript often needs to **convert values** from one type to another. This process happens in two main ways: **type conversion** (explicit) and **type coercion** (implicit). Let's break it down.
+:::
+
+### 1. Type Conversion (Explicit Conversion)
+---
+:::tip[Note]
+Type conversion occurs when you **intentionally convert** a value from one type to another using **built-in methods** or **constructors**.
+:::
+
+#### Common Type Conversion Methods
+1. **To String**
+  - **`String()`**: Converts a value to a string.
+    ```javascript
+    let num = 42;
+    let str = String(num); // "42"
+    console.log(typeof str); // "string"
+    ```
+  - **`toString()`**: A method available on most objects (except `null` and `undefined`).
+    ```javascript
+    let num = 42;
+    let str = num.toString(); // "42"
+    ```
+2. **To Number**
+  - **`Number()`**: Converts a value to a number.
+    ```javascript
+    let str = "123";
+    let num = Number(str); // 123
+    console.log(typeof num); // "number"
+
+    // Non-numeric strings result in NaN
+    console.log(Number("hello")); // NaN
+    ```
+  - **`parseInt()`**: Parses a string and returns an integer.
+    ```javascript
+    let str = "123.45";    
+    let int = parseInt(str); // 123
+    console.log(parseInt("123px"));  // 123
+    ```
+  - **`parseFloat()`**: Parses a string and returns a floating-point number.
+    ```javascript
+    let str = "123.45";
+    let float = parseFloat(str); // 123.45
+    console.log(parseFloat("12.34px")); // 12.34
+    ```
+
+3. **To Boolean**
+  - **`Boolean()`**: Converts a value to a boolean.
+    ```javascript
+    console.log(Boolean(0)); // false
+    console.log(Boolean(1)); // true
+    console.log(Boolean("")); // false
+    console.log(Boolean("hello")); // true
+    ```
+---
+
+:::tip
+- Explicit conversion gives you control over the process.
+- Invalid conversions (e.g., `Number("abc")`) result in `NaN` (Not a Number).
+- Use these methods when you want **predictable** behavior.
+:::
+
+### 2. **Type Coercion (Implicit Conversion)**
+---
+
+:::note
+- Type coercion **happens automatically** when JavaScript converts a value's type during an **operation** or **comparison**. 
+- This is often a source of confusion but can be harnessed effectively with understanding.
+
+#### How Coercion Works?
+---
+JavaScript uses coercion in:
+- Arithmetic operations (`+`, `-`, `*`, `/`, `%`)
+- Comparison operators (`==`, `!=`, `<`, `>`)
+- Logical operations (`if`, `while`, `&&`, `||`)
+:::
+
+#### Common Coercion Scenarios
+---
+1. **String Concatenation with `+`**
+   - When **one operand** is a string, the other is coerced to a string.
+     ```javascript
+     let num = 5;
+     let str = "The number is " + num; // "The number is 5"
+     console.log(typeof str); // "string"
+     ```
+2. **Arithmetic Operations (Except `+`)**
+   - Operands are coerced to numbers.
+     ```javascript
+     let str = "10";
+     let result = str - 5; // 5 (string "10" coerced to number 10)
+     console.log(typeof result); // "number"
+     ```
+3. **Equality Operator (`==`)**
+   - The **loose equality** operator performs type coercion before comparison.
+     ```javascript
+     console.log(5 == "5"); // true (string "5" coerced to number 5)
+     console.log(false == 0); // true (false coerced to 0)
+     console.log(null == undefined); // true (special case)
+     ```
+4. **Strict Equality Operator (`===`)**
+   - No coercion occurs; both **type** and **value** must match.
+     ```javascript
+     console.log(5 === "5"); // false (different types)
+     console.log(false === 0); // false
+     ```
+5. **Boolean Coercion in Conditionals**
+   - **Non-boolean** values are coerced to `true` or `false` in logical contexts.
+     ```javascript
+     if ("hello") {
+       console.log("Truthy"); // Executes (non-empty string is true)
+     }
+     if (0) {
+       console.log("Falsy"); // Skipped (0 is false)
+     }
+     ```
+
+#### Truthy and Falsy Values
+---
+:::caution
+JavaScript coerces values to **booleans** based on their **[truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)** :
+- **Falsy values**: `false`, `0`, `-0`, `""` (empty string), `null`, `undefined`, `NaN`
+- **Truthy values**: Everything else (e.g., `"0"`, `"false"`, `[]`, `{}`)
+:::
+
+### Coercion Rules and Precedence
+---
+JavaScript follows specific rules when coercing types:
+- **String + Anything**: Results in string concatenation.
+- **Number and String in `-`, `*`, `/`, `%`**: String is coerced to a number.
+- **Objects**: Converted to primitives via `toString()` or `valueOf()` methods.
+  ```javascript
+  let obj = { valueOf: () => 42 };
+  console.log(obj + 1); // 43
+  ```
+
+#### The Unary `+` and `-` Operators
+---
+- **`+`**: Attempts to convert its operand to a number.
+  ```javascript
+  console.log(+"123"); // 123
+  console.log(+"abc"); // NaN
+  ```
+- **`-`**: Converts to a number and negates it.
+  ```javascript
+  console.log(-"123"); // -123
+  ```
+
+## Best Practices
+---
+- **Use Explicit Conversion When Possible**: Avoid relying on coercion for critical logic to reduce bugs.
+  ```javascript
+  let str = "42";
+  let num = Number(str); // Explicit, predictable
+  ```
+- **Use `===` Over `==`**: Strict equality avoids unexpected coercion.
+- **Understand Context**: Know when coercion occurs (e.g., `if` statements, arithmetic).
+- **Test Edge Cases**: Values like `null`, `undefined`, and `NaN` can behave unexpectedly.
+
+---
+
+### Examples and Pitfalls
+----
+#### Example 1: Unexpected Coercion
+```javascript
+console.log("2" + 2); // "22" (string concatenation)
+console.log("2" * 2); // 4 (string coerced to number)
+```
+#### Example 2: Array Coercion
+```javascript
+console.log([] + []); // "" (empty arrays coerce to empty strings)
+console.log([] + {}); // "[object Object]" (array to "", object to string)
+```
+#### Pitfall: `NaN` Detection
+```javascript
+let result = Number("abc"); // NaN
+console.log(result === NaN); // false (NaN is not equal to itself)
+console.log(isNaN(result)); // true (use this instead)
+```
+
+---
+
+## Summary Table
+---
+| Operation/Type          | String             | Number         | Boolean        |
+|--------------------------|--------------------|----------------|----------------|
+| `String()`              | Same               | e.g., `"42"`   | e.g., `"true"` |
+| `Number()`              | e.g., `123` or `NaN` | Same          | `1` or `0`     |
+| `Boolean()`             | `true` (if non-empty) | `true` (if not 0) | Same       |
+| `+` (with string)       | Concatenation      | Concatenation  | Concatenation  |
+| `-`, `*`, `/`           | Coerces to number  | Number operation | Coerces to number |
+
+---

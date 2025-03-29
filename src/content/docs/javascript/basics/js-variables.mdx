@@ -7,13 +7,25 @@ sidebar:
 ---
 
 ## Intro to JavaScript
-:::tip[Note]
+:::caution[Note]
 - JavaScript is a **dynamically typed** language, meaning that variables can hold values of any type without **explicit** declaration.
 :::
 
 ## What Are Variables in JS? 
+---
 - in JavaScript, variables are containers for storing data values .
 - They allow you to name and **reuse values** (e.g., numbers, strings, booleans, objects) throughout your code.
+
+###  Best Practices for Using Variables
+---
+:::tip[Note]
+- **Use `let` and `const`**: Prefer `let` and `const` over `var`. 
+  - `const` should be used for variables whose values shouldn't change, and `let` for variables that can be reassigned.
+- **Use meaningful names**: Use **descriptive variable names** that make it clear what the variable holds. 
+- **Avoid single-letter variable names** unless in a limited scope (e.g., `i` for loop counters).
+- **Minimize global variables**: Limit the use of global variables as they can lead to unexpected behavior and conflicts.
+- **Follow naming conventions**: Use **camelCase** for variable names, starting with a lowercase letter. `const` variables that are constants should be in uppercase.
+:::
 
 ## Declaring Variables
 ---
@@ -146,13 +158,4 @@ testScope();
 // console.log(functionVar); // Error: functionVar is not defined outside the function
 console.log(globalVar); // Accessible globally
 ```
-###  Best Practices for Using Variables
 
-:::tip[Note]
-- **Use `let` and `const`**: Prefer `let` and `const` over `var`. 
-  - `const` should be used for variables whose values shouldn't change, and `let` for variables that can be reassigned.
-- **Use meaningful names**: Use **descriptive variable names** that make it clear what the variable holds. 
-- **Avoid single-letter variable names** unless in a limited scope (e.g., `i` for loop counters).
-- **Minimize global variables**: Limit the use of global variables as they can lead to unexpected behavior and conflicts.
-- **Follow naming conventions**: Use **camelCase** for variable names, starting with a lowercase letter. `const` variables that are constants should be in uppercase.
-:::
