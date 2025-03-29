@@ -9,11 +9,15 @@ sidebar:
     text: New
     variant: danger
 ---
-## Type Conversion vs Type Coercion
+
+## Overview
 ---
+
 :::note
 - JavaScript is a dynamically-typed language, meaning variables can hold values of any type **without explicit** declaration. 
-- When performing **operations** or **comparisons**, JavaScript often needs to **convert values** from one type to another. This process happens in two main ways: **type conversion** (explicit) and **type coercion** (implicit). Let's break it down.
+- When performing **operations** or **comparisons**, JavaScript often needs to **convert values** from one type to another. 
+- This process happens in **two main ways**: **type conversion** (explicit) and **type coercion** (implicit). Let's break it down.
+- **For more details, refer to: [Data Types](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures)**
 :::
 
 ### 1. Type Conversion (Explicit Conversion)
@@ -83,10 +87,10 @@ Type conversion occurs when you **intentionally convert** a value from one type 
 
 #### How Coercion Works?
 ---
-JavaScript uses coercion in:
-- Arithmetic operations (`+`, `-`, `*`, `/`, `%`)
-- Comparison operators (`==`, `!=`, `<`, `>`)
-- Logical operations (`if`, `while`, `&&`, `||`)
+**JavaScript uses coercion in:**
+1. **Arithmetic** operations (`+`, `-`, `*`, `/`, `%`)
+2. **Comparison** operators (`==`, `!=`, `<`, `>`)
+3. **Logical** operations (`if`, `while`, `&&`, `||`)
 :::
 
 #### Common Coercion Scenarios
@@ -99,7 +103,7 @@ JavaScript uses coercion in:
      console.log(typeof str); // "string"
      ```
 2. **Arithmetic Operations (Except `+`)**
-   - Operands are coerced to numbers.
+   - Operands (`-`, `*`, `/`, `%`) are coerced to numbers.
      ```javascript
      let str = "10";
      let result = str - 5; // 5 (string "10" coerced to number 10)
@@ -131,7 +135,7 @@ JavaScript uses coercion in:
 
 #### Truthy and Falsy Values
 ---
-:::caution
+:::danger[Note]
 JavaScript coerces values to **booleans** based on their **[truthiness](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)** :
 - **Falsy values**: `false`, `0`, `-0`, `""` (empty string), `null`, `undefined`, `NaN`
 - **Truthy values**: Everything else (e.g., `"0"`, `"false"`, `[]`, `{}`)

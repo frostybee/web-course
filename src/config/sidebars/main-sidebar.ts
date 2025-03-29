@@ -113,12 +113,12 @@ export default
             directory: "javascript/basics",
           }
         },
-        // {
-        //   label: "JavaScript Topics",
-        //   autogenerate: {
-        //     directory: "javascript/",
-        //   }
-        // }
+        {
+          label: "Web APIs",
+          autogenerate: {
+            directory: "javascript/apis",
+          }
+        }
       ],
     },
     {

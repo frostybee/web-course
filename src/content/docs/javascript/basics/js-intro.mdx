@@ -2,11 +2,12 @@
 title: Getting Started with JavaScript
 description: Getting Started with JavaScript
 sidebar:
-  label: 'Intro Variables'
+  label: 'Intro to JavaScript'
   order: 1
 ---
 
 ## Introduction to JavaScript
+---
 :::note
 - JavaScript is a high-level, **interpreted** programming language that conforms to the [ECMAScript specification](https://ecma-international.org/publications-and-standards/standards/ecma-262/). 
 - JavaScript has **curly-bracket** syntax, dynamic typing, prototype-based and class-based object-orientation, and first-class functions.
@@ -14,10 +15,15 @@ sidebar:
 :::
 
 ## Adding JavaScript to an HTML Document
-You can add JavaScript in three ways.
-- To add JavaScript to an HTML document, you can use the `<script>` tag. 
+---
+You can add JavaScript in **three ways**: internal/embedded, external, and inline.
+
+:::tip
+- To add JavaScript to an HTML document, you can use the `<script>` HTML element. 
+:::
 
 ### 1. Inline JavaScript
+---
 
 You can add JavaScript directly within an HTML element using the `onclick`, `onmouseover`, and other **event attributes**.
 
@@ -27,6 +33,7 @@ You can add JavaScript directly within an HTML element using the `onclick`, `onm
 - The JavaScript statement(s) run when the event (e.g., `onclick`) is triggered.
 
 ### 2. Internal JavaScript 
+---
 
 You can also write JavaScript inside the `<script>` tags, usually placed in the `<head>` or just before the closing `</body>` tag. This is the most common approach for adding JavaScript directly to an HTML document.
 
@@ -53,7 +60,7 @@ You can also write JavaScript inside the `<script>` tags, usually placed in the 
 
 
 ### 3. External JavaScript
-
+---
 - It's common to place JavaScript in **a separate file** and link it to your HTML. This makes your code more organized and reusable.
 - This is the **cleanest** and **most efficient** method for adding JavaScript to a webpage, especially for larger projects.
 
@@ -87,12 +94,13 @@ function showMessage() {
 ```
 
 ### When to Use Each Method?
-
+---
 - **Inline JavaScript**: Use for **simple interactions** tied to specific elements (small snippets).
 - **Internal JavaScript**: Ideal for small-to-medium projects or when you don't want to manage multiple files.
 - **External JavaScript**: Best for larger projects for maintainability and separation of concerns.
 
 ### Best Practices for Adding JavaScript
+---
 :::note[Note:]
 1. **Place `<script>` tags just before `</body>` for faster page loading**: 
     - This ensures that the DOM (HTML structure) is **fully loaded** before your JavaScript runs. 
@@ -103,7 +111,7 @@ function showMessage() {
     - Using `defer` the script is executed after the HTML document is fully parsed.
 
    ```html title="Example: Using defer attribute"
-   <script src="script.js" defer type="text/javascript"></script>
+   <script src="script.js" type="text/javascript" defer></script>
    ```
 3. **Use `async` attribute for non-blocking scripts**: 
     - Script is fetched and executed asynchronously (without blocking HTML parsing).

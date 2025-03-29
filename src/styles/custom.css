@@ -13,11 +13,13 @@
   /* --sl-color-bg: #0d1117; */
   /* --sl-color-bg: #1b1b1f; */
   --sl-color-bg: #121213;
+  /* --sl-color-bg: #101218; */
   /* --sl-color-bg: #17181c; */
   /* SL's main text color  */
   /* --sl-color-text: #e3e3e3; */
   /* --sl-color-text: #f0f6fc; */
   --sl-color-text: #d7dadc;
+  /* --sl-color-text: #cdcdcd; */
   /* --sl-color-bg: #1b1b1f; */
   --sl-color-white: hsl(0, 0%, 100%);
   --sl-color-gray-7: hsl(224, 10%, 10%);
@@ -258,6 +260,7 @@ Style overrides: Right sidebar, items of the table of content */
 
   &:hover {
     font-weight: 600;
+    border-left: 3px solid var(--fb-toc-color-border);
   }
 }
 
