@@ -4,4 +4,226 @@ description: Working with Functions in JavaScript
 sidebar:
   label: 'JS Functions'
   order: 5
+  badge:
+    text: New
+    variant: danger
 ---
+
+## What Are Functions?
+:::note
+- Functions are **reusable blocks** of code that perform a specific task. They can **take inputs** (parameters), execute a series of statements, and **optionally** return a value. 
+- Functions help in organizing code, making it more modular, readable and maintainable.
+- They can be defined in **various ways**, including function declarations, function expressions, and arrow functions. 
+:::
+
+## Types of Functions in JavaScript
+JavaScript provides several ways to define and use functions. Each type has its own characteristics, syntax, and use cases. Below are the most common types of functions in JavaScript:
+ 
+### 1. Function Declarations
+---
+Function declarations are the most common way to define functions in JavaScript. 
+
+- **Syntax:**
+    ```javascript
+    function functionName(parameter1, parameter2, ...) {
+      // Code to be executed
+      return returnValue; // Optional
+    }
+    ```
+* **Characteristics:**
+    * **Hoisted:** Function declarations are hoisted, meaning they can be called before they are defined in the code.
+    * **Named:** They always have a name.
+* **Example:**
+    ```javascript
+    console.log(add(5, 3)); // Output: 8
+    function add(a, b) {
+      return a + b;
+    }    
+    ```
+:::tip[Use Cases]    
+* General-purpose functions that need to be called multiple times.
+* Functions that are needed throughout the script.
+:::
+
+### 2. Function Expressions
+---
+Function expressions are functions that are defined within an expression. 
+* **Syntax:**
+    ```javascript
+    const functionName = function(parameter1, parameter2, ...) {
+      // Code to be executed
+      return returnValue; // Optional
+    };
+    ```
+* **Characteristics:**
+    * Not hoisted: Function expressions are not hoisted.
+    * They can be named or anonymous (without a name).
+    * Assigned to a variable.
+* **Example:**
+    ```javascript
+    const multiply = function(x, y) {
+      return x * y;
+    };
+
+    console.log(multiply(4, 6)); // Output: 24
+    ```
+:::tip[Use Cases]
+* Assigning functions to variables.
+* Creating functions as part of object properties.
+* Passing functions as arguments to other functions.
+:::
+
+### 3. Arrow Functions (ES6)
+---
+Arrow functions provide a more concise syntax for writing function expressions. They are especially useful for short functions and **callbacks**.
+
+* **Syntax:**
+    ```javascript
+    const functionName = (parameter1, parameter2, ...) => {
+      // Code to be executed
+      return returnValue; // Optional
+    };
+
+    // If there's only one parameter, parentheses are optional:
+    const square = x => {
+      return x * x;
+    };
+
+    // If the function body is a single expression, the curly braces and 'return' are optional:
+    const cube = x => x * x * x;
+    ```
+* **Characteristics:**
+    * Shorter syntax.
+    * Lexical `this` binding: They inherit the `this` value from the surrounding scope.
+    * Anonymous (usually).
+* **Example:**
+    ```javascript
+    const divide = (a, b) => a / b;
+
+    console.log(divide(10, 2)); // Output: 5
+    ```
+:::tip[Use Cases]    
+* Shorter, more concise syntax, especially for simple functions.
+* **Callbacks** and **event handlers**.
+* When you need to preserve the surrounding scope's `this` value.
+:::
+
+### 4. Immediately Invoked Function Expressions (IIFEs)
+---
+IIFEs are functions that are **executed immediately** after they are defined. They are often used to create a new scope and avoid polluting the global namespace.
+
+* **Syntax:**
+    ```javascript
+    (function() {
+      // Code to be executed
+    })();
+
+    // Arrow function IIFE
+    (() => {
+      // Code to be executed
+    })();
+    ```
+* **Characteristics:**
+    * Executes immediately after it's defined.
+    * Creates a new scope, preventing variable pollution.
+* **Example:**
+    ```javascript
+    (function() {
+      const message = "Hello from IIFE!";
+      console.log(message); // Output: Hello from IIFE!
+    })();
+    ```
+:::tip[Use Cases]
+* Creating private variables and functions.
+* Avoiding global scope pollution.
+* Initializing modules.
+:::
+
+### 5. Higher-Order Functions
+---
+Higher-order functions are functions that **operate on other functions**, either by taking them as arguments or by returning them as results. They are a key concept in functional programming.
+
+* **Examples:** `map()`, `filter()`, `reduce()`, `forEach()`, `sort()`.
+* **Example:**
+    ```javascript
+    const numbers = [1, 2, 3, 4, 5];
+
+    const doubled = numbers.map(num => num * 2);
+    console.log(doubled); // Output: [2, 4, 6, 8, 10]
+
+    const evens = numbers.filter(num => num % 2 === 0);
+    console.log(evens); // output: [2,4]
+    ```
+:::tip[Use Cases]
+* Abstracting common patterns.
+* Creating reusable and flexible code.
+* Functional programming paradigms.
+:::
+
+### 6. Recursive Functions
+---
+Recursive functions are functions that **call themselves** in order to solve a problem. They are often 
+
+* **Example:**
+    ```javascript
+    function factorial(n) {
+      if (n === 0) {
+        return 1;
+      } else {
+        return n * factorial(n - 1);
+      }
+    }
+
+    console.log(factorial(5)); // Output: 120
+    ```
+:::tip[Use Cases]
+* Traversing tree-like data structures.
+* Solving problems that can be broken down into smaller, similar subproblems.
+:::
+
+## Rest and Spread Parameters
+---
+Rest and spread parameters allow functions to accept an indefinite number of arguments or expand iterable objects into individual elements.
+
+* **Rest Parameters:**
+    * Allows a function to accept an indefinite number of arguments as an array.
+    * Syntax: `...args`.
+    * Example:
+        ```javascript
+        function sum(...numbers) {
+          return numbers.reduce((total, num) => total + num, 0);
+        }
+        console.log(sum(1, 2, 3, 4)); // Output: 10
+        ```
+* **Spread Operator:**
+    * Expands an iterable (like an array or string) into individual elements.
+    * Syntax: `...iterable`.
+    * Example:
+        ```javascript
+        const arr1 = [1, 2, 3];
+        const arr2 = [...arr1, 4, 5];
+        console.log(arr2); // Output: [1, 2, 3, 4, 5]
+        ```
+:::tip[Use Cases]
+* Rest parameters: Create functions that handle variable number of arguments.
+* Spread operator: Copy arrays, combine arrays, and pass variable argument lists to functions.
+:::
+
+## Default Parameters
+---
+Default parameters allow you to set default values for function parameters. This is useful for providing fallback values when no arguments are passed.
+
+* **Syntax:**
+    ```javascript
+    function greet(name = "Guest") {
+      console.log(`Hello, ${name}!`);
+    }
+
+    greet(); // Output: Hello, Guest!
+    greet("Alice"); // Output: Hello, Alice!
+    ```
+    
+:::tip[Use Cases]
+* Providing fallback values for function parameters.
+* Making functions more robust.
+:::
