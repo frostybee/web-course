@@ -109,12 +109,28 @@ export default
       items: [
         {
           label: "JavaScript Basics",
+          collapsed: false,
           autogenerate: {
             directory: "javascript/basics",
           }
         },
         {
+          label: "Objects & Arrays",
+          collapsed: false,
+          autogenerate: {
+            directory: "javascript/objects",
+          }
+        },
+        {
+          label: "DOM API",
+          collapsed: false,
+          autogenerate: {
+            directory: "javascript/dom",
+          }
+        },
+        {
           label: "Web APIs",
+          collapsed: false,
           autogenerate: {
             directory: "javascript/apis",
           }
@@ -125,6 +141,7 @@ export default
       label: "Resources",
       link: "resources/references",
       icon: "seti:notebook",
+      collapsed: false,
       items: [
         {
           label: "Recommended Resources",

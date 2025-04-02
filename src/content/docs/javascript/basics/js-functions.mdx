@@ -10,13 +10,15 @@ sidebar:
 ---
 
 ## What Are Functions?
+---
 :::note
-- Functions are **reusable blocks** of code that perform a specific task. They can **take inputs** (parameters), execute a series of statements, and **optionally** return a value. 
+- **[Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions)** are **reusable blocks** of code that perform a specific task. They can **take inputs** (parameters), execute a series of statements, and **optionally** return a value. 
 - Functions help in organizing code, making it more modular, readable and maintainable.
 - They can be defined in **various ways**, including function declarations, function expressions, and arrow functions. 
 :::
 
 ## Types of Functions in JavaScript
+---
 JavaScript provides several ways to define and use functions. Each type has its own characteristics, syntax, and use cases. Below are the most common types of functions in JavaScript:
  
 ### 1. Function Declarations
@@ -52,7 +54,7 @@ Function expressions are functions that are defined within an expression.
     ```javascript
     const functionName = function(parameter1, parameter2, ...) {
       // Code to be executed
-      return returnValue; // Optional
+      return returnValue; // Optionals
     };
     ```
 * **Characteristics:**
@@ -75,7 +77,7 @@ Function expressions are functions that are defined within an expression.
 
 ### 3. Arrow Functions (ES6)
 ---
-Arrow functions provide a more concise syntax for writing function expressions. They are especially useful for short functions and **callbacks**.
+[Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) provide a more concise syntax for writing function expressions. They are especially useful for short functions and **callbacks**.
 
 * **Syntax:**
     ```javascript
@@ -92,16 +94,29 @@ Arrow functions provide a more concise syntax for writing function expressions. 
     // If the function body is a single expression, the curly braces and 'return' are optional:
     const cube = x => x * x * x;
     ```
+
 * **Characteristics:**
     * Shorter syntax.
     * Lexical `this` binding: They inherit the `this` value from the surrounding scope.
     * Anonymous (usually).
-* **Example:**
+* **Example #1:**
     ```javascript
     const divide = (a, b) => a / b;
 
     console.log(divide(10, 2)); // Output: 5
     ```
+* **Example #2:**
+  ```javascript
+  function setupCounter(element) {
+    let counter = 0
+    const setCounter = (count) => {
+      counter = count
+      element.innerHTML = `count is ${counter}`
+    }
+    element.addEventListener('click', () => setCounter(counter + 1))
+    setCounter(0)
+  }
+  ```
 :::tip[Use Cases]    
 * Shorter, more concise syntax, especially for simple functions.
 * **Callbacks** and **event handlers**.

@@ -1,0 +1,462 @@
+---
+title: Working with JavaScript Arrays
+description: JavaScript Arrays
+sidebar:
+  label: 'JS Arrays'
+  order: 5
+  badge:
+    text: New
+    variant: danger
+---
+
+## What is an Array?
+---
+It is a **data structure** that allows you to store a collection of items in a single variable. Arrays are commonly used in programming to manage lists of data, such as numbers, strings, or objects. 
+
+:::note[Characteristics of JavaScript Arrays]
+- [An array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) is a special variable that can hold **multiple values**.
+- Arrays are **ordered collections** where each item has an **index**.
+- JavaScript arrays **are dynamic** (can change in size).
+- Arrays can store **mixed** data types (primitive and non-primitive).
+- Arrays are **zero-indexed**, meaning the first element has an index of `0`.
+:::
+
+## Creating Arrays
+---
+In JavaScript, arrays can be created in **several ways**:
+
+- **Array Literal Notation**:
+  ```javascript
+  const fruits = ['apple', 'banana', 'orange'];
+  //Array with Mixed Types:  
+  const mixedArray = [1, "apple", true, null, { name: "John" }];  
+  //Nested Arrays:  
+  const nestedArray = [1, 2, [3, 4], 5];  
+  ```
+- **Using the Array Constructor**:
+  ```javascript
+  const numbers = new Array(1, 2, 3, 4, 5);
+  ```
+- **Empty Array with Length**:
+  ```javascript
+  // Creates [undefined, undefined, undefined]
+  const emptyArray = new Array(3); 
+  ```
+- **Spread Operator (for copying or combining)**:
+
+  ```javascript
+  const original = [1, 2, 3];
+  const copy = [...original]; // [1, 2, 3]
+  ```
+- **`Array.of()`**: Creates a new array instance with a variable number of arguments.
+  ```javascript
+  const arr = Array.of(1, 2, 3);
+  console.log(arr); // Output: [1, 2, 3]
+  ```
+- **`Array.from()`**: Creates a new array from **an iterable** or **array-like** object.
+  ```javascript
+  const str = "hello";
+  const arr = Array.from(str);
+  console.log(arr); // Output: ['h', 'e', 'l', 'l', 'o']
+  ```
+:::tip[Note]
+Arrays are dynamic — they can **grow** or **shrink** as needed, and their elements can be accessed or modified using zero-based indices (e.g., `fruits[0]` is `'apple'`).
+:::
+
+## Basic Array Operations
+---
+
+### Accessing Elements
+- You can access array elements by **their index**.
+```javascript
+const fruits = ["apple", "banana", "cherry"];
+console.log(fruits[0]); // Output: apple
+console.log(fruits[1]); // Output: banana
+```
+- Or using the **`at()`** method: Returns the element at a specified index (supports negative indices for counting from the end).
+```javascript
+const arr = [1, 2, 3];
+console.log(arr.at(1)); // 2
+console.log(arr.at(-1)); // 3
+```
+
+### Modifying Elements
+You can directly modify the array elements using **their index**.
+
+```javascript
+const fruits = ["apple", "banana", "cherry"];
+fruits[1] = "blueberry"; // Changes 'banana' to 'blueberry'
+console.log(fruits); // Output: ["apple", "blueberry", "cherry"]
+```
+## Array Length Property
+---
+
+- **Getting the Length of an Array:**
+  ```javascript
+  const fruits = ["apple", "banana", "cherry"];
+  console.log(fruits.length); // Output: 3
+  ```
+
+- **Setting the Length of an Array:**
+  :::danger[Note]
+    - You can **change the length** of an array. Changing length **truncates** or **extends** the array.
+  :::
+  ```javascript
+  const fruits = ["apple", "banana", "cherry"];
+  fruits.length = 2; // Removes all elements after index 1
+  console.log(fruits); // Output: ["apple", "banana"]
+
+  // Changing length truncates or extends the array
+  const numbers = [1, 2, 3];
+  numbers.length = 6;
+  console.log(numbers); // Extended array: [1, 2, 3, undefined, undefined, undefined]
+  ```  
+## Commonly Used Array Methods
+---
+
+### Adding Elements
+
+- **`push()`**: Adds **one** or **more elements** to the end of an array.
+  ```javascript
+  const fruits = ["apple", "banana"];
+  fruits.push("cherry"); // Adds 'cherry' to the end
+  console.log(fruits); // Output: ["apple", "banana", "cherry"]
+  ```
+
+- **`unshift()`**: Adds **one** or **more elements** to the beginning of an array.
+  ```javascript
+  fruits.unshift("mango"); // Adds 'mango' to the beginning
+  console.log(fruits); // Output: ["mango", "apple", "banana", "cherry"]
+  ```
+
+### Removing Elements
+
+- **`pop()`**: Removes the **last element** of an array and returns it.
+  ```javascript
+  const last = fruits.pop(); // Removes 'cherry'
+  console.log(fruits); // Output: ["mango", "apple", "banana"]
+  console.log(last); // Output: 'cherry'
+  ```
+
+- **`shift()`**: Removes the **first element** of an array and returns it.
+  ```javascript
+  const first = fruits.shift(); // Removes 'mango'
+  console.log(fruits); // Output: ["apple", "banana"]
+  console.log(first); // Output: 'mango'
+  ```
+
+### Manipulating Elements at Specific Positions
+
+- **`splice()`**: Adds or removes elements from a **specific index**.
+  ```javascript
+  // Remove 1 element at index 1
+  const removed = fruits.splice(1, 1); 
+  console.log(fruits); // Output: ["apple"]
+  console.log(removed); // Output: ["banana"]
+
+  // Add 'cherry' at index 1
+  fruits.splice(1, 0, "cherry");
+  console.log(fruits); // Output: ["apple", "cherry"]
+  ```
+
+### Combining Arrays
+
+- **`concat()`**: Merges **two** or **more** arrays into a new array.
+  ```javascript
+  const moreFruits = ["grape", "orange"];
+  const allFruits = fruits.concat(moreFruits);
+  console.log(allFruits); // Output: ["apple", "cherry", "grape", "orange"]
+  ```
+- Using the spread Operator **`...`**
+
+  ```javascript
+  const array1 = [1, 2, 3];
+  const array2 = [4, 5, 6];
+  // Merge arrays
+  const combined = [...array1, ...array2];
+  console.log(combined); // [1, 2, 3, 4, 5, 6]
+  // Clone an array
+  const clone = [...array1];
+  console.log(clone); // [1, 2, 3]
+  // Insert elements in the middle
+  const inserted = [...array1.slice(0, 1), 1.5, ...array1.slice(1)];
+  console.log(inserted); // [1, 1.5, 2, 3]
+  ```
+---
+
+## Iterating Over Arrays
+---
+- Using a for loop:
+  ```javascript
+  const fruits = ["apple", "banana", "cherry"];
+  for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+  }
+  ```
+- Using `for...of` loop:
+  ```javascript
+  const fruits = ["apple", "banana", "cherry"];
+  for (const fruit of fruits) {
+    console.log(fruit);
+  }
+  ```
+- Using `for...in` loop (not recommended for arrays):
+  ```javascript
+  const fruits = ["apple", "banana", "cherry"];
+  for (const index in fruits) {
+    console.log(index, fruits[index]);
+  }
+  ```
+- **`forEach()`**: Executes **a provided function** once for each array element (no return value).
+  ```javascript
+  const fruits = ["apple", "banana", "cherry"];
+  fruits.forEach(function(fruit, index) {
+    console.log(index, fruit);
+  });
+  // Output: 
+  // 0 apple
+  // 1 banana
+  // 2 cherry
+  ```
+
+- **`map()`**: Creates a new array with the results of calling **a provided function** on every element.
+  ```javascript
+  const lengths = fruits.map(fruit => fruit.length);
+  console.log(lengths); // Output: [5, 6, 6]
+  ```
+
+- **`filter()`**: Creates a new array with all elements that pass the test implemented by the provided function.
+  ```javascript
+  const longFruits = fruits.filter(fruit => fruit.length > 5);
+  console.log(longFruits); // Output: ["banana", "cherry"]
+  ```
+
+- **`reduce()`**: Executes a reducer function on each element of the array (from left to right) to reduce it to a single value.
+  ```javascript
+  const sum = [1, 2, 3, 4].reduce((acc, currentValue) => acc + currentValue, 0);
+  console.log(sum); // Output: 10
+  ```
+
+- **`reduceRight()`**: Similar to `reduce()`, but processes the array from right to left.
+  ```javascript
+  const reversedSum = [1, 2, 3, 4].reduceRight((acc, currentValue) => acc + currentValue, 0);
+  console.log(reversedSum); // Output: 10
+  ```
+- **`find()`**  
+    Returns the **first element** that satisfies a condition, or `undefined`.
+    ```javascript
+    const arr = [1, 2, 3, 4];
+    const found = arr.find(x => x > 2);
+    console.log(found); // 3
+    ```
+
+-  **`findIndex()`**  
+    Returns the **index of the first element** that satisfies a condition, or -1.
+    ```javascript
+    const arr = [1, 2, 3, 4];
+    const index = arr.findIndex(x => x > 2);
+    console.log(index); // 2
+    ```
+
+-  **`findLast()`**  
+    Returns the **last element** that satisfies a condition, or `undefined`.
+    ```javascript
+    const arr = [1, 2, 3, 2];
+    const found = arr.findLast(x => x === 2);
+    console.log(found); // 2
+    ```
+
+- **`findLastIndex()`**  
+    Returns the **index of the last element** that satisfies a condition, or -1.
+    ```javascript
+    const arr = [1, 2, 3, 2];
+    const index = arr.findLastIndex(x => x === 2);
+    console.log(index); // 3
+    ```
+
+- **`every()`**  
+    Checks if **all elements satisfy** a condition (returns `true`/`false`).
+    ```javascript
+    const arr = [2, 4, 6];
+    const allEven = arr.every(x => x % 2 === 0);
+    console.log(allEven); // true
+    ```
+
+-  **`some()`**  
+    Checks if **at least one element** satisfies a condition (returns `true`/`false`).
+    ```javascript
+    const arr = [1, 3, 4];
+    const hasEven = arr.some(x => x % 2 === 0);
+    console.log(hasEven); // true
+    ```
+
+---
+
+## Searching and Sorting
+---
+- **`indexOf()`**: Returns the **first index** at which a given element can be found, or -1 if not found.
+  ```javascript
+  console.log(fruits.indexOf("banana")); // Output: 1
+  console.log(fruits.indexOf("grape")); // Output: -1
+  ```
+
+- **`lastIndexOf()`**: Returns the **last index** at which a given element can be found, or -1 if not found.
+  ```javascript
+  const items = [1, 2, 3, 2];
+  console.log(items.lastIndexOf(2)); // Output: 3
+  ```
+
+- **`includes()`**: Checks if an **array contains** a certain element, returning `true` or `false`.
+  ```javascript
+  console.log(fruits.includes("banana")); // Output: true
+  console.log(fruits.includes("grape")); // Output: false
+  ```
+
+- **`sort()`**: Sorts elements (**by default as strings**). Accepts an optional comparison function.
+
+   ```javascript
+  const fruits = ["Banana", "Orange", "Apple", "Mango"];
+  // Default sort (alphabetical)
+  fruits.sort();
+  console.log(fruits); // ["Apple", "Banana", "Mango", "Orange"]
+
+  //NOTE: Numbers need a comparison function
+  const numbers = [40, 100, 1, 5, 25, 10];
+
+  // Ascending order
+  numbers.sort((a, b) => a - b);
+  console.log(numbers); // [1, 5, 10, 25, 40, 100]
+
+  // Descending order
+  numbers.sort((a, b) => b - a);
+  console.log(numbers); // [100, 40, 25, 10, 5, 1]
+   ```
+- **`reverse()`**: Reverses the order of elements in an array.
+  ```javascript
+  const reversedFruits = fruits.reverse();
+  console.log(reversedFruits); // Output: ["cherry", "banana", "apple"]
+  // Often used with sort
+  const numbers = [1, 2, 3, 4, 5];
+  numbers.sort((a, b) => a - b).reverse();
+  console.log(numbers); // [5, 4, 3, 2, 1]
+  ```
+
+---
+
+## Other Useful Methods
+
+- **`slice()`**: Returns a shallow copy of a portion of an array.
+  ```javascript
+  const subArray = fruits.slice(1, 3);
+  console.log(subArray); // Output: ["banana", "cherry"]
+  ```
+
+- **`join()`**: Combines all elements of an array into a single string.
+  ```javascript
+  const str = fruits.join(", ");
+  console.log(str); // Output: "apple, banana, cherry"
+  const elements = ["Fire", "Air", "Water"];
+  console.log(elements.join());  // "Fire,Air,Water"
+  console.log(elements.join("")); // "FireAirWater"
+  console.log(elements.join(" - ")); // "Fire - Air - Water"
+  ```
+
+- **`fill()`**: Changes all elements in an array to a static value.
+  ```javascript
+  const filledArray = new Array(3).fill("apple");
+  console.log(filledArray); // Output: ["apple", "apple", "apple"]
+  ```
+
+- **`from()`**: Creates a new array from an iterable object (like a string or a NodeList).
+  ```javascript
+  const chars = Array.from("hello");
+  console.log(chars); // Output: ['h', 'e', 'l', 'l', 'o']
+  ```
+
+- **`keys()`**: Returns a new Array Iterator object that contains the keys of an array.
+  ```javascript
+  const iterator = fruits.keys();
+  console.log([...iterator]); // Output: [0, 1, 2]
+  ```
+
+- **`values()`**: Returns a new Array Iterator object that contains the values of an array.
+  ```javascript
+  const iterator = fruits.values();
+  console.log([...iterator]); // Output: ["apple", "banana", "cherry"]
+  ```
+
+- **`entries()`**: Returns a new Array Iterator object that contains the key/value pairs of an array.
+  ```javascript
+  const iterator = fruits.entries();
+  console.log([...iterator]); // Output: [[0, "apple"], [1, "banana"], [2, "cherry"]]
+  ```
+
+## Flattening Arrays  
+- **`flat()`**: Flattens nested arrays into a single array. Accepts an optional depth parameter.
+    ```javascript
+    const nested = [1, 2, [3, 4, [5, 6]]];
+    // Flatten one level
+    console.log(nested.flat());  // [1, 2, 3, 4, [5, 6]]
+    // Flatten specific depth
+    console.log(nested.flat(2)); // [1, 2, 3, 4, 5, 6]
+    // Flatten all levels
+    console.log(nested.flat(Infinity)); // [1, 2, 3, 4, 5, 6]
+    // Remove empty slots
+    const sparse = [1, 2, , 4, 5];
+    console.log(sparse.flat());  // [1, 2, 4, 5]
+    ```
+
+- **`flatMap()`**: map() + flat() combined, Maps each element and flattens the result (depth of 1).
+    ```javascript
+    const arr = [1, 2, 3];
+    const result = arr.flatMap(x => [x, x * 2]);
+    console.log(result); // [1, 2, 2, 4, 3, 6]
+    //-----------------    
+    const sentences = ["Hello world", "JavaScript is fun"];
+    // Split sentences into words and flatten
+    const words = sentences.flatMap(sentence => sentence.split(" "));
+    console.log(words); // ["Hello", "world", "JavaScript", "is", "fun"]
+    // Equivalent to:
+    // sentences.map(x => x.split(" ")).flat()
+    ```
+---
+
+## Practical Examples
+Here are some real-world scenarios combining multiple methods:
+
+- **Processing DOM elements**:
+  ```javascript
+  // DOM NodeList
+  const paragraphs = document.querySelectorAll('p');
+  // Convert to array to use array methods
+  const paragraphsArray = Array.from(paragraphs);
+  paragraphsArray.filter(p => p.textContent.includes('important'));
+  ```
+
+- **Filtering and Mapping**:
+  ```javascript
+  const numbers = [1, 2, 3, 4, 5];
+  const doubledEvens = numbers.filter(x => x % 2 === 0).map(x => x * 2);
+  console.log(doubledEvens); // [4, 8]
+  ```
+
+- **Flattening and Reducing**:
+  ```javascript
+  const nested = [[1, 2], [3, 4], [5]];
+  const sum = nested.flat().reduce((acc, curr) => acc + curr, 0);
+  console.log(sum); // 15
+  ```
+
+- **Sorting Objects**:
+  ```javascript
+  const people = [
+    { name: 'Alice', age: 25 },
+    { name: 'Bob', age: 20 },
+    { name: 'Charlie', age: 30 }
+  ];
+  const sorted = people.sort((a, b) => a.age - b.age);
+  console.log(sorted);
+  // [{name: 'Bob', age: 20}, {name: 'Alice', age: 25}, {name: 'Charlie', age: 30}]
+  ```
+
+---
