@@ -1,0 +1,89 @@
+---
+title: Manipulating Element Styles
+description: Manipulating Element Styles
+sidebar:
+  label: 'Modifying Styles'
+  order: 4
+  badge:
+    text: New
+    variant: danger
+---
+## Modifying Styles and Classes
+---
+### `element.style.property`
+- You can directly manipulate an element's inline styles using the `style` property (camelCase).
+
+```javascript
+const div = document.getElementById("myDiv");
+div.style.backgroundColor = "blue";
+div.style.fontSize = "16px";
+```
+
+### `window.getComputedStyle(element)`
+- Gets the computed styles (including CSS from stylesheets).
+```javascript
+const styles = window.getComputedStyle(div);
+console.log(styles.color); // "rgb(0, 0, 255)"
+```
+
+## Working with Classes
+---
+Classes are a cleaner way to manage styles.
+
+### `element.className`
+- Gets or sets the entire class string.
+```javascript
+const div = document.getElementById("myDiv");
+div.className = "active highlighted";
+```
+
+### `element.classList`
+The `classList` provides methods for for manipulating (adding, removing, and toggling) classes:
+
+- `add(...classes)`: Adds one or more classes.
+- `remove(...classes)`: Removes one or more CSS classes.
+- `toggle(class)`: Toggles a class (adds if absent, removes if present).
+- `contains(class)`: Checks if an element has a specified class.
+```javascript
+div.classList.add("active");
+div.classList.remove("highlighted");
+div.classList.toggle("visible");
+console.log(div.classList.contains("active")); // true
+```
+
+## Animation and Transitions
+---
+Basic animations can be achieved with DOM manipulation.
+
+### `requestAnimationFrame(callback)`
+- Schedules a function to run before the next repaint (smooth animations).
+```javascript
+function move(element) {
+  let pos = 0;
+  function step() {
+    pos += 1;
+    element.style.left = pos + "px";
+    if (pos < 100) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+move(document.getElementById("box"));
+```
+
+### CSS Integration
+- Use `classList` to trigger CSS transitions.
+
+```css
+.box {
+  transition: all 0.3s;
+}
+.box.moved {
+  transform: translateX(100px);
+}
+```
+```javascript
+const box = document.getElementById("box");
+box.classList.add("moved");
+```
+
+---

@@ -3,7 +3,7 @@ title: The DOM API
 description: The DOM API
 sidebar:
   label: 'The DOM API'
-  order: 1
+  order: 2
   badge:
     text: New
     variant: danger
@@ -21,11 +21,11 @@ DOM manipulation allows developers to:
 
 ## Accessing DOM Elements
 ---
-:::tip[Note]
-To manipulate HTML elements, the first step is to **access** them. JavaScript provides **several methods** to **locate** elements on the page.
+:::note[Note]
+To manipulate HTML elements, the first step is to **_access_** them. The DOM API provides **several methods** to **locate** elements on the page.
 :::
 
-### `document.getElementById(id)`
+### `getElementById(id)`
 - Gets the first element with the specified `id`.
 - Returns an `HTMLElement` or `null` if no match is found.
 ```javascript
@@ -33,21 +33,21 @@ const element = document.getElementById("elementId");
 console.log(element); // <div id="elementId">...</div>
 ```
 
-### `document.getElementsByClassName(className)`
+### `getElementsByClassName(className)`
 - Returns **a live** `HTMLCollection` of all elements with the specified class name.
 ```javascript
 const elements = document.getElementsByClassName("myClass");
 console.log(elements[0]); // First element with class "myClass"
 ```
 
-### `document.getElementsByTagName(tagName)`
+### `getElementsByTagName(tagName)`
 - Returns **a live** `HTMLCollection` of elements with the specified tag name.
 ```javascript
 const paragraphs = document.getElementsByTagName("p");
 console.log(paragraphs.length); // Number of <p> elements
 ```
 
-### `document.querySelector(selector)`
+### `querySelector(selector)`
 - Returns the **first element** matching a CSS selector.
 - Returns `null` if no match is found.
 ```javascript
@@ -55,13 +55,70 @@ const div = document.querySelector(".myClass");
 console.log(div); // First element with class "myClass"
 ```
 
-### `document.querySelectorAll(selector)`
+### `querySelectorAll(selector)`
 - Returns **a static** `NodeList` of all elements matching a CSS selector.
 ```javascript
 const items = document.querySelectorAll("li.active");
 items.forEach(item => console.log(item.textContent));
 ```
+### `getRootNode()`
+Returns the **root node** of the document (typically the `<html>` element).
 
+```javascript
+const root = document.getRootNode();
+```
+
+### `closest(selector)`
+Finds the **closest ancestor** (or itself) of an element that matches the given selector.
+
+```javascript
+const element = document.querySelector('.child').closest('.parent');
+```
+
+## Setting Content
+---
+:::tip[Note]
+- Once you've **selected an element**, you can modify its **content** or **structure**.
+:::
+
+### `element.innerHTML`
+- Gets or sets the **HTML content** inside an element.
+```javascript
+const div = document.getElementById("myDiv");
+div.innerHTML = "<p>New content</p>";
+
+// To clear the content of an HTML element.
+div.innerHTML = "";  // This will remove all child elements and text.
+```
+
+### `element.textContent`
+- Gets or sets the **text content** of an element (ignores HTML tags).
+```javascript
+const p = document.querySelector("p");
+p.textContent = "Plain text only";
+```
+
+### `element.innerText`
+- Similar to `textContent`, but reflects what's visible to the user (e.g., respects CSS `display: none`).
+```javascript
+const span = document.querySelector("span");
+span.innerText = "Visible text";
+```
+
+
+## How to Convert Collections to Arrays
+
+```javascript
+// Convert HTMLCollection to Array
+const divArray = Array.from(document.getElementsByTagName('div'));
+// Or
+const divArray2 = [...document.getElementsByTagName('div')];
+
+// Now you can use array methods
+divArray.forEach(div => {
+  // Do something with each div
+});
+```
 ## Static vs Live NodeLists
 ---
 ### Static NodeList

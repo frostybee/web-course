@@ -1,0 +1,96 @@
+---
+title: Adding and Removing Elements
+description: Adding and Removing Elements
+sidebar:
+  label: 'Adding and Removing Elements'
+  order: 4  
+---
+
+## Manipulating the DOM structure
+---
+:::note[Note]
+- The DOM API provides various methods to add, remove, and manipulate elements within the document. 
+- These methods allow you to **dynamically modify** the **structure** of a webpage, enhancing user interaction and experience.
+:::
+
+## Creating and Inserting Elements
+---
+The DOM API allows you to create new elements and insert them into the DOM tree.
+
+### `createElement(tagName)`
+Creates a new element with the specified tag name.
+
+```javascript
+const newDiv = document.createElement("div");
+newDiv.textContent = "Hey, I'm new!";
+```
+
+### `createTextNode(text)`
+Creates a new **text node** with the given text content.
+
+```javascript
+const textNode = document.createTextNode('Hello, World!');
+```
+
+### `appendChild(child)`
+Appends a **new child node** to an element.
+
+```javascript
+const div = document.getElementById("container");
+const newDiv = document.createElement("div");
+const textNode = document.createTextNode('Hello, World!');
+newDiv.appendChild(textNode);
+div.appendChild(newDiv);
+```
+
+### `insertBefore(newNode, referenceNode)`
+Inserts a new node before a reference node.
+
+```javascript
+const parent = document.getElementById("container");
+const newNode = document.createElement("p");
+const reference = parent.children[1];
+parent.insertBefore(newNode, reference);
+```
+
+### `replaceChild(newChild, oldChild)`
+Replaces an old child with a new one.
+
+```javascript
+const parent = document.getElementById("container");
+const newChild = document.createElement("span");
+const oldChild = parent.firstChild;
+parent.replaceChild(newChild, oldChild);
+```
+### `cloneNode(deep)`
+Creates a copy of an element. The `deep` parameter specifies whether to copy the element’s child nodes.
+
+```javascript
+const clone = newDiv.cloneNode(true);  // Deep clone
+```
+
+### `insertAdjacentHTML(position, html)`
+Inserts HTML content at a specified position relative to an element.
+
+```javascript
+document.body.insertAdjacentHTML('beforeend', '<div>New Div</div>');
+```
+
+## Removing Elements
+---
+###  `removeChild(child)`
+Removes a child element from the DOM.
+
+```javascript
+const parent = document.getElementById("container");
+const child = parent.firstChild;
+parent.removeChild(child);
+```
+### `element.remove()`
+- Removes the element itself from the DOM.
+```javascript
+const div = document.getElementById("myDiv");
+div.remove();
+```
+
+---
