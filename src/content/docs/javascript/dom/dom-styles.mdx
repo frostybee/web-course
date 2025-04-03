@@ -8,36 +8,59 @@ sidebar:
     text: New
     variant: danger
 ---
+
 ## Modifying Styles and Classes
 ---
-### `element.style.property`
+
+### Using the style Property
 - You can directly manipulate an element's inline styles using the `style` property (camelCase).
 
 ```javascript
-const div = document.getElementById("myDiv");
-div.style.backgroundColor = "blue";
-div.style.fontSize = "16px";
+const element = document.getElementById("myElement");
+// Set individual style properties (camelCase)
+element.style.backgroundColor = 'blue';
+element.style.fontSize = '16px';
+element.style.marginTop = '10px';
+
+// Get inline style
+const bgColor = element.style.backgroundColor;
+
+// Set multiple styles at once
+Object.assign(element.style, {
+  color: 'white',
+  padding: '10px',
+  borderRadius: '5px'
+});
+
+// Remove a style property
+element.style.removeProperty('background-color');
+
+// Set CSS priority
+element.style.setProperty('color', 'red', 'important');
 ```
 
-### `window.getComputedStyle(element)`
-- Gets the computed styles (including CSS from stylesheets).
+### Getting Computed Styles
+---
+- Gets the computed styles (including CSS from stylesheets) using `window.getComputedStyle(element)`.
 ```javascript
-const styles = window.getComputedStyle(div);
-console.log(styles.color); // "rgb(0, 0, 255)"
+// Get computed style (actual rendered style after CSS is applied)
+const computedStyle = window.getComputedStyle(element);
+const fontSize = computedStyle.fontSize;
+const opacity = computedStyle.getPropertyValue('opacity');
 ```
 
-## Working with Classes
+### Using classList API
 ---
 Classes are a cleaner way to manage styles.
 
-### `element.className`
+#### `element.className`
 - Gets or sets the entire class string.
 ```javascript
 const div = document.getElementById("myDiv");
 div.className = "active highlighted";
 ```
 
-### `element.classList`
+#### `element.classList`
 The `classList` provides methods for for manipulating (adding, removing, and toggling) classes:
 
 - `add(...classes)`: Adds one or more classes.
@@ -45,10 +68,20 @@ The `classList` provides methods for for manipulating (adding, removing, and tog
 - `toggle(class)`: Toggles a class (adds if absent, removes if present).
 - `contains(class)`: Checks if an element has a specified class.
 ```javascript
-div.classList.add("active");
-div.classList.remove("highlighted");
-div.classList.toggle("visible");
-console.log(div.classList.contains("active")); // true
+// Add classes
+element.classList.add('new-class', 'another-class');
+// Remove classes
+element.classList.remove('old-class');
+// Toggle a class (add if not present, remove if present)
+element.classList.toggle('active');
+// Check if an element has a class
+const hasClass = element.classList.contains('highlight'); // true or false
+// Replace a class
+element.classList.replace('old-class', 'new-class');
+// Iterate through classes
+element.classList.forEach(className => {
+  console.log(className);
+});
 ```
 
 ## Animation and Transitions

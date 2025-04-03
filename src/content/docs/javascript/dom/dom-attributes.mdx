@@ -1,0 +1,98 @@
+---
+title: Working with Attributes
+description: Working with Attributes
+sidebar:
+  label: 'Manipulating Attributes'
+  order: 4
+  badge:
+    text: New
+    variant: danger
+---
+
+## Manipulating Element Attributes
+
+:::note[Note]   
+-  You can manipulate the attributes of an element (like `class`, `id`, `src`, etc.) using the methods listed below.
+- These methods allow you to **get**, **set**, **remove**, and **check** attributes on DOM elements.
+:::
+
+## Working with Data Attributes
+
+:::tip[Tip]
+- **Custom attributes** can be created using the **`data-*`** attribute format, which allows you to **store extra information** on standard HTML elements.
+- **Data attributes** start with **`data-`** and are useful for storing custom data that can be accessed via JavaScript.
+:::
+
+```javascript
+// In HTML: <div data-user-id="123" data-role="admin">User</div>
+
+// Get data attribute
+const userId = element.getAttribute('data-user-id');
+
+// Using dataset property (camelCase conversion)
+const userId = element.dataset.userId;
+const role = element.dataset.role;
+
+// Set data attribute
+element.dataset.status = 'active';
+```
+
+## Direct Property Access
+---
+:::tip[Tip]
+- **Many attributes** (e.g., `id`, `className`, `value`) are accessible **as properties**.  
+:::
+
+```javascript
+const button = document.getElementById("myButton");
+// id attribute
+button.id = "newId";
+console.log(button.className); // Gets class as a string
+// class attribute (string)
+element.className = 'class1 class2';
+// disabled attribute (boolean)
+element.disabled = true;
+// href for links
+anchor.href = 'https://example.com';
+// src for images
+image.src = 'image.jpg';
+// value for form elements
+input.value = 'New value';
+// checked for checkboxes
+checkbox.checked = true;
+```
+## Accessing Attributes via Methods
+### `getAttribute(attribute)`
+- Retrieves the value of an attribute.
+
+```javascript
+const img = document.querySelector("img");
+console.log(img.getAttribute("src")); // "image.jpg"
+```
+
+### `setAttribute(attribute, value)`
+- Sets the value of an attribute.
+
+```javascript
+element.setAttribute('src', 'image.jpg');
+```
+### `removeAttribute(attribute)`
+- Removes an attribute from an element.
+
+```javascript
+const input = document.querySelector("input");
+input.removeAttribute("disabled");
+```
+### `hasAttribute(attribute)`
+Checks if an element has the specified attribute.
+
+```javascript
+const hasSrc = element.hasAttribute('src');
+```
+### `toggleAttribute(attribute, force)`
+Toggles the state of an attribute. If the attribute exists, it is removed; if not, it is added. The `force` parameter forces the toggle to be true or false.
+
+```javascript
+element.toggleAttribute('disabled');
+```
+---
