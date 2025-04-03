@@ -122,7 +122,7 @@ export default
           }
         },
         {
-          label: "DOM API",
+          label: "DOM API & Events",
           collapsed: false,
           autogenerate: {
             directory: "javascript/dom",

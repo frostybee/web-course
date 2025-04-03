@@ -1,0 +1,85 @@
+---
+title: The DOM API
+description: The DOM API
+sidebar:
+  label: 'The DOM API'
+  order: 1
+  badge:
+    text: New
+    variant: danger
+---
+
+## Basic DOM Manipulation Concepts
+---
+DOM manipulation allows developers to:
+
+- Access elements within an HTML document.
+- Create new elements and add them to the document.
+- Modify the content, structure, attributes, and styles of HTML elements on a webpage.
+- Modify content, attributes, and styles.
+- Respond to user interactions (e.g., clicks, keypresses).
+
+## Accessing DOM Elements
+---
+:::tip[Note]
+To manipulate HTML elements, the first step is to **access** them. JavaScript provides **several methods** to **locate** elements on the page.
+:::
+
+### `document.getElementById(id)`
+- Gets the first element with the specified `id`.
+- Returns an `HTMLElement` or `null` if no match is found.
+```javascript
+const element = document.getElementById("elementId");
+console.log(element); // <div id="elementId">...</div>
+```
+
+### `document.getElementsByClassName(className)`
+- Returns **a live** `HTMLCollection` of all elements with the specified class name.
+```javascript
+const elements = document.getElementsByClassName("myClass");
+console.log(elements[0]); // First element with class "myClass"
+```
+
+### `document.getElementsByTagName(tagName)`
+- Returns **a live** `HTMLCollection` of elements with the specified tag name.
+```javascript
+const paragraphs = document.getElementsByTagName("p");
+console.log(paragraphs.length); // Number of <p> elements
+```
+
+### `document.querySelector(selector)`
+- Returns the **first element** matching a CSS selector.
+- Returns `null` if no match is found.
+```javascript
+const div = document.querySelector(".myClass");
+console.log(div); // First element with class "myClass"
+```
+
+### `document.querySelectorAll(selector)`
+- Returns **a static** `NodeList` of all elements matching a CSS selector.
+```javascript
+const items = document.querySelectorAll("li.active");
+items.forEach(item => console.log(item.textContent));
+```
+
+## Static vs Live NodeLists
+---
+### Static NodeList
+
+A **static `NodeList`** is a collection of DOM nodes (elements, text nodes, etc.) that is ***not live***, meaning it **does not automatically update** when the DOM changes. 
+
+:::tip[Note]
+- A static `NodeList` is a snapshot of the nodes at the time it was created.
+- Static `NodeList`s are returned by methods like `document.querySelectorAll()` or `parentNode.childNodes` (in some cases). 
+:::
+
+### Live NodeList
+---
+A **live `NodeList`** is a collection that **automatically updates** when the DOM structure changes. For example, if a new node is added or removed from the DOM, a live **`NodeList`** will reflect those changes immediately.
+
+- **Live NodeLists are created by** **`getElementsBy*`** **methods**. 
+- Live NodeLists automatically update when the document changes, while static NodeLists do not.
+
+:::danger[Tip]
+- This distinction can be useful depending on whether you want a **frozen view** of the DOM or **one that reflects** changes in real-time.
+:::

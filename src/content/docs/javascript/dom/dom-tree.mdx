@@ -3,10 +3,55 @@ title: The DOM Tree
 description: The DOM Tree
 sidebar:
   label: 'DOM Tree'
-  order: 5
+  order: 4
   badge:
     text: New
     variant: danger
 ---
 
+## Introduction to the DOM
+:::note
+- The Document Object Model (DOM) is a programming interface for HTML and XML documents. 
+- It represents the page as a structured **tree of nodes** that can be **manipulated** with JavaScript.
+:::
 
+### What is the DOM?
+
+The DOM is an object-oriented representation of a web page, which can be modified with a scripting language like JavaScript. It's not part of JavaScript itself, but rather a Web API used by JavaScript to interact with HTML and XML documents.
+
+### The DOM as a Tree Structure
+
+The DOM represents a document as a **hierarchical tree of nodes**:
+- Document: The root node
+- Element nodes: HTML elements
+- Text nodes: Text content
+- Attribute nodes: Element attributes
+- Comment nodes: HTML comments
+
+## DOM Tree Structure
+
+```
+document
+├── html
+│   ├── head
+│   │   ├── title
+│   │   │   └── Text node: "My Page"
+│   │   └── meta, link, script elements...
+│   └── body
+│       ├── div
+│       │   ├── h1
+│       │   │   └── Text node: "Hello World"
+│       │   └── p
+│       │       └── Text node: "Welcome to my website"
+│       └── more elements...
+```
+
+### Node Types
+
+The DOM defines various **node types**:
+- `ELEMENT_NODE` (1)
+- `ATTRIBUTE_NODE` (2)
+- `TEXT_NODE` (3)
+- `COMMENT_NODE` (8)
+- `DOCUMENT_NODE` (9)
+- `DOCUMENT_TYPE_NODE` (10)
