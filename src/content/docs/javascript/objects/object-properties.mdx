@@ -1,0 +1,143 @@
+---
+title: JS Object Properties
+description: JS Object Properties
+sidebar:
+  label: 'JS Objects: Properties'
+  order: 3  
+---
+
+## Object Destructuring
+
+ES6 introduced **object destructuring**, a convenient way to **extract values** from objects:
+
+```javascript
+const person = {
+  name: "John",
+  age: 30,
+  address: {
+    city: "New York",
+    country: "USA"
+  }
+};
+
+// Basic destructuring
+const { name, age } = person;
+console.log(name, age); // "John" 30
+
+// Nested destructuring
+const { address: { city } } = person;
+console.log(city); // "New York"
+
+// Renaming variables
+const { name: personName } = person;
+console.log(personName); // "John"
+
+// Default values
+const { salary = 50000 } = person;
+console.log(salary); // 50000 (default value since it doesn't exist in person)
+```
+
+### Function Parameter Destructuring
+
+:::tip
+Destructuring is particularly useful in function parameters:
+
+```javascript
+function printPerson({ name, age }) {
+  console.log(`${name} is ${age} years old`);
+}
+
+printPerson(person); // "John is 30 years old"
+```
+:::
+
+## Advanced Object Techniques
+
+### Computed Property Names
+
+ES6 allows you to use expressions as property names in object literals:
+
+```javascript
+const propertyName = "temperature";
+const unit = "celsius";
+
+const weather = {
+  [propertyName]: 25,
+  [`${propertyName}_${unit}`]: "25°C"
+};
+
+console.log(weather.temperature); // 25
+console.log(weather.temperature_celsius); // "25°C"
+```
+
+### Getters and Setters
+
+JavaScript objects can have getter and setter methods that look like regular properties:
+
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  
+  set fullName(value) {
+    const parts = value.split(" ");
+    this.firstName = parts[0];
+    this.lastName = parts[1];
+  }
+};
+
+console.log(person.fullName); // "John Doe"
+person.fullName = "Jane Smith";
+console.log(person.firstName); // "Jane"
+console.log(person.lastName); // "Smith"
+```
+
+### Property Descriptors
+
+JavaScript provides low-level control of object properties through property descriptors:
+
+```javascript
+const person = {};
+
+Object.defineProperty(person, "name", {
+  value: "John",
+  writable: true,
+  enumerable: true,
+  configurable: true
+});
+
+Object.defineProperty(person, "age", {
+  value: 30,
+  writable: false, // Can't change the value
+  enumerable: false, // Won't show up in for...in loops or Object.keys()
+  configurable: false // Can't delete the property or change its descriptors
+});
+
+person.name = "Jane"; // This works
+person.age = 31; // This doesn't work (silently fails or throws in strict mode)
+
+console.log(person.name); // "Jane"
+console.log(person.age); // 30
+
+console.log(Object.keys(person)); // ["name"] (age is not enumerable)
+```
+
+### Symbol Properties
+
+Symbols provide a way to create truly private object properties or unique identifiers:
+
+```javascript
+const id = Symbol("id");
+
+const user = {
+  name: "John",
+  [id]: 12345
+};
+
+console.log(user[id]); // 12345
+console.log(Object.keys(user)); // ["name"] (Symbol properties don't show up here)
+```

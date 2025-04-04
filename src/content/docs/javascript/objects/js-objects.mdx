@@ -7,15 +7,17 @@ sidebar:
 ---
 
 ## What Are Objects in JavaScript?
-
-- JavaScript objects **are collections** of **key-value pairs**, where the keys are strings (or Symbols) and the values can be **any** JavaScript **data type**, including other objects. 
+---
+:::note
+- JavaScript objects **are collections** of **key-value pairs**, where the keys are **strings** (or **Symbols**) and the values can be **any** JavaScript **data type**, including other objects. 
 - Think of objects as containers that hold related data and functionality.
-
-:::note[Note]
-Unlike arrays, which use **numeric indices**, objects use **named properties**, making them ideal for representing real-world entities with multiple characteristics.
 :::
 
-```javascript title="Example of a JavaScript object representing a book"
+:::tip[Tip]
+- Unlike arrays, which use **numeric indices**, objects use **named properties**, making them ideal for representing real-world entities with **multiple characteristics**.
+:::
+
+```javascript title="Example of a JavaScript object representing a book:"
 const book = {
   title: "JavaScript: The Good Parts",
   author: "Douglas Crockford",
@@ -23,4 +25,220 @@ const book = {
   pages: 176,
   isInPrint: true
 };
+```
+
+## Creating Objects
+---
+
+There are several ways to create objects in JavaScript:
+
+### 1. Object Literals
+---
+
+The **most common** way to create objects is using object literal notation:
+
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30
+};
+```
+
+#### Nested Objects
+
+Objects can contain other objects as properties, creating a nested structure.
+
+```javascript
+let person = {
+  name: 'Alice',
+  address: {
+    street: '123 Main St',
+    city: 'Wonderland'
+  }
+};
+
+console.log(person.address.city); // Output: Wonderland
+```
+
+### 2. Using ES6 Classes
+---
+ES6 (2015) introduced **class syntax**, which provides a more familiar way to create objects for programmers coming from class-based languages:
+
+```javascript
+class Person {
+  constructor(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+  }
+  
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+const john = new Person("John", "Doe", 30);
+console.log(john.getFullName()); // "John Doe"
+```
+:::tip[Tip]
+It's important to understand that classes in JavaScript are primarily syntactic sugar over the prototype-based inheritance mechanism. They don't fundamentally change how objects work.
+:::
+
+### 3. Constructor Functions
+---
+Constructor functions let you create multiple objects **with the same structure**:
+
+```javascript
+function Person(firstName, lastName, age) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.age = age;
+}
+
+const john = new Person("John", "Doe", 30);
+const jane = new Person("Jane", "Smith", 25);
+```
+
+:::note[Note]
+When you use the **`new`** keyword with a **constructor function**, JavaScript:
+1. Creates a new empty object
+2. Sets `this` inside the function to refer to that new object
+3. Executes the function code, which typically adds properties to the object
+4. Returns the object (unless the function explicitly returns something else)
+:::
+
+## Working with Object Properties
+
+### Accessing Properties
+You can access object properties in two ways:
+#### Dot Notation
+
+- **Syntax:** `objectName.propertyName`
+
+```javascript
+const person = { name: "John", age: 30 };
+console.log(person.name); // "John"
+person.age = 31;
+```
+
+#### Bracket Notation
+
+- **Syntax:** `object["property"]`
+
+```javascript title="Example of using bracket notation with a variable:"
+const propertyName = "name";
+console.log(person[propertyName]); // "John"
+
+// Adding a property with spaces in its name
+person["favorite color"] = "blue";
+```
+:::tip
+**Bracket notation** is particularly useful for **dynamic property** names, when:
+- The property name includes **spaces** or **special characters**,
+- The property name is stored in a variable,
+- The property name is determined at runtime.
+:::
+
+#### Destructuring Objects
+
+ES6 introduced **destructuring** to **extract properties** into variables.
+
+```javascript
+const user = { name: "Eve", age: 28 };
+const { name, age } = user;
+console.log(name, age); // "Eve", 28
+
+// With aliasing
+const { name: userName } = user;
+console.log(userName); // "Eve"
+```
+
+### Adding and Modifying Properties
+Properties can be added or updated after creation.
+
+```javascript
+const person = { name: "Charlie" };
+person.age = 30;              // Add
+person.name = "Charlotte";    // Modify
+```
+
+### Deleting Properties
+Use the `delete` operator to remove a property.
+
+```javascript
+delete person.age;
+console.log(person.age); // undefined
+```
+
+### Property Existence Checking
+
+To check if a property exists in an object, you can use:
+
+#### The `in` operator:
+
+```javascript
+console.log("make" in car); // true
+console.log("model" in car); // false after deletion
+```
+
+#### hasOwnProperty() method:
+
+```javascript
+console.log(car.hasOwnProperty("make")); // true
+```
+
+Unlike the `in` operator, `hasOwnProperty()` only checks for the object's own properties, not properties inherited from its prototype.
+
+#### Comparing with undefined:
+
+```javascript
+console.log(car.model === undefined); // true if the property doesn't exist
+```
+:::danger[Tip]
+This approach has a limitation: if a property exists but is explicitly set to `undefined`, this check will give a false positive for non-existence.
+:::
+
+## Object Methods
+
+Methods are functions stored as object properties. They allow objects to have behavior in addition to data.
+
+```javascript
+const dog = {
+  name: "Rex",
+  bark() {
+    console.log(`${this.name} says woof!`);
+  }
+};
+
+dog.bark(); // "Rex says woof!"
+```
+
+- **Shorthand Method Syntax**: ES6 allows omitting the `function` keyword.
+
+
+
+### Extending Classes
+Use `extends` for inheritance in ES6 classes.
+
+```javascript
+class Vehicle {
+  constructor(type) {
+    this.type = type;
+  }
+  move() {
+    console.log(`${this.type} is moving`);
+  }
+}
+
+class Car extends Vehicle {
+  constructor(make, model) {
+    super("Car"); // Call parent constructor
+    this.make = make;
+    this.model = model;
+  }
+}
+
+const myCar = new Car("Hyundai", "Sonata");
+myCar.move(); // "Car is moving"
 ```

@@ -1,0 +1,425 @@
+---
+title: Objects Methods
+description: Objects Methods
+sidebar:
+  label: 'JS Objects: Methods'
+  order: 4  
+---
+## Built-in Object Methods
+
+JavaScript provides several built-in methods for working with objects properties and values. 
+
+### `Object.keys()`
+
+`Object.keys()` returns an array of the object's own enumerable property names.
+
+```javascript
+let person = {
+  name: 'Alice',
+  age: 25
+};
+
+let keys = Object.keys(person);
+keys.forEach(key => {
+  console.log(key + ': ' + person[key]);
+});
+```
+### `Object.values()`
+
+`Object.values()` returns an array of the object's values.
+
+```javascript
+let person = {
+  name: 'Bob',
+  age: 30
+};
+
+let values = Object.values(person);
+console.log(values); // Output: ['Bob', 30]
+```
+
+### `Object.entries()`
+
+`Object.entries()` returns an array of key-value pairs.
+
+```javascript
+let person = {
+  name: 'Charlie',
+  age: 28
+};
+
+let entries = Object.entries(person);
+console.log(entries); 
+// Output: [['name', 'Charlie'], ['age', 28]]
+```
+
+---
+
+```javascript
+const person = {
+  name: "John",
+  age: 30,
+  job: "Developer"
+};
+
+console.log(Object.keys(person)); // ["name", "age", "job"]
+console.log(Object.values(person)); // ["John", 30, "Developer"]
+console.log(Object.entries(person)); // [["name", "John"], ["age", 30], ["job", "Developer"]]
+```
+
+### Object.assign()
+
+This method copies properties from one or more source objects to a target object:
+
+```javascript
+const target = { a: 1, b: 2 };
+const source = { b: 3, c: 4 };
+
+const result = Object.assign(target, source);
+console.log(target); // { a: 1, b: 3, c: 4 }
+console.log(result === target); // true (they reference the same object)
+```
+
+Note that `Object.assign()` performs a shallow copy, not a deep copy. Nested objects will still be references.
+
+### Object Freezing and Sealing
+JavaScript provides methods to prevent modifications to objects.
+#### Object.freeze() 
+
+`Object.freeze()` makes an object immutable, meaning no new properties can be added, existing properties cannot be modified, and existing properties cannot be deleted.
+
+```javascript
+const frozen = Object.freeze({ name: "John" });
+frozen.name = "Jane"; // This will fail silently (or throw an error in strict mode)
+console.log(frozen.name); // "John"
+```
+#### Object.seal() 
+`Object.seal()` prevents new properties from being added but allows modification of existing properties.
+
+```javascript
+const sealed = Object.seal({ name: "John" });
+sealed.name = "Jane"; // This is allowed
+sealed.age = 30; // This will fail silently (or throw an error in strict mode)
+console.log(sealed); // { name: "Jane" }
+```
+:::tip
+The difference between the two:
+- `Object.freeze()` prevents adding, removing, and changing properties
+- `Object.seal()` prevents adding and removing properties, but **allows changing** existing ones
+:::
+
+## Cloning and Merging Objects
+---
+### Shallow Copy
+
+A shallow copy creates a new object with the same top-level properties but does not copy nested objects.
+
+```javascript
+let person1 = { name: 'Alice', age: 25 };
+let person2 = Object.assign({}, person1);
+console.log(person2); // Output: { name: 'Alice', age: 25 }
+```
+
+### Deep Copy
+
+To perform a deep copy, where nested objects are also copied, you can use libraries or custom functions. Here’s an example using JSON methods:
+
+```javascript
+let person1 = { name: 'Alice', address: { city: 'Wonderland' } };
+let person2 = JSON.parse(JSON.stringify(person1));
+person2.address.city = 'Dreamland';
+console.log(person1.address.city); // Output: Wonderland
+console.log(person2.address.city); // Output: Dreamland
+```
+
+### Merging Objects
+
+You can merge multiple objects using `Object.assign()` or the spread syntax (`...`).
+
+```javascript
+let person = { name: 'Alice' };
+let job = { occupation: 'Engineer' };
+
+let merged = Object.assign({}, person, job);
+console.log(merged); // Output: { name: 'Alice', occupation: 'Engineer' }
+
+// OR using spread syntax
+let merged2 = { ...person, ...job };
+console.log(merged2); // Output: { name: 'Alice', occupation: 'Engineer' }
+```
+
+## Best Practices for Working with Objects
+---
+### Use Object Literal Shorthand
+
+ES6 provides shorthand notation for defining properties and methods:
+
+```javascript
+const name = "John";
+const age = 30;
+
+// Old way
+const person1 = {
+  name: name,
+  age: age,
+  greet: function() {
+    return `Hello, my name is ${this.name}`;
+  }
+};
+
+// New way
+const person2 = {
+  name,
+  age,
+  greet() {
+    return `Hello, my name is ${this.name}`;
+  }
+};
+```
+
+### Use Object Spread for Shallow Copies
+
+The spread operator (`...`) provides a concise way to create shallow copies:
+
+```javascript
+const original = { a: 1, b: 2 };
+const copy = { ...original };
+
+// Also useful for merging objects
+const merged = { ...original, c: 3, ...{ d: 4, e: 5 } };
+console.log(merged); // { a: 1, b: 2, c: 3, d: 4, e: 5 }
+```
+
+### Consider Object Immutability
+
+Immutable objects (objects that don't change after creation) can help prevent bugs, especially in complex applications:
+
+```javascript
+// Instead of modifying an existing object
+const person = { name: "John", age: 30 };
+// Don't do: person.age = 31;
+
+// Create a new object with the updated values
+const updatedPerson = { ...person, age: 31 };
+```
+
+Libraries like Immutable.js and Immer can help manage immutable data structures in larger applications.
+
+### Use Optional Chaining for Deep Property Access
+
+ES2020 introduced optional chaining (`?.`) to safely access nested properties:
+
+```javascript
+const user = {
+  name: "John",
+  // address is missing
+};
+
+// Old way
+const city = user.address && user.address.city;
+
+// New way
+const city = user.address?.city;
+console.log(city); // undefined (no error thrown)
+```
+
+### Use Nullish Coalescing for Default Values
+
+:::tip
+The **nullish coalescing** operator (`??`) provides a way to specify **default values** that only apply when a value is null or undefined:
+:::
+
+
+```javascript
+const user = {
+  name: "John",
+  age: 0,
+  active: false
+};
+
+// This will use the defaults for age and active because 0 and false are falsy
+const processedUser1 = {
+  name: user.name,
+  age: user.age || 18,
+  active: user.active || true
+};
+
+// This only uses defaults for null/undefined values
+const processedUser2 = {
+  name: user.name,
+  age: user.age ?? 18,
+  active: user.active ?? true
+};
+
+console.log(processedUser1); // { name: "John", age: 18, active: true }
+console.log(processedUser2); // { name: "John", age: 0, active: false }
+```
+
+## Common Pitfalls and How to Avoid Them
+
+### Mutating Shared Objects
+
+```javascript
+const defaultOptions = { color: "red", size: "medium" };
+
+function processOptions(options) {
+  // Bad: This modifies the original object
+  options.processed = true;
+  return options;
+}
+
+const result = processOptions(defaultOptions);
+console.log(defaultOptions.processed); // true (side effect!)
+
+// Better approach
+function processOptionsSafely(options) {
+  return { ...options, processed: true };
+}
+```
+
+### Object Property Order
+
+While modern JavaScript engines maintain property order in a predictable way, it's best not to rely on specific object property ordering:
+
+```javascript
+const obj = {
+  2: "Two",
+  1: "One",
+  "b": "Bee",
+  "a": "Ay"
+};
+
+console.log(Object.keys(obj)); // ["1", "2", "b", "a"]
+```
+
+Generally, numeric keys are sorted first, followed by string keys in insertion order.
+
+### Referential Equality
+
+Objects are compared by reference, not by value:
+
+```javascript
+const obj1 = { a: 1 };
+const obj2 = { a: 1 };
+
+console.log(obj1 === obj2); // false (different references)
+console.log(obj1.a === obj2.a); // true (same primitive values)
+
+// To compare object values, you can use:
+console.log(JSON.stringify(obj1) === JSON.stringify(obj2)); // true
+```
+
+Note that the JSON.stringify approach has limitations: it doesn't work for objects with methods, circular references, or special values like undefined.
+
+### Property Name Conversion to Strings
+
+JavaScript automatically converts property names to strings (except for Symbols):
+
+```javascript
+const obj = {};
+obj[1] = "One";
+obj[true] = "True";
+
+console.log(Object.keys(obj)); // ["1", "true"]
+console.log(obj["1"] === obj[1]); // true
+console.log(obj["true"] === obj[true]); // true
+```
+
+### Prototype Pollution
+
+When extending objects, be careful not to modify the built-in prototypes, as this can lead to unexpected behavior:
+
+```javascript
+// Bad practice
+Object.prototype.customMethod = function() {};
+
+// Now all objects have this method, which can cause issues
+const obj = {};
+console.log("customMethod" in obj); // true
+```
+
+### Deep Cloning Objects
+
+For deep cloning (copying nested objects), the spread operator or `Object.assign()` won't work:
+
+```javascript
+const original = { a: 1, nested: { b: 2 } };
+const shallowCopy = { ...original };
+
+shallowCopy.nested.b = 3;
+console.log(original.nested.b); // 3 (changed because nested is still shared)
+
+// Simple deep clone (with limitations)
+const deepCopy = JSON.parse(JSON.stringify(original));
+deepCopy.nested.b = 4;
+console.log(original.nested.b); // Still 3
+```
+
+For more complex scenarios, consider libraries like Lodash's `cloneDeep` or structured-clone API in modern browsers.
+
+## The `this` Keyword
+
+The `this` keyword in JavaScript refers to the object that is executing the current function. Its value depends on how the function is called:
+
+```javascript
+const person = {
+  name: "John",
+  greet: function() {
+    return `Hello, my name is ${this.name}`;
+  }
+};
+
+console.log(person.greet()); // "Hello, my name is John"
+```
+
+### `this` Binding Issues
+
+JavaScript's handling of `this` can be tricky. The value of `this` is not determined by where the function is defined, but by how it's called:
+
+```javascript
+const person = {
+  name: "John",
+  greet: function() {
+    return `Hello, my name is ${this.name}`;
+  }
+};
+
+const greetFunction = person.greet;
+console.log(greetFunction()); // "Hello, my name is undefined"
+```
+
+This happens because when `greetFunction` is called without an object context, `this` defaults to the global object (or `undefined` in strict mode).
+
+### Solving `this` Binding Problems
+
+There are several ways to control what `this` refers to:
+
+#### Using bind():
+
+```javascript
+const boundGreet = person.greet.bind(person);
+console.log(boundGreet()); // "Hello, my name is John"
+```
+
+#### Using arrow functions:
+
+Arrow functions do not have their own `this` context; they inherit it from the surrounding scope:
+
+```javascript
+const person = {
+  name: "John",
+  // Traditional function expression
+  regularGreet: function() {
+    return `Hello, my name is ${this.name}`;
+  },
+  
+  // Using an arrow function
+  delayedGreet: function() {
+    setTimeout(() => {
+      console.log(`Hello, my name is ${this.name}`);
+    }, 1000);
+  }
+};
+
+person.delayedGreet(); // After 1 second: "Hello, my name is John"
+```
