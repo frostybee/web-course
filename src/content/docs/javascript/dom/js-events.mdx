@@ -9,7 +9,109 @@ sidebar:
     variant: danger
 ---
 
+## What Are Events?
+
+:::note
+- Events are **actions** or **occurrences** that happen in the browser, such as a user clicking a button, typing in a form, or the page finishing loading.
+- JavaScript allows developers to **listen** for and **respond** to various **user actions** or **other events**, such as clicks, mouse movements, key presses, or page loading. 
+- This is done using **event listeners (or handlers)**, which are functions that **are executed** when a specific event occurs.
+- Events are a core part of JavaScript programming, enabling developers to create **interactive** and **dynamic** web applications.
+:::
+
+
+### Types of Events
+Here are some common event types:
+- **Mouse events**: Click, mouseover, mouseout, mousedown, mouseup, etc.
+- **Keyboard events**: keydown, keyup, keypress
+- **Form events**: submit, change, input, focus, blur
+- **Document events**: load, DOMContentLoaded, resize, scroll
+- **Media events**: play, pause, ended, volumechange
+- **Other events**: touch events, focus, and blur events
+
+:::tip
+Each event represents a state change in the browser or user interface.
+:::
+
+
+## Event Handlers: What Are They?
+---
+:::note
+An **event handler** is a function that gets called when a specified event occurs. It's a **callback function** that you associate with a particular event on an HTML element or a JavaScript object.
+:::
+
+## Adding Event Listeners
+---
+There are three main ways to add **event handlers** to an element in JavaScript:
+
+### 1. Inline Event Handler 
+Inline event handling involves **adding** event handler code directly to HTML elements as **event attributes**. This approach is generally **not recommended** due to maintainability issues.
+
+```html
+<button onclick="alert('Button clicked!')">Click Me</button>
+```
+
+### 2. Using the `onclick` Property 
+- This method allows setting **a function** as an **event handler** for an element. 
+- If there is already an event handler assigned using `onclick`, it **will be overwritten** by a new one.
+
+```javascript
+const button = document.querySelector("button");
+button.onclick = function() {
+  alert("Button clicked!");
+};
+```
+
+### 3. Using the `addEventListener()` 
+:::danger[Note]
+- The `addEventListener()` method is the **preferred modern approach** for attaching event handlers. 
+- It offers more flexibility and allows **multiple event listeners** for the same event type.
+:::
+
+**Syntax:**
+```javascript
+element.addEventListener(event, function, useCapture);
+```
+
+- `event`: The name of the event (e.g., "click", "keydown").
+- `function`: The callback function to be executed when the event occurs.
+- `useCapture` (optional): A boolean that specifies whether the event should **be captured** during the capturing phase (`true`) or the bubbling phase (`false`, default).
+
+
+**Example:** of using `addEventListener` to handle a button click event:
+
+```javascript 
+const element = document.getElementById("elementId");
+element.addEventListener("click", function() {
+  alert("Element clicked!");
+});
+```
+## How `addEventListener()` Works?
+
+1. **`element`**: This refers to a specific DOM (Document Object Model) element on the web page, like a button, a div, or any HTML element you can interact with. You would typically get this element using methods like `document.getElementById()`, `document.querySelector()`, etc.
+
+2. **`addEventListener`**: This is a method that attaches an event handler (a function) to the specified element. It listens for an event (like a mouse click, key press, etc.) and runs a function when that event happens.
+
+3. **`'event'`**: This is a string that specifies the type of event you're listening for. Common events include:
+   - `'click'`: Triggered when the element is clicked.
+   - `'mouseover'`: Triggered when the mouse pointer is over the element.
+   - `'keydown'`: Triggered when a key is pressed down.
+   - `'submit'`: Triggered when a form is submitted.
+
+4. **`function`**: This is the **callback function** that will run when the event occurs. The function contains the code you want to execute when the event is triggered. It **can be an anonymous** function, like:
+   ```js
+   function() {
+       console.log("Element clicked!");
+   }
+   ```
+   Or a named function, like:
+   ```js
+   function handleClick() {
+       console.log("Element clicked!");
+   }
+   ```
+
 ## Most Common Events Types
+---
 
 | Event Type   | Description                                               |
 |--------------|-----------------------------------------------------------|
