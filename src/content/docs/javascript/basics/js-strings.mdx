@@ -1,0 +1,329 @@
+---
+title: Working with Strings
+description: Working with Strings
+sidebar:
+  label: 'Working with Strings'
+  order: 7
+---
+
+### What is a String in JavaScript?
+:::note
+- A string is a **primitive data type** used to represent text. 
+- It can be created using **single quotes** (`'`), **double quotes** (`"`), or **backticks** (```) for template literals.
+- Strings **are immutable**, meaning you cannot change them directly — any modification creates a new string.
+:::
+
+```javascript title="Examples: String Creation"
+const single = 'Hello';
+const double = "World";
+const template = `Hello, ${double}!`; // Template literal with interpolation
+console.log(template); // Output: Hello, World!
+```
+
+## Creating Strings
+---
+A string in JavaScript can be created in several ways:
+1. **Literal Notation**:
+   ```javascript
+   const str1 = "JavaScript";
+   const str2 = 'is fun';
+   ```
+2. **String Constructor** (less common):
+   ```javascript
+   const str3 = new String("Hello"); // Creates a String object (not a primitive)
+   console.log(typeof str3); // Output: object
+   ```
+   - Note: Prefer literals over the constructor for simplicity and performance.
+
+3. **Template Literals** (ES6+):
+   ```javascript
+   const name = "Alice";
+   const greeting = `Hi, ${name}!`; // Supports expressions
+   console.log(greeting); // Output: Hi, Alice!
+   ```
+## String Properties
+---
+- **`length`**: Returns the number of characters in the string.
+  ```javascript
+  const str = "Hello";
+  console.log(str.length); // Output: 5
+  ```
+
+## Working with Template Literals
+---
+:::tip
+- **Template literals** (introduced in ES6) use **backticks** (```) and allow **multi-line strings** and **dynamic interpolation** with `${}`. 
+- They're especially powerful **for embedding** variables, expressions, function calls, and even **object properties** directly into strings.
+:::
+
+### Basic Example
+```javascript
+const name = "Bob";
+const message = `
+  Hello, ${name}!
+  How are you today?
+`;
+console.log(message);
+// Output:
+//   Hello, Bob!
+//   How are you today?
+```
+
+### Using Object Properties in Template Literals
+---
+You can **access object properties directly** within `${}` for concise and readable string construction:
+```javascript
+const user = {
+  firstName: "Michel",
+  age: 25,
+  address: {
+    city: "Montreal",
+    country: "Canada"
+  }
+};
+const greeting = `Welcome, ${user.firstName}! You are ${user.age} years old and live in ${user.address.city}, ${user.address.country}.`;
+console.log(greeting);
+// Output: Welcome, Michel! You are 25 years old and live in Montreal, Canada.
+```
+
+### With Expressions
+---
+You can also include expressions involving object properties:
+```javascript
+const product = {
+  name: "Laptop",
+  price: 999.99,
+  discount: 0.1 // 10% discount
+};
+const offer = `${product.name} on sale: $${(product.price * (1 - product.discount)).toFixed(2)} after a ${product.discount * 100}% discount!`;
+console.log(offer);
+// Output: Laptop on sale: $899.99 after a 10% discount!
+```
+
+---
+
+
+
+### Escaping Characters
+---
+Use `\` to escape special characters:
+- `\"` or `\'`: Include quotes in a string.
+- `\n`: Newline.
+- `\t`: Tab.
+- `\\`: Backslash.
+```javascript
+const str = "She said, \"Hi!\"\nNew line.";
+console.log(str);
+// Output:
+// She said, "Hi!"
+// New line.
+```
+
+## Common String Methods
+
+### Accessing Characters
+---
+- **`charAt(index)`**: Returns the character at the specified index (0-based).
+  ```javascript
+  const str = "Hello";
+  console.log(str.charAt(1)); // Output: e
+  ```
+- **`[index]`**: Array-like access (shorter syntax).
+  ```javascript
+  console.log(str[1]); // Output: e
+  ```
+- **`charCodeAt(index)`**: Returns the UTF-16 code of the character at the index.
+  ```javascript
+  console.log(str.charCodeAt(0)); // Output: 72 (ASCII/UTF-16 code for 'H')
+  ```
+
+### Searching and Finding
+---
+- **`indexOf(substring, [start])`**: Returns the first index of the substring, or -1 if not found.
+  ```javascript
+  const str = "Hello World";
+  console.log(str.indexOf("World")); // Output: 6
+  console.log(str.indexOf("z")); // Output: -1
+  ```
+- **`lastIndexOf(substring, [start])`**: Returns the last index of the substring.
+  ```javascript
+  console.log(str.lastIndexOf("l")); // Output: 9
+  ```
+- **`includes(substring, [start])`**: Returns `true` if the substring exists.
+  ```javascript
+  console.log(str.includes("Hello")); // Output: true
+  ```
+- **`startsWith(substring, [start])`**: Checks if the string starts with the substring.
+  ```javascript
+  console.log(str.startsWith("He")); // Output: true
+  ```
+- **`endsWith(substring, [length])`**: Checks if the string ends with the substring.
+  ```javascript
+  console.log(str.endsWith("ld")); // Output: true
+  ```
+
+### Modifying Strings
+---
+- **`toLowerCase()`**: Converts the string to lowercase.
+  ```javascript
+  const str = "HELLO";
+  console.log(str.toLowerCase()); // Output: hello
+  ```
+- **`toUpperCase()`**: Converts the string to uppercase.
+  ```javascript
+  console.log(str.toUpperCase()); // Output: HELLO
+  ```
+- **`trim()`**: Removes whitespace from both ends.
+  ```javascript
+  const str = "  Hello  ";
+  console.log(str.trim()); // Output: Hello
+  ```
+- **`trimStart()` / `trimEnd()`**: Removes whitespace from the start or end.
+  ```javascript
+  console.log(str.trimStart()); // Output: "Hello  "
+  ```
+- **`replace(search, replacement)`**: Replaces the first match with a new value.
+  ```javascript
+  const str = "Hello World";
+  console.log(str.replace("World", "JavaScript")); // Output: Hello JavaScript
+  ```
+- **`replaceAll(search, replacement)`** (ES2021+): Replaces all matches.
+  ```javascript
+  const str = "Hello Hello";
+  console.log(str.replaceAll("Hello", "Hi")); // Output: Hi Hi
+  ```
+- **`slice(start, [end])`**: Extracts a portion of the string.
+  ```javascript
+  const str = "Hello World";
+  console.log(str.slice(0, 5)); // Output: Hello
+  ```
+- **`substring(start, [end])`**: Similar to `slice`, but doesn’t accept negative indices.
+  ```javascript
+  console.log(str.substring(6)); // Output: World
+  ```
+- **`split(separator, [limit])`**: Splits the string into an array based on a separator.
+  ```javascript
+  const str = "apple,banana,orange";
+  console.log(str.split(",")); // Output: ["apple", "banana", "orange"]
+  ```
+
+### Concatenation
+---
+- **`concat(...strings)`**: Combines strings.
+  ```javascript
+  const str1 = "Hello";
+  const str2 = "World";
+  console.log(str1.concat(" ", str2)); // Output: Hello World
+  ```
+- **Using `+` or `+=`** (more common):
+  ```javascript
+  console.log(str1 + " " + str2); // Output: Hello World
+  ```
+
+### Padding
+- **`padStart(targetLength, padString)`**: Pads the start of the string.
+  ```javascript
+  const str = "5";
+  console.log(str.padStart(3, "0")); // Output: 005
+  ```
+- **`padEnd(targetLength, padString)`**: Pads the end of the string.
+  ```javascript
+  console.log(str.padEnd(3, "0")); // Output: 500
+  ```
+
+### Repeating
+- **`repeat(count)`**: Repeats the string a specified number of times.
+  ```javascript
+  const str = "Hi ";
+  console.log(str.repeat(3)); // Output: Hi Hi Hi
+  ```
+## String Immutability
+---
+Strings in JavaScript are immutable—methods don’t modify the original string but return a new one:
+```javascript
+const str = "Hello";
+const newStr = str.toUpperCase();
+console.log(str);    // Output: Hello (unchanged)
+console.log(newStr); // Output: HELLO
+```
+
+## Comparing Strings
+---
+- Use `===` for exact comparison (case-sensitive):
+  ```javascript
+  console.log("hello" === "Hello"); // Output: false
+  ```
+- Use `localeCompare()` for locale-aware comparison:
+  ```javascript
+  console.log("apple".localeCompare("banana")); // Output: -1 (apple comes before banana)
+  ```
+
+### Best Practices
+---
+1. **Use Template Literals**: Prefer backticks for readability and interpolation.
+2. **Avoid Excessive Concatenation**: Use arrays and `join()` for performance with large strings:
+   ```javascript
+   const parts = ["Hello", "World"];
+   console.log(parts.join(" ")); // Output: Hello World
+   ```
+3. **Handle Edge Cases**: Check for empty strings or `undefined`:
+   ```javascript
+   const str = "";
+   console.log(str.length || "Empty"); // Output: Empty
+   ```
+4. **Case Sensitivity**: Normalize case with `toLowerCase()` or `toUpperCase()` when comparing.
+5. **Use Modern Methods**: Prefer `includes()` over `indexOf() !== -1` for readability.
+
+### Common Use Cases
+---
+- **Parsing User Input**: Split and trim strings from forms.
+- **Formatting Output**: Use template literals for dynamic messages.
+- **Data Serialization**: Convert objects to JSON strings with `JSON.stringify()`.
+
+### Troubleshooting
+---
+- **Type Errors**: Ensure the value is a string before calling methods (`typeof str === "string"`).
+- **Out-of-Bounds**: Accessing an invalid index returns `undefined`, not an error.
+  ```javascript
+  console.log("Hello"[10]); // Output: undefined
+  ```
+- **Encoding**: Use `encodeURIComponent()` for URLs or special characters.
+
+## Using Object Properties in Template Literals
+---
+
+A practical example demonstrating how to use object properties in template literals to generate a formatted message:
+
+```javascript
+// Define an object with nested properties
+const employee = {
+  id: 123,
+  name: "John Doe",
+  role: "Developer",
+  department: {
+    name: "Engineering",
+    location: "Building A"
+  },
+  salary: 75000
+};
+
+// Create a template literal using object properties
+const employeeSummary = `
+  Employee ID: ${employee.id}
+  Name: ${employee.name}
+  Role: ${employee.role}
+  Department: ${employee.department.name}
+  Location: ${employee.department.location}
+  Annual Salary: $${employee.salary.toLocaleString("en-US")}
+`;
+
+// Output the result
+console.log(employeeSummary);
+// Output:
+//   Employee ID: 123
+//   Name: John Doe
+//   Role: Developer
+//   Department: Engineering
+//   Location: Building A
+//   Annual Salary: $75,000
+```
