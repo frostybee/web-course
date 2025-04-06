@@ -44,6 +44,7 @@ An **event handler** is a function that gets called when a specified event occur
 There are three main ways to add **event handlers** to an element in JavaScript:
 
 ### 1. Inline Event Handler 
+---
 Inline event handling involves **adding** event handler code directly to HTML elements as **event attributes**. This approach is generally **not recommended** due to maintainability issues.
 
 ```html
@@ -51,6 +52,7 @@ Inline event handling involves **adding** event handler code directly to HTML el
 ```
 
 ### 2. Using the `onclick` Property 
+---
 - This method allows setting **a function** as an **event handler** for an element. 
 - If there is already an event handler assigned using `onclick`, it **will be overwritten** by a new one.
 
@@ -62,6 +64,7 @@ button.onclick = function() {
 ```
 
 ### 3. Using the `addEventListener()` 
+---
 :::danger[Note]
 - The `addEventListener()` method is the **preferred modern approach** for attaching event handlers. 
 - It offers more flexibility and allows **multiple event listeners** for the same event type.
@@ -86,7 +89,7 @@ element.addEventListener("click", function() {
 });
 ```
 ## How `addEventListener()` Works?
-
+---
 1. **`element`**: This refers to a specific DOM (Document Object Model) element on the web page, like a button, a div, or any HTML element you can interact with. You would typically get this element using methods like `document.getElementById()`, `document.querySelector()`, etc.
 
 2. **`addEventListener`**: This is a method that attaches an event handler (a function) to the specified element. It listens for an event (like a mouse click, key press, etc.) and runs a function when that event happens.
@@ -109,6 +112,119 @@ element.addEventListener("click", function() {
        console.log("Element clicked!");
    }
    ```
+
+## Removing Event Listeners
+To remove an event listener, you can use the `removeEventListener()` method. This is useful for cleaning up or detaching events when they're no longer needed.
+
+```javascript
+const button = document.querySelector("button");
+
+function clickHandler() {
+  alert("Button clicked!");
+}
+
+button.addEventListener("click", clickHandler);
+button.removeEventListener("click", clickHandler);
+```
+
+## Event Propagation
+Events in JavaScript can propagate in two phases:
+
+### 1. Capturing Phase
+Before bubbling, events go from the root down to the target element:
+
+```
+root → ... → grandparent → parent → element
+```
+You can control which phase the event listener will be active in by setting the `useCapture`, the third parameter of addEventListener:
+
+```javascript
+element.addEventListener('click', handler, true); // true enables capturing phase
+// Or with the options object syntax:
+element.addEventListener('click', handler, { capture: true });
+```
+
+### 2. Bubbling Phase
+The event bubbles back up from the target element to the outermost element.
+By default, events "bubble" up from the target element to the root of the document:
+
+```
+element → parent → grandparent → ... → root
+```
+You can prevent this bubbling behavior by using `event.stopPropagation()` in your event handler.
+
+
+
+## The Event Object
+---
+When an event is triggered, an **event object** is automatically passed to the event handler function. This object contains useful information about the event, such as the target element, the type of event, and other details.
+
+```javascript
+button.addEventListener('click', function(event) {
+    console.log(event); // The event object
+    console.log(event.type); // "click"
+    console.log(event.target); // The element that triggered the event
+});
+```
+
+### Common Event Object Properties
+
+- **`event.type`**: The type of event (e.g., "click", "keydown")
+- **`event.target`**: The element that triggered the event
+- **`event.currentTarget`**: The element that the event handler is attached to
+- **`event.timeStamp`**: The time when the event occurred
+- **`event.bubbles`**: Boolean indicating if the event bubbles up the DOM tree
+- **`event.cancelable`**: Boolean indicating if the event can be canceled
+- **`event.defaultPrevented`**: Boolean indicating if `preventDefault()` has been called
+
+**Event-specific properties:**
+- **Mouse events**: clientX, clientY, pageX, pageY, screenX, screenY, button, buttons, altKey, ctrlKey, shiftKey, metaKey
+- **Keyboard events**: key, code, keyCode (deprecated), altKey, ctrlKey, shiftKey, metaKey
+- **Form events**: Form elements often include properties like value, checked, selected, etc.
+
+### Common Event Object Methods
+
+- **event.preventDefault()**: Prevents the default browser behavior for the event
+- **event.stopPropagation()**: Stops the event from bubbling up the DOM tree
+- **event.stopImmediatePropagation()**: Stops both bubbling and prevents other handlers on the same element
+
+
+### `preventDefault()` and `stopPropagation()`
+- **`preventDefault()`**: Prevents the default behavior of the event. For example, prevent a form **from submitting**.
+  
+  ```javascript
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log("Form submission prevented.");
+  });
+  ```
+
+- **`stopPropagation()`**: Stops the event from propagating (bubbling or capturing).
+  
+  ```javascript
+  element.addEventListener("click", function(event) {
+    event.stopPropagation();
+    console.log("Event propagation stopped.");
+  });
+  ```
+
+## Custom Events
+You can create and dispatch your own events using the `CustomEvent` constructor.
+
+```javascript title="Example: Creating and Dispatching Custom Events"
+// Create a custom event
+const myEvent = new CustomEvent('myCustomEvent', {
+  detail: { message: 'Hello from custom event!' },
+});
+
+// Add a listener
+document.addEventListener('myCustomEvent', (e) => {
+  console.log(e.detail.message);
+});
+
+// Dispatch the event
+document.dispatchEvent(myEvent);
+```
 
 ## Most Common Events Types
 ---
