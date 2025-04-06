@@ -26,21 +26,26 @@ JSON is built on **two primary structures**:
 
 ### Syntax Rules
 ---
-:::tip
-- **JSON Objects:** `{ "key": "value", "key2": "value2" }`
-- **JSON Arrays:** `[ "value1", "value2", "value3" ]`
-- Data is written as **key-value pairs**: `"key": value`.
-- Keys **must be strings** enclosed in **double quotes**.
-- **Values can be:**
-   - String (e.g., `"hello"`)
-   - Number (e.g., `42`, `3.14`)
-   - Boolean (`true`, `false`)
-   - `null`
-   - Object: `{ "key": "value" }`
-   - Array: `[ "item1", "item2", "item3" ]`
-- Data is separated by commas.
-- Objects are enclosed in `{}`; arrays in `[]`.
+:::tip[Note]
+1. **JSON Objects:** `{ "key": value, "key2": value2, valueN }`
+    - Objects are enclosed in `{}`.
+    - Data is written as **key-value pairs**: `"key": value`.
+    - Keys **must be strings** enclosed in **double quotes**.
+2. **JSON Arrays:** `[ value1, value2, value3, valueN ]`   
+    - Arrays are enclosed in `[]`.
+    - Data is separated by commas.    
 :::
+
+### Supported Data Types
+---
+A **JSON value** can be one of the following types:
+
+- String (e.g., `"hello"`)
+- Number (e.g., `42`, `3.14`)
+- Boolean (`true`, `false`)
+- Object: `{ "key": value1, "key2": valueN }`
+- Array: `[ value1, value2, value3, valueN ]`
+- Null: `null`
 
 ```json title="Example: JSON document with Nested Objects"
 {
@@ -81,6 +86,7 @@ JavaScript has **built-in methods** to work with JSON:
 - **APIs**: Most web APIs (e.g., RESTful services) use JSON to send and receive data.
 - **Configuration Files**: Store settings in a structured, readable format.
 - **Data Storage**: Lightweight alternative to databases for small applications.
+- **Data Interchange:** Between systems or components with different technology stacks.
 
 ## Key Features of JSON
 ---
