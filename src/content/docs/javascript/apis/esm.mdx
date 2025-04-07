@@ -1,0 +1,168 @@
+---
+title: Working with ECMAScript Modules
+description: Working with ECMAScript Modules
+sidebar:
+  label: 'ECMAScript Modules'
+  order: 3
+---
+
+## What Are ECMAScript Modules (ESM)?
+
+- Introduced in ECMAScript 6 (ES6/ES2015), **ECMAScript Modules** (ESM) are a standardized module system for **structuring** and **organizing** code. 
+- They allow developers to divide their code into smaller, reusable pieces. 
+
+
+:::note
+- A **module** in JavaScript refers to a **reusable** piece of code that is isolated in **its own scope**. 
+- This allows **functions**, **variables**, and **classes** within that module to be either **private** (not accessible outside) or **exported** (shared with other modules). 
+:::
+
+---
+
+### Why Use ES Modules?
+- **Modularity**: Split code into smaller, manageable files.
+- **Reusability**: Share code between files or projects.
+- **Scope**: Variables **are scoped** to the module by default, reducing global namespace pollution.
+- **Native Support**: Works in modern browsers and Node.js (with some setup).
+
+---
+
+### Key Concepts
+1. **File-based**: Each module is a single **`.js`** file.
+2. **Exporting**: Define **what parts** of a module (variables, functions, classes, etc.) you want to make available to other files.
+3. **Importing**: Bring exported items from one module into another.
+4. **Static Structure**: Imports and exports are resolved at load time (not dynamically at runtime).
+
+---
+
+## Exporting Values from a Module
+:::note
+- **Exporting** is the process of making certain variables, functions, or classes **available for** use in other modules.
+- This is done using the **`export`** keyword.
+- You can export multiple items from a module, and you can also have a **default export**.
+This can be done using either **named exports** or a **default export**.
+:::
+
+### Named Exports
+
+Named exports allow you to **export multiple things** from a module. The exported items can be functions, variables, or constants.
+
+```javascript
+// math.js
+export const calculateSum = (a, b) => a + b;
+export const calculateDifference = (a, b) => a - b;
+
+// You can also export multiple items in one line
+const calculateProduct = (a, b) => a * b;
+const calculateQuotient = (a, b) => a / b;
+export { calculateProduct, calculateQuotient };
+```
+
+### Default Exports
+
+A default export is used when you want to **export a single entity** from the module, such as a function or a class.
+:::tip
+A module can **only** have **one default** export.
+:::
+
+```javascript
+// greet.js
+export default function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+
+You can also combine **named** and **default** exports in the same module.
+
+```javascript
+// utils.js
+export const multiply = (a, b) => a * b;
+export default function divide(a, b) {
+  return a / b;
+}
+```
+
+## Importing Modules
+
+There are various ways to import modules depending on how they are exported.
+
+### Named Imports
+
+When importing named exports, you use curly braces **`{}`** to reference specific values from the module.
+
+```javascript
+// main.js
+import { calculateSum, calculateDifference } from './math.js';
+
+console.log(calculateSum(5, 3));      // 8
+console.log(calculateDifference(5, 3)); // 2
+```
+
+### Default Imports
+
+When importing a default export, you can give the imported value any name you choose.
+
+```javascript
+// main.js
+import greet from './greet.js';
+
+console.log(greet('Alice')); // Hello, Alice!
+```
+
+### Importing Everything
+
+If you want to import **everything** from a module, you can use the  **`*`** syntax and assign it to a single object.
+
+```javascript
+// main.js
+import * as MathUtils from './math.js';
+
+console.log(MathUtils.calculateSum(10, 5)); // 15
+```
+### Renaming Imports/Exports
+- **Rename on export:**
+  ```javascript
+  const computeTotal = (a, b) => a + b;
+  export { computeTotal as calculateSum };
+  ```
+- **Rename on import:**
+  ```javascript
+  import { calculateSum as addNumbers } from './math.js';
+  console.log(addNumbers(2, 3)); // 5
+  ```
+
+
+## Setting Up ECMAScript Modules
+
+### In the Browser
+
+:::danger[NOTE]
+- Modules must be **served over** HTTP/HTTPS (not `file://` due to CORS restrictions).
+:::
+
+In modern browsers, ECMAScript modules can be used by specifying the **`type="module"`** attribute in a  **`<script>`** tag. This tells the browser to treat the script as an ESM.
+
+:::tip
+- File paths **must include** extensions (e.g., `./math.js`, not `./math`).
+- Modules are deferred by default (like `<script defer>`).
+- Relative paths (e.g., `./`, `../`) must be specified.
+- Note that modules in the browser are **always loaded asynchronously**.
+:::
+
+```html title="Example: Importing an ES module into an HTML document:"
+<!-- index.html -->
+<script src="main.js" type="module"></script>
+```
+
+With this setup, the `main.js` file can import other modules, such as:
+
+```javascript
+// main.js
+import { add } from './math.js';
+
+console.log(add(2, 3)); // 5
+```
+
+---
+
