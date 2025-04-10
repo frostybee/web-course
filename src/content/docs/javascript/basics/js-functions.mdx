@@ -123,6 +123,52 @@ Function expressions are functions that are defined within an expression.
 * When you need to preserve the surrounding scope's `this` value.
 :::
 
+#### Arrow Function with Implicit Return
+
+Arrow functions can have an **implicit return** when the function body is a single expression. This means you can omit the curly braces and the `return` keyword.
+* **Example:**
+    ```javascript
+    const add = (a, b) => a + b;
+
+    console.log(add(2, 3)); // Output: 5
+    ```
+
+#### Arrow Functions: Syntax Variations
+---
+:::tip
+Arrow functions can be defined in several ways, depending on the **number of parameters** and whether you want to use a **block body** or an expression body.
+:::
+
+``` javascript title="Examples: Arrow Function Syntax Variations"
+//--1) An arrow function with no parameters that returns the result of the expression.
+() => expression 
+
+//--2) An arrow function with a single parameter that returns the result of the expression.
+param => expression 
+
+//--3) Similar to the previous example, but with parentheses around the single parameter (optional for single parameters).
+(param) => expression 
+
+//--4) An arrow function with multiple parameters that returns the result of the expression.
+(param1, paramN) => expression 
+
+//-- 5) An arrow function with no parameters that executes multiple statements inside a block.
+() => { 
+  statements
+}
+
+//-- 6) An arrow function with a single parameter that executes multiple statements inside a block.
+param => { 
+  statements
+}
+
+//-- 7) An arrow function with multiple parameters that executes multiple statements inside a block.
+(param1, paramN) => { 
+  statements
+}
+```
+
+
 ### 4. Immediately Invoked Function Expressions (IIFEs)
 ---
 IIFEs are functions that are **executed immediately** after they are defined. They are often used to create a new scope and avoid polluting the global namespace.
