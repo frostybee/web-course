@@ -129,7 +129,7 @@ export default
           }
         },
         {
-          label: "Web APIs",
+          label: "Browser and Web APIs",
           collapsed: false,
           autogenerate: {
             directory: "javascript/apis",

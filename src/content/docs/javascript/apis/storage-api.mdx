@@ -1,0 +1,166 @@
+---
+title: Working with the Storage API
+description: Working with the Storage API
+sidebar:
+  label: 'Storage API'
+  order: 4
+---
+
+
+## What is the Storage API?
+
+:::note
+- The Web Storage API provides mechanisms to store **key-value pairs** in a web browser, offering a more robust alternative to cookies. 
+- It allows developers to **save data** in a user's browser, making it accessible even after the user closes the browser or navigates away from the page.
+- It includes two main storage objects: `localStorage` and `sessionStorage`.
+:::
+
+
+## localStorage vs sessionStorage
+
+- Both mechanisms allow you to store key-value pairs, but they differ in their **scope** and **lifespan**.
+
+:::tip[NOTE]
+1. **localStorage**
+    - Stores data with **no expiration date**. 
+    - Data persists until explicitly cleared, surviving browser restarts and tab closures. 
+    - It is shared across all tabs and windows of the same origin.
+
+2. **sessionStorage**
+    - Stores data for the **duration** of a **single** browser **tab session**. 
+    - Data is cleared when the tab is closed. 
+    - It is unique to each tab or window and is cleared when the tab or window is closed.
+:::
+
+
+###  Core Concepts & Differences
+
+| Feature            | localStorage                     | sessionStorage                        |
+|--------------------|----------------------------------|---------------------------------------|
+| Lifetime           | Indefinite (until explicitly cleared) | Only until the tab or window closes    |
+| Scope | Available across all tabs/windows with same origin | Limited to the tab/window where it was created |
+| Storage limit      | ~5–10 MB per origin              | Same as localStorage                  |
+| Use cases          | Theme settings, auth tokens, caches | Shopping cart in a single tab, transient data |
+| Data Transfer | Not sent to server | Not sent to server |
+
+---
+
+## Methods and Usage
+
+:::tip
+Both `localStorage` and `sessionStorage` share the same API. Below are the primary methods with examples.
+:::
+
+### Storing Data
+
+Use `setItem(key, value)` to store a key-value pair. Values are automatically converted to strings.
+
+```javascript
+// Store data
+localStorage.setItem('username', 'frostybee');
+sessionStorage.setItem('formData', 'incomplete');
+```
+
+### Getting Data
+
+Use `getItem(key)` to retrieve a value. Returns `null` if the key doesn't exist.
+
+```javascript
+// Retrieve data
+const username = localStorage.getItem('username'); // 'frostybee'
+const formData = sessionStorage.getItem('formData'); // 'incomplete'
+```
+
+### Removing Data
+
+Use `removeItem(key)` to delete a specific key-value pair.
+
+```javascript
+// Remove specific item
+localStorage.removeItem('username');
+sessionStorage.removeItem('formData');
+```
+
+### Clearing All Data
+
+Use `clear()` to remove all key-value pairs for the storage object.
+
+```javascript
+// Clear all data
+localStorage.clear();
+sessionStorage.clear();
+```
+
+### Checking Storage Length
+
+Use the `length` property to get the number of stored key-value pairs.
+
+```javascript
+// Get number of items
+console.log(localStorage.length); // e.g., 2
+console.log(sessionStorage.length); // e.g., 1
+```
+
+### Accessing Keys
+
+Use `key(index)` to get the key at a specific index.
+
+```javascript
+// Get key by index
+const firstKey = localStorage.key(0); // e.g., 'username'
+```
+
+## Storing Complex Data
+---
+:::tip[.]
+Since storage **only accepts strings**, complex data (e.g., objects or arrays) must be: 
+1. Serialized using `JSON.stringify()` when storing and
+2. Parsed with `JSON.parse()` when retrieving.
+:::
+
+```javascript
+// Store an object
+const user = { name: 'Frostybee', age: 25 };
+localStorage.setItem('user', JSON.stringify(user));
+
+// Retrieve and parse the object
+const storedUser = JSON.parse(localStorage.getItem('user'));
+console.log(storedUser.name); // 'Frostybee'
+```
+
+**Note**: Always handle potential parsing errors with try-catch:
+
+```javascript
+try {
+  const data = JSON.parse(localStorage.getItem('user'));
+} catch (error) {
+  console.error('Error parsing JSON:', error);
+}
+```
+
+### Storing User Preferences
+```javascript
+function saveUserPreferences() {
+  const preferences = {
+    theme: document.getElementById('theme-selector').value,
+    fontSize: document.getElementById('font-size').value,
+    notifications: document.getElementById('notifications').checked
+  };
+  
+  localStorage.setItem('userPreferences', JSON.stringify(preferences));
+}
+
+function loadUserPreferences() {
+  const storedPrefs = localStorage.getItem('userPreferences');
+  
+  if (storedPrefs) {
+    const preferences = JSON.parse(storedPrefs);
+    document.getElementById('theme-selector').value = preferences.theme;
+    document.getElementById('font-size').value = preferences.fontSize;
+    document.getElementById('notifications').checked = preferences.notifications;
+  }
+}
+
+// Load preferences when page initializes
+document.addEventListener('DOMContentLoaded', loadUserPreferences);
+```
