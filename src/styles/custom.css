@@ -118,6 +118,7 @@ body {
   --border-xheavy: rgba(0, 0, 0, .25);
   --fb-level-2-bg: #ffffff;
   --fb-level-0-bg: #f5f7f8;
+  --sl-color-bg-sidebar: #fcfcfc;
   --sl-color-bg-nav: #eff1f1;
   --fb-sidebar-color-text-current: rgba(38, 50, 56, 1);
   --fb-toc-color-current-bg: #0085f230;
@@ -183,56 +184,7 @@ h6 {
   }
 }
 
-/* --------------------- */
-/* - Code block style  - */
-/* --------------------- */
-.expressive-code {
-  border-radius: var(--border-radius);
-  box-shadow: var(--sl-shadow-sm);
-}
 
-/* CodeBlock overrides */
-.sl-markdown-content .expressive-code .ec-line {
-  margin-block-start: initial;
-}
-
-.codeblock .expressive-code figure.frame {
-  margin-block-start: initial;
-}
-
-pre.astro-code {
-  border: 0;
-}
-
-@media screen and (min-width: 80rem) {
-  .expressive-code {
-    max-width: 48rem;
-  }
-}
-
-/* Style for the expressive code block component */
-/* Code markers */
-.expressive-code figcaption {
-  border-bottom: 1px solid var(--fb-ec-caption-bb-color) !important;
-  background: var(--fb-ec-caption-bg-color) !important;
-}
-
-.expressive-code .frame.has-title:not(.is-terminal) .title {
-  position: relative;
-  /* color: var(--sl-color-text) !important; */
-  background: none !important;
-  /* border-bottom: 1px solid #dadde1 !important; */
-  /* border-bottom: none; */
-  font-size: 85%;
-  padding: .55rem 1rem !important;
-  overflow: hidden;
-  font-weight: 600;
-}
-
-.expressive-code .frame.has-title:not(.is-terminal) .language-label,
-.expressive-code .frame.has-title:not(.is-terminal) .copy {
-  margin-top: 0.4rem;
-}
 
 /* Table of contents:
 Style overrides: Right sidebar, items of the table of content */
@@ -415,6 +367,7 @@ Style overrides: Right sidebar, items of the table of content */
   position: relative;
   padding-left: 1.6rem;
 }
+
 .sl-markdown-content ol:not(:where(.sl-steps, .not-content *))>li {
   position: relative;
   padding-left: 2.2rem;
@@ -532,16 +485,6 @@ Style overrides: Right sidebar, items of the table of content */
   font-size: 3rem;
 }
 
-.sl-markdown-content code {
-  border-radius: 6px;
-  padding: .23em .42em;
-  margin: 0;
-  font-size: 85%;
-  /* vertical-align: middle; */
-  white-space: break-spaces;
-  border: 1px solid rgba(0,0,0,.1);
-  background-color: #818b981f;
-}
 
 /* Styles for markdown content headings  */
 /* .sl-markdown-content :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
@@ -566,3 +509,56 @@ font-weight: 600;
     border-inline-end: 1px solid var(--sl-color-hairline-shade);
   }
 } */
+
+/* ------------------------------------------ */
+/* --- Code block style  ---                  */
+/* ------------------------------------------ */
+.expressive-code {
+  border-radius: var(--border-radius);
+  box-shadow: var(--sl-shadow-sm);
+}
+
+/* CodeBlock overrides */
+.sl-markdown-content .expressive-code .ec-line {
+  margin-block-start: initial;
+}
+
+.codeblock .expressive-code figure.frame {
+  margin-block-start: initial;
+}
+
+pre.astro-code {
+  border: 0;
+}
+
+@media screen and (min-width: 80rem) {
+  .expressive-code {
+    max-width: 48rem;
+  }
+}
+
+/* Style for the expressive code block component */
+/* Code markers */
+.expressive-code figcaption {
+  border-bottom: 1px solid var(--fb-ec-caption-bb-color) !important;
+  background: var(--fb-ec-caption-bg-color) !important;
+}
+
+.expressive-code .frame.has-title:not(.is-terminal) .title {
+  position: relative;
+  /* color: var(--sl-color-text) !important; */
+  background: none !important;
+  /* border-bottom: 1px solid #dadde1 !important; */
+  /* border-bottom: none; */
+  font-size: 85%;
+  padding: .55rem 1rem !important;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+.expressive-code .frame.has-title:not(.is-terminal) .language-label,
+.expressive-code .frame.has-title:not(.is-terminal) .copy {
+  margin-top: 0.4rem;
+}
+
+

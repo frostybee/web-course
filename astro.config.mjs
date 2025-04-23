@@ -22,9 +22,9 @@ export default defineConfig({
     starlight({
       title: 'Internet Programming',
       favicon: '/images/svgrepo-com.svg',
-      social: {
-        github: 'https://github.com/frostybee/web-course',
-      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/frostybee/cool-starlight' },
+      ],
       tableOfContents: {minHeadingLevel: 2, maxHeadingLevel: 4},
       //TODO: add the head property.
       defaultLocale: "en",

@@ -7,7 +7,7 @@ function sideBorder() {
   return definePlugin({
     name: "Adds side border to slint code blocks",
     baseStyles: `
-        .sideBar {
+       .sideBar {
             position: absolute;
             top: calc(var(--button-spacing) - 6px);
             bottom: 0;
