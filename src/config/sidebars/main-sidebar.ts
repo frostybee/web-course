@@ -100,6 +100,7 @@ export default
         }
       ],
     },
+
     // JS Topics
     //-------------------------
     {
@@ -109,14 +110,14 @@ export default
       items: [
         {
           label: "JavaScript Basics",
-          collapsed: false,
+          collapsed: true,
           autogenerate: {
             directory: "javascript/basics",
           }
         },
         {
           label: "Objects & Arrays",
-          collapsed: false,
+          collapsed: true,
           autogenerate: {
             directory: "javascript/objects",
           }
@@ -126,6 +127,13 @@ export default
           collapsed: false,
           autogenerate: {
             directory: "javascript/dom",
+          }
+        },
+        {
+          label: "Form Validation",
+          collapsed: false,
+          autogenerate: {
+            directory: "javascript/forms",
           }
         },
         {

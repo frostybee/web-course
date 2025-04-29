@@ -1,0 +1,151 @@
+---
+title: Step-by-Step Guide to Validate a Form Using JavaScript
+description: Step-by-Step Guide to Validate a Form Using JavaScript
+sidebar:
+  label: 'Validation Process'
+  order: 1
+  badge:
+    text: New
+    variant: danger  
+---
+
+## What is Form Validation?
+:::note
+- **Form validation** is the **process of ensuring** that the data entered into a form by a user **meets specific rules** or **criteria** before it is submitted to the server or processed further. 
+- This helps **prevent errors**, improve data quality, and enhance user experience.
+:::
+
+## 1. Understand the Fields You Want to Validate
+
+:::note
+📌 **Begin by identifying** the form fields that need validation. 
+:::tip
+ - **Each field type may require different validation rules.**
+:::
+**Common fields include:**
+- Text inputs (e.g., name, username, postal code)
+- Number inputs (e.g., age, quantity)
+- Email inputs
+- Password fields
+- Checkboxes or radio buttons
+- Dropdowns or select boxes
+:::
+
+---
+
+## 2. Add an Event Listener for Form Submission
+In JavaScript, attach a function to the form's **submit event**. This function will be responsible for performing the validation **before the form is submitted**.
+
+---
+
+## 3. Prevent the Default Form Submission Behavior
+Inside your validation function, prevent the form from submitting immediately. This gives you time to check if the inputs are valid. If everything is valid, you can allow the form to submit manually.
+- Use **`preventDefault()`**: Prevents the default behavior of the event. For example, prevent a form **from submitting**.
+  
+  ```javascript
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log("Form submission prevented.");
+  });
+  ```
+
+---
+
+## 4. Retrieve Values from Form Fields
+:::tip
+Use JavaScript to access the current values entered by the user in each form field. This will let you inspect and evaluate them against your validation criteria.
+:::
+
+### ✅ General Syntax
+**General syntax** for **retrieving values** from form fields in JavaScript:
+
+```javascript
+// 1. Get the form element (optional, useful for structured access)
+const form = document.getElementById("formID");
+
+// 2. Retrieve value using ID
+const value = document.getElementById("fieldID").value;
+
+// OR
+
+// 3. Retrieve value using form.elements and field name
+const value = form.elements["fieldName"].value;
+
+// OR
+
+// 4. Retrieve value using querySelector
+const value = document.querySelector("selector").value;
+```
+### 📌 Notes:
+- **`.value`** is used to get the current value of input, textarea, or select elements.
+- **`form.elements["name"]`** works only if the input has a `name` attribute.
+- **`querySelector`** lets you use any CSS selector (e.g. `#id`, `.class`, `[name='username']`).
+
+---
+
+## 5. Apply Validation Rules
+Check each field for issues. Examples include:
+- **Required fields**: Ensure they are not empty.
+- **Email format**: Check that the input resembles a valid email address.
+- **Password match**: Confirm two password fields match.
+- **Regular expressions**: Use regex for complex patterns (e.g., password format, phone numbers, postal codes).
+- **Numeric checks**: Ensure numeric fields contain only numbers.
+- **Date format**: Validate date fields against a specific format.
+- **Select options**: Ensure a valid option is selected from dropdowns.
+- **Length checks**: Enforce minimum or maximum character limits.
+- **Value ranges**: For numbers, make sure they fall within an expected range.
+- **Checkboxes**: Ensure required boxes are checked (e.g., terms & conditions).
+
+---
+
+## 6. Display Error Messages
+If any validation fails, display user-friendly error messages near the respective fields or at the top of the form. This helps users understand what they need to fix.
+
+---
+
+## 7. Prevent Submission on Error
+If any field is invalid, stop the form from submitting and keep the user on the same page. This prevents bad or incomplete data from being sent to the server.
+
+---
+
+## 8. Allow Submission if All Checks Pass
+If all validations succeed, either:
+- Allow the form to submit normally, or
+- Submit it **programmatically via JavaScript** (useful for custom handling or **AJAX**).
+
+### ✅ General Syntax:
+To **submit a form programmatically using JavaScript**, you can use the `.submit()` method on the form element.
+```javascript
+document.getElementById("formID").submit();
+```
+
+### 🚫 Important:
+- Using `.submit()` **bypasses any attached `onsubmit` event handlers** (like validation). If you need to trigger them, call `.submit()` only after those checks.
+- If you want to **prevent default form submission** (e.g., to validate first), use `event.preventDefault()` in a submit handler.
+
+### ✅ Example:
+
+```html
+<form id="myForm" action="/submit-url" method="POST">
+  <input type="text" id="username" name="username">
+  <input type="password" id="password" name="password">
+</form>
+
+<button onclick="submitForm()">Submit via JS</button>
+
+<script>
+  function submitForm() {
+    document.getElementById("myForm").submit();
+  }
+</script>
+```
+
+---
+
+## 9. Optionally, Add Real-Time Validation
+To enhance user experience, you can validate fields **as the user types or changes input** (e.g., validating email format on blur or password strength on keypress).
+
+---
+
+## 10. Test Your Validation Thoroughly
+Finally, test your form with various valid and invalid inputs to make sure all scenarios are covered and handled gracefully.
