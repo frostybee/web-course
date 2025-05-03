@@ -1,0 +1,45 @@
+---
+title: Team Project Resources
+description: Team Project Resources
+sidebar:
+  label: 'Team Project'
+  order: 3
+  badge:
+    text: 'Team Project'    
+    variant: danger
+---
+import { Steps } from '@astrojs/starlight/components';
+
+## Leaflet Map Integration
+
+Additional instructions for integrating Leaflet maps into your project.
+
+### Instructions for Map Page
+
+When processing the locations from the `places.json` file, follow these steps **for each place**:
+
+<Steps>
+1. **Create a marker object:**
+
+   * Instantiate a Leaflet marker object.
+   * Set its coordinates, custom marker icon, and the information to be displayed in the popup window.
+
+2. **Store the marker:**
+
+   * Save the newly created marker in a global JavaScript array (named `markers`) for future reference. 
+   :::tip
+   Create the `markers` array at the top of your JavaScript ES module file, outside of any functions. This will allow you to access the markers later when you need to open the popups.
+   :::
+   * **Popup Behavior:** Initially, bind the popup to the marker, but **do not open** it right away (avoid calling `openPopup()` at the start). The popup should only open when the user clicks on the corresponding list item in the left column of the map page.   
+
+3. **Use the `createNewElement` function:**
+
+   * Implement the `createNewElement` function (from the TVMaze lab). This will enable you to attach click event listeners to the `<li>` elements in the list of places (located in the first column of the map page).
+
+4. **Dynamically load place names:** While processing the places fetched from the `places.json` file:
+        - Add each place name into an ordered HTML list. For each place, create an `<li>` element, add to it a custom HTML attribute (`data-place-id`) to store the place ID, and attach a click event handler. When clicked, the event handler should:
+            1. Retrieve the place ID from the clicked item's custom attribute.
+            2. Search for the corresponding marker in the `markers` global array.
+            3. Call `marker.openPopup()` to display the popup for the selected marker.
+</Steps>
+
