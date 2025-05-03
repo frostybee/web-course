@@ -1,0 +1,42 @@
+---
+title: Search in a Table
+description: Search in a Table
+sidebar:
+  label: 'Search Table'
+  order: 4
+  badge:
+    text: 'Team Project'    
+    variant: danger
+---
+
+## Search in a Table with JavaScript
+
+The following code snippet demonstrates how to implement a search functionality in a table using JavaScript. The example assumes you have a table with an ID of `tbl-shows` and an input field with an ID of `searchInput`.
+
+
+
+```javascript title="Search function to be integrated in your ES module file"
+function searchTable() {
+    // Get the input value
+    const filter = document.getElementById('searchInput').value.toLowerCase();
+
+    // Get the table and rows            
+    // NOTE: The table's <tbody> ID is 'tbl-shows' and the input ID is 'searchInput'
+    const table = document.getElementById('tbl-shows');
+    const rows = table.getElementsByTagName('tr');
+
+    // Loop through all rows (starting from index 1 to skip header)
+    for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td');
+
+        // Loop through all cells in the row and check if any cell contains the filter text.
+        // The current implementation only checks the first column (index 0). However, you can modify it to check other columns as well.               
+        if (cells[0].textContent.toLowerCase().includes(filter)) {
+            rows[i].style.display = '';
+        } else {
+            rows[i].style.display = 'none';
+        }
+    }
+}
+```
+
