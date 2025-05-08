@@ -1,0 +1,131 @@
+---
+title: Using Regex in JS
+description: Using Regex in JS
+sidebar:
+  label: 'Regex in JS'
+  order: 3
+  badge:
+    text: New
+    variant: danger
+---
+
+## Online Resources 
+
+For testing and debugging your **regex**:
+* [regex101.com](https://regex101.com/)
+* [regexr.com](https://regexr.com/)
+  
+## JavaScript Regex: Creating Patterns
+---
+:::tip
+* **Two ways** to create regex patterns:
+  1. **Literal notation**: `/pattern/flags`
+  2. **Constructor**: `new RegExp("pattern", "flags")`
+* Literal is **simpler** but **fixed** at compile time
+* Constructor allows dynamic patterns from strings
+:::
+
+```javascript title="Example: Using a constructor"
+const regex = new RegExp('[a-z]');
+```
+
+```javascript title="Example: Using literal notation"
+const regex = /abc/;
+```
+
+## JavaScript Regex: RegExp Methods
+---
+
+* **`regex.test(string)`**: Returns **true** if pattern **exists** in string.....
+```javascript
+/abc/.test("abcdef"); // true
+```
+* **`regex.exec(string)`**: Returns **array** with match details or null
+
+```javascript
+const result = /(\d+)/.exec("Price is 100 dollars");
+// result[1] => "100"
+```
+
+## JavaScript Regex: String Methods
+---
+* **`string.match(regex)`**: Returns an array of matches or null
+* **`string.search(regex)`**: Returns index of first match or -1
+* **`string.replace(regex, replacement)`**: Replace matches with replacement
+* **`string.split(regex)`**: Split string by regex matches
+
+```javascript
+const text = "Call me at 555-123-4567 or 555.987.6543";
+const phoneRegex = /\d{3}[-.\s]\d{3}[-.\s]\d{4}/g;
+
+const matches = text.match(phoneRegex);  // ["555-123-4567", "555.987.6543"]
+const firstIndex = text.search(phoneRegex);  // 11
+```
+
+## JavaScript Regex: Capturing Groups
+---
+* Parentheses `( )` create capturing groups
+* Access groups via index in result array
+* Named groups with `(?<name>pattern)`
+
+```javascript
+const dateRegex = /(\d{2})\/(\d{2})\/(\d{4})/;
+// or with named groups: /(?<month>\d{2})\/(?<day>\d{2})\/(?<year>\d{4})/;
+
+const text = "Date: 04/28/2025";
+const match = dateRegex.exec(text);
+
+if (match) {
+  console.log(`Full match: ${match[0]}`);  // 04/28/2025
+  console.log(`Month: ${match[1]}`);       // 04
+  console.log(`Day: ${match[2]}`);         // 28
+  console.log(`Year: ${match[3]}`);        // 2025
+  
+  // With named groups:
+  // console.log(`Month: ${match.groups.month}`);
+}
+```
+## 🧪 Advanced Features
+---
+
+### Named Capturing Groups (ES2018)
+```js
+const regex = /(?<year>\d{4})-(?<month>\d{2})/;
+const result = regex.exec("2024-07");
+console.log(result.groups.year); // "2024"
+```
+
+### Lookaheads and Lookbehinds
+
+#### Positive Lookahead
+```js
+/\d+(?=px)/.exec("20px"); // "20"
+```
+
+#### Negative Lookahead
+```js
+/\d+(?!px)/.exec("20em"); // "20"
+```
+
+#### Positive Lookbehind (ES2018)
+```js
+/(?<=\$)\d+/.exec("$100"); // "100"
+```
+
+## JavaScript Regex: Replace with Functions
+---
+* Pass a function as the second argument to `replace()`
+* Function receives match and capture groups as arguments
+* Powerful for complex replacements and transformations
+
+```javascript
+const text = "Price: $24.99, $9.99, and $15.50";
+
+// Convert prices from USD to EUR (assume 0.85 exchange rate)
+const result = text.replace(/\$(\d+\.\d+)/g, (match, price) => {
+  const eurValue = (parseFloat(price) * 0.85).toFixed(2);
+  return `€${eurValue}`;
+});
+
+console.log(result);  // "Price: €21.24, €8.49, and €13.18"
+```

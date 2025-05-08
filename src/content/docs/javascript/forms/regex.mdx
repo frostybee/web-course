@@ -1,0 +1,143 @@
+---
+title: Working with Regular Expressions
+description: Working with Regular Expressions
+sidebar:
+  label: 'Regular Expressions'
+  order: 2
+  badge:
+    text: New
+    variant: danger
+---
+
+:::note
+- **Regular expressions**, often abbreviated as **regex** or **regexp**, are **patterns used to match character combinations in strings**.
+- They are useful for searching, validating, extracting, or replacing text.
+- A **regular expression** is a **sequence** of **characters** that defines a **search pattern**.
+:::
+
+### 🧠 How DoThey Work?
+---
+A regular expression defines a **pattern**. That pattern is then compared to a **target string**, and based on the rules, it either:
+- **Matches** the pattern (success),
+- Or **doesn't match** (failure).
+
+## Why Use Regular Expressions?
+---
+* **Validation**: Email addresses, phone numbers, passwords
+* **Text extraction**: Pulling data from **unstructured** text
+* **Search and Replace**: Complex **find/replace** operations
+* **Text Processing**: Cleaning, transforming, and parsing text
+* **Data Scraping**: Extracting specific information from documents
+
+
+## 📐 Regex Patterns
+---
+### Basic Regex Patterns
+
+| Character | Meaning |
+|-----------|---------|
+| `.` | Matches any character except newline |
+| `\d` | Matches any digit (0-9) |
+| `\w` | Matches any word character (**alphanumeric** + **underscore**) |
+| `\s` | Matches any whitespace character |
+| `\D`, `\W`, `\S` | **Negated** versions (non-digit, non-word, non-whitespace) |
+
+### Quantifiers
+---
+| Symbol | Meaning |
+|--------|---------|
+| `*` | 0 or more times |
+| `+` | 1 or more times |
+| `?` | 0 or 1 time (optional) |
+| `{n}` | Exactly n times |
+| `{n,}` | n or more times |
+| `{n,m}` | Between n and m times |
+
+## Character Classes
+---
+* Square brackets **`[ ]`** define a **character class**.
+* Match any single character from the **specified set**.
+* **Examples:**
+  * `[aeiou]` - matches any vowel
+  * `[0-9]` - matches any digit (same as `\d`)
+  * `[a-zA-Z]` - matches any letter (upper or lowercase)
+  * `[^0-9]` - matches any character that's NOT a digit
+
+### Groups and Ranges
+---
+| Pattern | Description |
+|---------|-------------|
+| `(abc)` | Capturing group |
+| `(?:abc)` | Non-capturing group |
+| `[abc]` | a, b, or c |
+| `[^abc]`| Not a, b, or c |
+| `[a-z]` | Range (lowercase) |
+| `[A-Z]` | Range (uppercase) |
+
+### Alternation
+
+```js
+/yes|no/
+```
+Matches either `"yes"` or `"no"`
+
+
+
+### Anchors and Boundaries
+---
+| Symbol | Meaning |
+|--------|---------|
+| `^` | Start of string or line |
+| `$` | End of string or line |
+| `\b` | Word boundary |
+| `\B` | Not a word boundary |
+
+### 🚩 Regex Flags/Modifiers
+---
+| Flag | Description |
+|------|-------------|
+| `g`  | Global search (find all matches) |
+| `i`  | Case-insensitive search |
+| `m`  | Multi-line mode (`^` and `$` match line start/end) |
+| `s`  | Allows `.` to match newline characters |
+| `u`  | Unicode mode |
+| `y`  | Sticky search (matches from lastIndex) |
+
+**Example:**
+```js
+const regex = /hello/gi;
+```
+
+## Groups and Capturing
+
+* Parentheses `( )` create capture groups
+* Used to:
+  * Apply quantifiers to entire sequences
+  * Extract specific parts of the match
+  * Reference matched text with backreferences
+
+```
+# Example: Capturing name parts
+pattern = r"(\w+)\s(\w+)"
+text = "John Smith"
+# Captures: Group 1 = "John", Group 2 = "Smith"
+```
+
+## Alternation and Non-capturing Groups
+
+* `|` pipe symbol for alternation (OR operator)
+* `(?:...)` for non-capturing groups
+* Examples:
+  * `cat|dog` matches "cat" or "dog"
+  * `I love (cats|dogs)` matches "I love cats" or "I love dogs"
+  * `(?:https?|ftp)://` matches "http://", "https://", or "ftp://"
+  
+## Lookahead and Lookbehind
+
+* **Lookahead**: `(?=...)` positive, `(?!...)` negative
+* **Lookbehind**: `(?<=...)` positive, `(?<!...)` negative
+* Zero-width assertions (don't consume characters)
+* Examples:
+  * `\w+(?=\s)` - word followed by whitespace
+  * `(?<=\$)\d+` - digits preceded by dollar sign
+  * `\b\w+\b(?!\s+and\b)` - word NOT followed by "and"
