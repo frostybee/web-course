@@ -30,12 +30,10 @@ export default defineConfig({
       defaultLocale: "en",
       components: {
         Header: './src/components/Header.astro',
+        PageFrame: './src/components/ui/CustomPageFrame.astro',
       },
       customCss: [
-        "./src/styles/custom.css",
-        "./src/styles/Linkable-headings.css",
-        "./src/styles/sidebar-topics.css",
-        "./src/styles/asides.css",
+        "./src/styles/index.css",
       ],
       lastUpdated: true,
       plugins: [
